@@ -1,1 +1,0 @@
-CREATE TABLE student(user_id INT primary key);
