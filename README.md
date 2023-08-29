@@ -14,3 +14,10 @@ CHATT APP UI ELEMENT
 EXTRA FETURES
 #Message bubbles
 #Icon and Graphics
+
+DATABASE DESIGN
+#Users Table
+#Conversation Table
+#Messages Table
+#Contacts Table
+Notification Table
