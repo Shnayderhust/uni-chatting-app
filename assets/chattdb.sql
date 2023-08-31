@@ -53,6 +53,7 @@ CREATE TABLE `notification`(
 );
 
 -- @block
+-- Future Features
 -- CREATE TABLE `university` (
 --   `id` int(11) NOT NULL PRIMARY KEY,
 --   `university` varchar(200) NOT NULL,
