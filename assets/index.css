@@ -1,72 +1,74 @@
-:root{
-    --primary-color: #a2d3ed;
-    --body-color: #f5fcff;
-    --header-color: #f5fcff00;
+:root {
+  --primary-color: #a2d3ed;
+  --body-color: #f5fcff;
+  --header-color: #f5fcff00;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    background-color: var(--body-color);
-    width: 100vw;
-    height: 100vh;
+body {
+  background-color: var(--body-color);
+  width: 100vw;
+  height: 100vh;
 }
 
-header{
-    width: 100%;
-    height: 5rem;
-    background-color: var(--body-color);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    background-color: #f5fcff00;
+header {
+  width: 100%;
+  height: 5rem;
+  background-color: var(--body-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  background-color: #f5fcff00;
 }
 
 header .logo{
     margin-left: 1rem;
 }
-header ul{
-    list-style-type: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 30rem;
-    height: 3rem;
-    border-radius: 1.5rem;
-    backdrop-filter: blur(18px);
-    background-color: var(--header-color);
-}
-header ul li{
-    /* margin-left: 1.5rem; */
-    font-size: 1.3rem;
-}
-header .reg{
-    margin-right: 1rem;
-}
 
-header .reg button{
-    width: 8rem;
-    height: 3rem;
-    border: none;
-    border-radius: 1.5rem;
-    font-size: 1.3rem;
-    /* color: white; */
-    background-color: var(--header-color);
-    backdrop-filter: blur(18px);
+/* header .logo{
+    width: 2rem;
+    height: 2rem;
+} */
+header ul {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 30rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  backdrop-filter: blur(18px);
+  background-color: var(--header-color);
+}
+header ul li {
+  /* margin-left: 1.5rem; */
+  font-size: 1.3rem;
+}
+header .reg {
+  margin-right: 1rem;
 }
 
-header .reg button:last-child{
-    margin-left: 1rem;
+header .reg button {
+  width: 8rem;
+  height: 3rem;
+  border: none;
+  border-radius: 1.5rem;
+  font-size: 1.3rem;
+  /* color: white; */
+  background-color: var(--header-color);
+  backdrop-filter: blur(18px);
 }
 
-main{
-    padding-top: 7rem;
+header .reg button:last-child {
+  margin-left: 1rem;
 }
 
-
-
+main {
+  padding-top: 7rem;
+}
