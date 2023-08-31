@@ -31,10 +31,6 @@ header .logo{
     margin-left: 1rem;
 }
 
-/* header .logo{
-    width: 2rem;
-    height: 2rem;
-} */
 header ul {
   list-style-type: none;
   display: flex;
@@ -46,8 +42,8 @@ header ul {
   backdrop-filter: blur(18px);
   background-color: var(--header-color);
 }
+
 header ul li {
-  /* margin-left: 1.5rem; */
   font-size: 1.3rem;
 }
 header .reg {
@@ -60,7 +56,6 @@ header .reg button {
   border: none;
   border-radius: 1.5rem;
   font-size: 1.3rem;
-  /* color: white; */
   background-color: var(--header-color);
   backdrop-filter: blur(18px);
 }
