@@ -1,4 +1,4 @@
-# uni-chatting-app
+# Unigram
 Flagship team project on web development
 
 CHATT APP UI ELEMENT
