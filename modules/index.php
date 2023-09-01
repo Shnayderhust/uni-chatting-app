@@ -27,8 +27,14 @@
     </header>
 
     <main>
-        <img src="./assets/pics and icons/avatar.jpg" alt="pic">
-        <p>Simple, reliable, private messaging with fellow university colleagues</p>
+        <img src="./assets/pics and icons/homepic.png" alt="pic" id="mainpic">
+        <div class="overpic"></div>
+        <div class="openparagraph">
+            <h1>Message Privately</h1>
+            <p>Simple, reliable, private messaging with<br> fellow university colleagues<br>all over the country</p><br>
+            <button>Register</button>
+        </div>
+
 
         <p>Hang out anytime, anywhere</p>
         <p>Unigram makes it easy and fun to stay close to your favorite people.</p>

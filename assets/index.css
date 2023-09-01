@@ -16,6 +16,10 @@ body {
   height: 100vh;
 }
 
+::-webkit-scrollbar{
+  display: none;
+}
+
 header {
   width: 100%;
   height: 5rem;
@@ -28,7 +32,7 @@ header {
 }
 
 header .logo{
-    margin-left: 1rem;
+    margin-left: 8rem;
 }
 
 header ul {
@@ -66,4 +70,46 @@ header .reg button:last-child {
 
 main {
   padding-top: 7rem;
+}
+
+main #mainpic{
+  margin-left: 5rem;
+  width: 70rem;
+  height: 40rem;
+  border-radius: 2rem;
+}
+
+/* main #mainpic .overpic{
+  width: 100rem;
+  height: 100rem;
+  background-color: red;
+  
+} */
+
+main .openparagraph{
+  position: absolute;
+  top: 25rem;
+  left: 10rem;
+}
+
+main .openparagraph h1{
+  font-size: 4rem;
+  font-weight: bolder;
+  color: white;
+}
+
+main .openparagraph p{
+  font-size: 1.5rem;
+  color: white;
+  /* font-weight: bold; */
+}
+
+main .openparagraph button{
+    width: 12rem;
+    height: 3rem;
+    border: none;
+    border-radius: 1.5rem;
+    font-size: 1.3rem;
+    background-color: var(--header-color);
+    backdrop-filter: blur(18px);
 }
