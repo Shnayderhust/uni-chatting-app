@@ -5,6 +5,7 @@ CREATE TABLE users (
   username VARCHAR(40) NOT NULL,
   email VARCHAR(200) NOT NULL,
   `password` VARCHAR(50) NOT NULL,
+  reg_date VARCHAR(30) NOT NULL,
   profile_pic VARCHAR(300) NOT NULL DEFAULT 'avatar.jpg',
   `status` TINYINT(1) NOT NULL DEFAULT 0
 );

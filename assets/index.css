@@ -1,4 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;700;800&display=swap");
+
 :root {
+  --color:#7e6cf4c5;
   --primary-color: #a2d3ed;
   --body-color: #f5fcff;
   --header-color: #f5fcff00;
@@ -8,6 +11,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -35,6 +39,16 @@ header .logo{
     margin-left: 8rem;
 }
 
+header .logo h1{
+  cursor: pointer;
+}
+
+header .logo h1 img{
+  width: 2rem;
+  height: 2rem;
+  margin-right: .5rem;
+}
+
 header ul {
   list-style-type: none;
   display: flex;
@@ -60,8 +74,10 @@ header .reg button {
   border: none;
   border-radius: 1.5rem;
   font-size: 1.3rem;
-  background-color: var(--header-color);
+  color: white;
+  background-color: var(--color);
   backdrop-filter: blur(18px);
+  cursor: pointer;
 }
 
 header .reg button:last-child {
@@ -86,30 +102,32 @@ main #mainpic{
   
 } */
 
-main .openparagraph{
+main .parag{
   position: absolute;
   top: 25rem;
   left: 10rem;
 }
 
-main .openparagraph h1{
+main .parag h1{
   font-size: 4rem;
   font-weight: bolder;
   color: white;
 }
 
-main .openparagraph p{
+main .parag p{
   font-size: 1.5rem;
   color: white;
   /* font-weight: bold; */
 }
 
-main .openparagraph button{
+main .parag button{
     width: 12rem;
     height: 3rem;
     border: none;
     border-radius: 1.5rem;
     font-size: 1.3rem;
-    background-color: var(--header-color);
+    color: white;
+    background-color: var(--color);
     backdrop-filter: blur(18px);
+    cursor: pointer;
 }

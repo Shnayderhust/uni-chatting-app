@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,11 @@
     <link rel="stylesheet" href="./assets/index.css">
     <title>Unigram | Secure and Reliable</title>
 </head>
+
 <body>
     <header>
         <div class="logo">
-            <!-- <img src="./assets/pics and icons/favicon.png" alt="logo" style="width: 2rem; height: 2rem;"> -->
-            <h1>Unigram</h1>
+            <h1 onclick="home.php"><img src="./assets/pics and icons/favicon.png" alt="logo">Unigram</h1>
         </div>
 
         <ul>
@@ -21,18 +22,18 @@
         </ul>
 
         <div class="reg">
-            <button>Log In</button>
-            <button>Register</button>
+            <button onclick="login()">Log In</button>
+            <button onclick="register()">Register</button>
         </div>
     </header>
 
     <main>
         <img src="./assets/pics and icons/homepic.png" alt="pic" id="mainpic">
         <div class="overpic"></div>
-        <div class="openparagraph">
+        <div class="parag">
             <h1>Message Privately</h1>
             <p>Simple, reliable, private messaging with<br> fellow university colleagues<br>all over the country</p><br>
-            <button>Register</button>
+            <button onclick="register()">Register</button>
         </div>
 
 
@@ -43,5 +44,8 @@
     <footer>
 
     </footer>
+
+    <script src="reg.js"></script>
 </body>
+
 </html>
