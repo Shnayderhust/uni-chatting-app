@@ -1,0 +1,542 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;700;800&display=swap");
+
+:root {
+    /* #5141bd */
+  --color: #7f6cf4 ;
+  --primary-color: #def3ff;
+  --body-color: white;
+  --header-color: #f5fcff00;
+  --nav-color: rgba(195, 200, 210, 0.525);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+body .left{
+    width: 40%;
+    height: 100%;
+    background-color: white;
+    border-right: .5px solid rgba(0, 0, 0, 0.139);
+}
+
+body .left #nav{
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--nav-color);
+    padding-right: 2rem;
+    padding-left: 1rem;
+}
+
+body .left #nav img{
+    width: 2.7rem;
+    height: 2.7rem;
+    border-radius: 50%;
+}
+
+body .left #nav .nextnav{
+    display: flex;
+    width: 5rem;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+body .left #nav .nextnav img{
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 0;
+    margin: 0;
+    margin-right: 2rem;
+    cursor: pointer;
+}
+
+body .left #nav .nextnav i{
+    cursor: pointer;
+}
+
+body .left #search{
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.148);
+}
+
+body .left #search #innersearch{
+    height: 80%;
+    width: 90%;
+    /* background-color: var(--nav-color); */
+    border-radius: .5rem;
+    border: 1px solid rgba(0, 0, 0, 0.694);
+    outline: none;
+    padding-left: .5rem;
+    display: flex;
+    align-items: center;
+    /* background-color: var(--color); */
+
+}
+
+body .left #search #innersearch input{
+    height: 80%;
+    width: 90%;
+    /* background-color: rgba(195, 200, 210, 0.053); */
+    border: none;
+    outline: none;
+    padding-left: 1rem;
+}
+
+body .left #search #innersearch input::placeholder{
+    color: var(--color);
+}
+
+body .left #search #innersearch i{
+    color: var(--color);
+}
+
+body .left #chats{
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+}
+
+body .left #chats .tempo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+body .left #chats .tempo h1{
+    content: "";
+    border-bottom: 2px solid var(--color);
+    padding-top: 1rem;
+}
+body .left #chats .tempo h2{
+    content: "";
+    border-bottom: 2px solid var(--color);
+    padding-top: .5rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+body .left #chats .tempo h3{
+    content: "";
+    border-bottom: 2px solid var(--color);
+    padding-top: .5rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+}
+
+body .right{
+    width: 60%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+body .right #noactivechat{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+body .right #noactivechat img{
+    width: 5rem;
+    height: 5rem;
+}
+
+body .right #noactivechat h1{
+    font-size: 2rem;
+}
+
+body .right #noactivechat button{
+    width: 10rem;
+    height: 3rem;
+    border-radius: .5rem;
+    border: .5px solid rgba(0, 0, 0, 0.53);
+    outline: none;
+    font-size: 1.2rem;
+    color: var(--color);
+    background-color: white;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+body .right #noactivechat button:hover{
+    box-shadow: 0 4px 4px rgba(126, 108, 244, 0.721);
+    border: .5px solid rgba(126, 108, 244, 0.721);
+}
+
+body .right #activechat{
+    display: none;
+    height: 100%;
+}
+
+body .right #activechat #chatnav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+    width: 100%;
+    background-color: var(--nav-color);
+    padding-left: 1rem;
+    padding-right: 2rem;
+}
+
+body .right #activechat #chatnav p{
+    display: flex;
+    align-items: center;
+}
+
+body .right #activechat #nextchatnav i{
+    padding-left: 1rem;
+}
+
+body .right #activechat #chatnav p img{
+    width: 2.7rem;
+    height: 2.7rem;
+    border-radius: 50%;
+    margin-right: .5rem;
+}
+
+body .right #activechat #messagespace{
+    height: 80%;
+    width: 100%;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 3rem;
+}
+
+body .right #activechat #chatspace{
+    height: 4rem;
+    background-color: var(--nav-color);
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+body .right #activechat #chatspace img{
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 1rem;
+}
+
+body .right #activechat #chatspace input{
+    width: 80%;
+    height: 2.7rem;
+    border-radius: .5rem;
+    border: none;
+    outline: none;
+    padding-left: 2rem;
+    margin-left: 1rem;
+}
+
+body #newchat{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background-color: white;
+    top: 0;
+    left: -100%;
+    height: 100vh;
+    width: 31.775rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.155);
+    transition: .4s ease-in-out;
+}
+
+body #newchat #header{
+    height: 10rem;
+    background-color: white;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1rem;
+    color: white;
+    background-color: var(--color);
+}
+
+body #newchat #header i{
+    padding-right: 1rem;
+    cursor: pointer;
+}
+
+body #newchat #usernav{
+    width: 100%;
+    height: 3.5rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body #newchat #usernav .innerusernav{
+    background-color: var(--nav-color);
+    width: 90%;
+    border-radius: .5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 1rem;
+}
+
+body #newchat #usernav .innerusernav i{
+    color: var(--color);
+}
+
+body #newchat #usernav .innerusernav input{
+    width: 80%;
+    border: none;
+    outline: none;
+    padding-left: 1rem;
+    background-color: rgba(195, 200, 210, 0.075);
+}
+
+body #newchat #users{
+    overflow-y: scroll;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: 70%;
+}
+
+body #newchat #users h2{
+    padding-bottom: .5rem;
+    padding-top: 2rem;
+}
+
+body #unorderd{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    width: 10rem;
+    height: 12rem;
+    border-radius: .5rem;
+    background-color: white;
+    left: 31rem;
+    top: 3rem;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+}
+
+body #unorderd ul{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+body #unorderd ul li{
+    height: 3rem;
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+body #unorderd ul li:hover{
+    color: var(--color);
+    border: 1px solid rgba(126, 108, 244, 0.628);
+    box-shadow: 0 4px 4px rgba(126, 108, 244, 0.721);
+}
+
+body #unorderd ul li:last-child:hover{
+    border-radius: 0 0 .5rem .5rem;
+    box-shadow: 0 4px 4px rgba(244, 108, 108, 0.721);
+    border: 1px solid rgba(244, 108, 108, 0.628);
+    color: red;
+}
+
+body #unorderd ul li:first-child:hover{
+    border-radius: .5rem .5rem 0 0;
+}
+
+body #settings{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background-color: white;
+    top: 0;
+    left: -100%;
+    height: 100vh;
+    width: 31.775rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.155);
+    transition: .4s ease-in-out;
+}
+
+body #settings #sethead{
+    height: 10rem;
+    background-color: white;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1rem;
+    color: white;
+    background-color: var(--color);
+}
+
+body #settings #sethead i{
+    padding-right: 1rem;
+    cursor: pointer;
+}
+
+body #settings #setnav{
+    width: 100%;
+    height: 4rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body #settings #setnav .innersetnav{
+    background-color: var(--nav-color);
+    width: 90%;
+    border-radius: .5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 1rem;
+}
+
+body #settings #setnav .innersetnav i{
+    color: var(--color);
+}
+
+body #settings #setnav .innersetnav input{
+    width: 80%;
+    border: none;
+    outline: none;
+    padding-left: 1rem;
+    background-color: rgba(195, 200, 210, 0.075);
+}
+
+body #settings #setlist{
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    justify-content: space-between;
+}
+
+body #settings #setlist #setprof{
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    padding-bottom: 6rem;
+    padding-top: 6rem;
+}
+
+body #settings #setlist #setprof img{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+body #settings #setlist ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 100%;
+    border-radius: 1rem;
+    margin-bottom: 7rem;
+    row-gap: .3rem;
+}
+
+body #settings #setlist ul li{
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 4rem;
+    border: 1px solid rgba(0, 0, 0, 0.817);
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+body #settings #setlist ul li:last-child{
+    border-radius: 0 0 1rem 1rem;
+}
+body #settings #setlist ul li:first-child{
+    border-radius: 1rem 1rem 0 0;
+}
+
+body #settings #setlist ul li:hover{
+    border: 1px solid #7e6cf47e;
+    box-shadow: 0 4px 4px #7e6cf4b5;
+    color: var(--color);
+}
+
+body #settings #setlist ul li:last-child:hover{
+    border-radius: 0 0 1rem 1rem;
+}
+body #settings #setlist ul li:first-child:hover{
+    border-radius: 1rem 1rem 0 0;
+}
+
+body #settings #setlist #buttdiv{
+    height: 8rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body #settings #setlist button{
+    width: 80%;
+    height: 4rem;
+    border-radius: .5rem;
+    background-color: white;
+    border: 1px solid var(--color);
+    font-size: 1.3rem;
+    margin-bottom: 7rem;
+    color: var(--color);
+    cursor: pointer;
+}
+
+body #settings #setlist button:hover{
+    border: 1px solid #ff53537e;
+    box-shadow: 0 4px 4px #ff4444cf;
+    color: red;
+}
+
+/* body #settings #setprof img div{
+    margin-rig: ;
+} */
+

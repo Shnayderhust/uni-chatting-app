@@ -79,7 +79,7 @@
 
     </section>
 
-    <script src="reg.js"></script>
+    <script src="nav.js"></script>
 </body>
 
 </html>
