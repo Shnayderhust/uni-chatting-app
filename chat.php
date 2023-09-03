@@ -13,7 +13,7 @@
 <body>
     <div class="left" id="chatlist">
         <div id="nav">
-            <img src="./assets/pics and icons/profpic.jpg" alt="profile" id="profpic">
+            <img src="./assets/pics and icons/profpic.jpg" alt="profilepic" id="profpic" onclick="profile()">
             <div class="nextnav">
                 <img src="./assets/pics and icons/new message.svg" alt="new text" onclick="newchat()">
                 <i class="fa-solid fa-ellipsis-vertical" id="ul" onclick="settnav()"></i>
@@ -22,12 +22,12 @@
         <div id="search">
             <div id="innersearch">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="search" placeholder="search a chat">
+                <input type="search" placeholder="Search A Chat">
             </div>
         </div>
         <div id="chats">
             <div class="tempo">
-                <p>Newly Created Chat will be displayed here</p>
+                <p>Newly Created Chats will be displayed here</p>
                 <h1></h1>
                 <h2></h2>
                 <h3></h3>
@@ -75,7 +75,7 @@
         <div id="usernav">
             <div class="innerusernav">
                 <i class="fa-solid fa-arrow-left"></i>
-                <input type="search" placeholder="search a chat">
+                <input type="search" placeholder="Search Accounts">
             </div>
         </div>
 
@@ -113,7 +113,7 @@
         <div id="setlist">
 
             <div id="setprof">
-                <img src="./assets/pics and icons/profpic.jpg" alt="">
+                <img src="./assets/pics and icons/profpic.jpg" alt="" onclick="profile()">
                 <div>
                     <h1 id="username">Shnayder</h1>
                     <p id="bio">Se'mi bi Oba</p>
@@ -130,6 +130,39 @@
 
             <div id="buttdiv">
                 <button type="button">Log Out</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="profile">
+
+        <div id="profhead">
+            <i class="fa-solid fa-arrow-left" onclick="chatlist()"></i>
+            <h1>Profile</h1>
+        </div>
+
+        <div id="profpicture">
+            <img src="./assets/pics and icons/profpic.jpg" alt="profpic">
+            <div id="topprofdiv">
+                <i class="fa-solid fa-camera"></i>
+                <p>CHANGE <br> PROFILE PICTURE</p>
+            </div>
+        </div>
+        
+        <div id="name-bio">
+            <div id="name">
+                <div>
+                    <p>Your Username</p>
+                    <h1>Shnayder</h1>
+                </div>
+                <i class="fa-solid fa-pen"></i>
+            </div>
+            <div id="bio">
+                <div>
+                    <p>Your Bio</p>
+                    <h1>Se'mi bi Oba</h1>
+                </div>
+                <i class="fa-solid fa-pen"></i>
             </div>
         </div>
     </div>

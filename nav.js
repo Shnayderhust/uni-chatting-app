@@ -15,37 +15,30 @@ function chat() {
     window.location.href = "chat.php";
 }
 
-function newchat(){
+function newchat() {
     document.getElementById('newchat').style.left = "0";
 }
 
-function chatlist(){
+function chatlist() {
     document.getElementById('newchat').style.left = "-100%";
     document.getElementById('newchat').style.transition = "2s";
     document.getElementById('settings').style.left = "-100%";
     document.getElementById('settings').style.transition = "2s";
+    document.getElementById('profile').style.left = "-100%";
+    document.getElementById('profile').style.transition = "2s";
 }
 
 
+function settnav() {
+    const unorderd = document.getElementById('unorderd');
+    unorderd.style.display = "flex";
+};
 
-// document.addEventListener('DOMContentLoaded', function(){
-
-    function settnav(){
-        document.getElementById('unorderd').style.display = "flex";
-    };
-
-    // document.addEventListener('click', function(){
-    //     if(event.target !== settnav()){
-    //         document.getElementById('unorderd').style.display = "none";
-    //     };
-    // })
-// })
-
-function settings(){
+function settings() {
     document.getElementById('settings').style.left = "0";
-}
+    document.getElementById('unorderd').style.display = "none";
+};
 
-// function chatlist2(){
-    
-// }
-
+function profile() {
+    document.getElementById('profile').style.left = "0";
+};

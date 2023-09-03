@@ -3,6 +3,7 @@
 :root {
     /* #5141bd */
   --color: #7f6cf4 ;
+  --color2: #6cf4d2;
   --primary-color: #def3ff;
   --body-color: white;
   --header-color: #f5fcff00;
@@ -47,6 +48,7 @@ body .left #nav img{
     width: 2.7rem;
     height: 2.7rem;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 body .left #nav .nextnav{
@@ -81,21 +83,17 @@ body .left #search{
 body .left #search #innersearch{
     height: 80%;
     width: 90%;
-    /* background-color: var(--nav-color); */
     border-radius: .5rem;
     border: 1px solid rgba(0, 0, 0, 0.694);
     outline: none;
     padding-left: .5rem;
     display: flex;
     align-items: center;
-    /* background-color: var(--color); */
-
 }
 
 body .left #search #innersearch input{
     height: 80%;
     width: 90%;
-    /* background-color: rgba(195, 200, 210, 0.053); */
     border: none;
     outline: none;
     padding-left: 1rem;
@@ -294,7 +292,6 @@ body #newchat #usernav{
 }
 
 body #newchat #usernav .innerusernav{
-    background-color: var(--nav-color);
     width: 90%;
     border-radius: .5rem;
     height: 2.5rem;
@@ -302,6 +299,7 @@ body #newchat #usernav .innerusernav{
     align-items: center;
     justify-content: flex-start;
     padding-left: 1rem;
+    border: 1px solid black;
 }
 
 body #newchat #usernav .innerusernav i{
@@ -313,7 +311,6 @@ body #newchat #usernav .innerusernav input{
     border: none;
     outline: none;
     padding-left: 1rem;
-    background-color: rgba(195, 200, 210, 0.075);
 }
 
 body #newchat #users{
@@ -417,7 +414,6 @@ body #settings #setnav{
 }
 
 body #settings #setnav .innersetnav{
-    background-color: var(--nav-color);
     width: 90%;
     border-radius: .5rem;
     height: 2.5rem;
@@ -425,6 +421,7 @@ body #settings #setnav .innersetnav{
     align-items: center;
     justify-content: flex-start;
     padding-left: 1rem;
+    border: 1px solid black;
 }
 
 body #settings #setnav .innersetnav i{
@@ -436,7 +433,7 @@ body #settings #setnav .innersetnav input{
     border: none;
     outline: none;
     padding-left: 1rem;
-    background-color: rgba(195, 200, 210, 0.075);
+    /* background-color: rgba(195, 200, 210, 0.075); */
 }
 
 body #settings #setlist{
@@ -464,6 +461,7 @@ body #settings #setlist #setprof img{
     height: 5rem;
     border-radius: 50%;
     margin-right: 1rem;
+    cursor: pointer;
 }
 
 body #settings #setlist ul{
@@ -536,7 +534,162 @@ body #settings #setlist button:hover{
     color: red;
 }
 
-/* body #settings #setprof img div{
-    margin-rig: ;
-} */
+body #profile{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    align-items: center;
+    background-color: white;
+    top: 0;
+    left: -100%;
+    height: 100vh;
+    width: 31.775rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.155);
+    transition: .4s ease-in-out;
+}
+
+body #profile #profhead{
+    height: 10rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1rem;
+    color: white;
+    background-color: var(--color);
+}
+
+body #profile #profhead i{
+    padding-right: 1rem;
+    cursor: pointer;
+}
+
+body #profile #profpicture{
+    width: 100%;
+    height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body #profile #profpicture img{
+    width: 13rem;
+    height: 13rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#topprofdiv{
+    display: none;
+}
+
+#topprofdiv:hover{
+    width: 13rem;
+    height: 13rem;
+    border-radius: 50%;
+    position: absolute;
+    left: 9.39rem;
+    top: 11rem;
+    background-color: rgba(0, 0, 0, 0.187);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    text-align: center;
+}
+
+body #profile #profpicture img:hover + #topprofdiv{
+    width: 13rem;
+    height: 13rem;
+    border-radius: 50%;
+    position: absolute;
+    left: 9.39rem;
+    top: 11rem;
+    background-color: rgba(255, 0, 0, 0.187);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all ease-in-out .2s;
+}
+
+body #profile #name-bio{
+    width: 90%;
+    height: 15rem;
+    /* background-color: #6cf4d2; */
+    border-radius: 1rem;
+    /* row-gap: 2rem; */
+}
+
+body #profile #name-bio #name{
+    width: 100%;
+    height: 7rem;
+    border: 1px solid black;
+    margin-bottom: .5rem;
+    border-radius: 1rem 1rem 0 0;
+    display: flex;
+    padding-left: 1rem;
+    align-items: space-around;
+    justify-content: space-between;
+    color: var(--color);
+    cursor: pointer;
+}
+
+body #profile #name-bio #name div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+body #profile #name-bio #name i{
+    padding-top: 5rem;
+    padding-right: 1rem;
+}
+
+body #profile #name-bio #name h1{
+    color: black;
+}
+
+body #profile #name-bio #name:hover{
+    box-shadow: 0 4px 4px #7e6cf4b5;
+    border: 1px solid var(--color);
+}
+
+body #profile #name-bio #bio{
+    width: 100%;
+    height: 7rem;
+    border: 1px solid black;
+    margin-bottom: .5rem;
+    border-radius: 0 0 1rem 1rem;
+    display: flex;
+    padding-left: 1rem;
+    align-items: space-around;
+    justify-content: space-between;
+    color: var(--color);
+    cursor: pointer;
+}
+
+body #profile #name-bio #bio div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+body #profile #name-bio #bio i{
+    padding-top: 5rem;
+    padding-right: 1rem;
+}
+
+body #profile #name-bio #bio h1{
+    color: black;
+}
+
+body #profile #name-bio #bio:hover{
+    box-shadow: 0 4px 4px #7e6cf4b5;
+    border: 1px solid var(--color);
+}
+
 
