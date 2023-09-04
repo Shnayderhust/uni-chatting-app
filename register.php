@@ -1,5 +1,6 @@
-<?php require './connection.php'; ?>
+<!-- <?php  ?> -->
 <?php
+        require './connection.php';
 
         if (isset($_POST['regbutt'])) {
             $firstname = $_POST['fn'];
@@ -9,7 +10,6 @@
 
             $password = password_hash($_POST["pas"], PASSWORD_DEFAULT);
             $date = date("Y-m-d");
-
 
             $query = "INSERT INTO users (firstname,lastname,username,email,password,reg_date) values('$firstname','$lastname','$username','$email','$password','$date')";
 
@@ -83,3 +83,5 @@
 </body>
 
 </html>
+
+<!-- onclick="login()" -->

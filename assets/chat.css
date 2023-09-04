@@ -262,7 +262,7 @@ body #newchat{
     height: 100vh;
     width: 31.775rem;
     border-right: 1px solid rgba(0, 0, 0, 0.155);
-    transition: .4s ease-in-out;
+    transition: .1s ease-in-out;
 }
 
 body #newchat #header{
@@ -384,7 +384,7 @@ body #settings{
     height: 100vh;
     width: 31.775rem;
     border-right: 1px solid rgba(0, 0, 0, 0.155);
-    transition: .4s ease-in-out;
+    transition: .1s ease-in-out;
 }
 
 body #settings #sethead{
@@ -545,7 +545,7 @@ body #profile{
     height: 100vh;
     width: 31.775rem;
     border-right: 1px solid rgba(0, 0, 0, 0.155);
-    transition: .4s ease-in-out;
+    transition: .1s ease-in-out;
 }
 
 body #profile #profhead{
@@ -613,7 +613,7 @@ body #profile #profpicture img:hover + #topprofdiv{
     align-items: center;
     justify-content: center;
     z-index: 10;
-    transition: all ease-in-out .2s;
+    transition: all ease-in-out .1s;
 }
 
 body #profile #name-bio{
@@ -741,6 +741,7 @@ body #logoutform #logoutdiv button{
     margin-left: .3rem;
     font-size: 1.3rem;
     color: var(--color);
+    cursor: pointer;
 }
 
 body #logoutform #logoutdiv button:first-child:hover{
