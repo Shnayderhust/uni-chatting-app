@@ -12,7 +12,7 @@
 <body>
     <header>
         <div class="logo">
-            <h1 onclick="home.php"><img src="./assets/pics and icons/favicon.png" alt="logo">Unigram</h1>
+            <h1><img src="./assets/pics and icons/favicon.png" alt="logo" class="mlogo">Unigram</h1>
         </div>
 
         <ul>
@@ -22,8 +22,8 @@
         </ul>
 
         <div class="reg">
-            <button onclick="login()">Log In</button>
-            <button onclick="register()">Register</button>
+            <button class="mlogin">Log In</button>
+            <button class="reglink">Register</button>
         </div>
     </header>
 
@@ -33,7 +33,7 @@
         <div class="parag">
             <h1>Message Privately</h1>
             <p>Simple, reliable, private messaging with<br> fellow university colleagues<br>all over the country</p><br>
-            <button onclick="register()">Register</button>
+            <button class="regbut">Register</button>
         </div>
 
 
@@ -46,7 +46,7 @@
     </footer>
 
     <!-- fcfhc -->
-    
+
     <script src="nav.js"></script>
 </body>
 

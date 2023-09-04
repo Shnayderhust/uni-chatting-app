@@ -12,7 +12,7 @@
 <body>
     <section class="left">
         <div>
-            <h1 onclick="home()"><img src="./assets/pics and icons/favicon.png" alt="">Unigram</h1>
+            <h1 class="mlogo"><img src="./assets/pics and icons/favicon.png" alt="">Unigram</h1>
             <p>Unigram makes it easy and fun to communicate!.</p>
             <button>Log In With Google</button>
             <div class="div">
@@ -34,8 +34,8 @@
                 <input type="password" placeholder="Enter Your Password"><br>
             </section>
 
-            <button type="button" name="login" onclick="chat()">Log In</button>
-            <p>Dont have an account yet?<span onclick="register()">Sign up for free</span></p>
+            <button type="button" name="login" id="gochat">Log In</button>
+            <p>Dont have an account yet?<span class="reglink">Sign up for free</span></p>
         </form>
 
     </section>

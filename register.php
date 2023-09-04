@@ -1,20 +1,20 @@
 <!-- <?php  ?> -->
 <?php
-        require './connection.php';
+require './connection.php';
 
-        if (isset($_POST['regbutt'])) {
-            $firstname = $_POST['fn'];
-            $lastname = $_POST['ln'];
-            $username = $_POST['us'];
-            $email = $_POST['em'];
+if (isset($_POST['regbutt'])) {
+    $firstname = $_POST['fn'];
+    $lastname = $_POST['ln'];
+    $username = $_POST['us'];
+    $email = $_POST['em'];
 
-            $password = password_hash($_POST["pas"], PASSWORD_DEFAULT);
-            $date = date("Y-m-d");
+    $password = password_hash($_POST["pas"], PASSWORD_DEFAULT);
+    $date = date("Y-m-d");
 
-            $query = "INSERT INTO users (firstname,lastname,username,email,password,reg_date) values('$firstname','$lastname','$username','$email','$password','$date')";
+    $query = "INSERT INTO users (firstname,lastname,username,email,password,reg_date) values('$firstname','$lastname','$username','$email','$password','$date')";
 
-            $register = $unigram_conn->query($query) or die($unigram_conn->error . __LINE__);
-        }
+    $register = $unigram_conn->query($query) or die($unigram_conn->error . __LINE__);
+}
 
 
 
@@ -34,7 +34,7 @@
 <body>
     <section class="left">
         <div>
-            <h1 onclick="home()"><img src="./assets/pics and icons/favicon.png" alt="">Unigram</h1>
+            <h1 class="mlogo"><img src="./assets/pics and icons/favicon.png" alt="">Unigram</h1>
             <p>Unigram makes it easy and fun to communicate!.</p>
             <button>Sign Up With Google</button>
             <div class="div">
@@ -66,12 +66,12 @@
             </section>
 
             <section>
-                <label for="password" >Password</label>
+                <label for="password">Password</label>
                 <input type="password" name="pas" placeholder="Enter Your Password"><br>
             </section>
 
-            <button type="button" name="regbutt" onclick="login()">Sign Up</button>
-            <p>Already got an account?<span onclick="login()">Log in</span></p>
+            <button type="button" id="regbutt" class="mlogin">Sign Up</button>
+            <p>Already got an account?<span class="mlogin">Log in</span></p>
         </form>
 
     </section>
@@ -83,5 +83,3 @@
 </body>
 
 </html>
-
-<!-- onclick="login()" -->
