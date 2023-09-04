@@ -45,3 +45,4 @@ CREATE TABLE notification (
   FOREIGN KEY (sender_id) REFERENCES users(user_id),
   FOREIGN KEY (message_id) REFERENCES messages(id)
 );
+
