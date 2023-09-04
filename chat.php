@@ -11,12 +11,12 @@
 </head>
 
 <body>
-    <div class="left" id="chatlist">
+    <div class="left">
         <div id="nav">
-            <img src="./assets/pics and icons/profpic.jpg" alt="profilepic" id="profpic" onclick="profile()">
+            <img src="./assets/pics and icons/profpic.jpg" alt="profilepic" class="profpic">
             <div class="nextnav">
-                <img src="./assets/pics and icons/new message.svg" alt="new text" onclick="newchat()">
-                <i class="fa-solid fa-ellipsis-vertical" id="ul" onclick="settnav()"></i>
+                <img src="./assets/pics and icons/new message.svg" alt="new text" class="creatchat">
+                <i class="fa-solid fa-ellipsis-vertical" id="ul"></i>
             </div>
         </div>
         <div id="search">
@@ -41,7 +41,7 @@
             <img src="./assets/pics and icons/favicon.png" alt="">
             <h1>Unigram</h1>
             <p>Unigram makes it easy and fun to stay close to your favorite people.</p>
-            <button type="button" onclick="newchat()">New Chat</button>
+            <button type="button" class="creatchat">New Chat</button>
         </section>
 
         <section id="activechat">
@@ -68,7 +68,7 @@
     <div id="newchat">
 
         <div id="header">
-            <i class="fa-solid fa-arrow-left" onclick="chatlist()"></i>
+            <i class="fa-solid fa-arrow-left" id="chatlist"></i>
             <h1>Create New Chat</h1>
         </div>
 
@@ -91,14 +91,14 @@
         <ul>
             <li>New Group</li>
             <li>Select Chats</li>
-            <li onclick="settings()">Settings</li>
-            <li onclick="logoutform()">Log Out</li>
+            <li class="settings">Settings</li>
+            <li class="logoutform">Log Out</li>
         </ul>
     </div>
 
     <div id="settings">
         <div id="sethead">
-            <i class="fa-solid fa-arrow-left" onclick="chatlist()"></i>
+            <i class="fa-solid fa-arrow-left" id="chatlist"></i>
             <h1>Settings</h1>
         </div>
 
@@ -109,11 +109,11 @@
             </div>
         </div>
 
-        
+
         <div id="setlist">
 
             <div id="setprof">
-                <img src="./assets/pics and icons/profpic.jpg" alt="" onclick="profile()">
+                <img src="./assets/pics and icons/profpic.jpg" alt="" class="profpic">
                 <div>
                     <h1 id="username">Shnayder</h1>
                     <p id="bio">Se'mi bi Oba</p>
@@ -129,7 +129,7 @@
             </ul>
 
             <div id="buttdiv">
-                <button type="button" onclick="logoutform()">Log Out</button>
+                <button type="button" class="logoutform">Log Out</button>
             </div>
         </div>
     </div>
@@ -137,7 +137,7 @@
     <div id="profile">
 
         <div id="profhead">
-            <i class="fa-solid fa-arrow-left" onclick="chatlist()"></i>
+            <i class="fa-solid fa-arrow-left" id="chatlist"></i>
             <h1>Profile</h1>
         </div>
 
@@ -148,7 +148,7 @@
                 <p>CHANGE <br> PROFILE PICTURE</p>
             </div>
         </div>
-        
+
         <div id="name-bio">
             <div id="name">
                 <div>
@@ -175,8 +175,8 @@
                 <p>Are You Sure You Want To Log Out?</p>
             </div>
             <div id="divb">
-                <button type="button" onclick="logout()">Yes</button>
-                <button type="button" onclick="logoutform2()">No</button>
+                <button type="button" id="yeslogout">Yes</button>
+                <button type="button" id="nostay">No</button>
             </div>
         </div>
 
