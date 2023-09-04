@@ -92,7 +92,7 @@
             <li>New Group</li>
             <li>Select Chats</li>
             <li onclick="settings()">Settings</li>
-            <li>Log Out</li>
+            <li onclick="logoutform()">Log Out</li>
         </ul>
     </div>
 
@@ -129,7 +129,7 @@
             </ul>
 
             <div id="buttdiv">
-                <button type="button">Log Out</button>
+                <button type="button" onclick="logoutform()">Log Out</button>
             </div>
         </div>
     </div>
@@ -165,6 +165,21 @@
                 <i class="fa-solid fa-pen"></i>
             </div>
         </div>
+    </div>
+
+    <div id="logoutform">
+
+        <div id="logoutdiv">
+            <div id="diva">
+                <h1>Unigram</h1>
+                <p>Are You Sure You Want To Log Out?</p>
+            </div>
+            <div id="divb">
+                <button type="button" onclick="logout()">Yes</button>
+                <button type="button" onclick="logoutform2()">No</button>
+            </div>
+        </div>
+
     </div>
 
     <script src="./nav.js"></script>

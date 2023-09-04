@@ -42,3 +42,15 @@ function settings() {
 function profile() {
     document.getElementById('profile').style.left = "0";
 };
+
+function logoutform() {
+    document.getElementById('logoutform').style.display = "flex";
+};
+
+function logoutform2() {
+    document.getElementById('logoutform').style.display = "none";
+};
+
+function logout(){
+    window.location.href = "index.php"
+}

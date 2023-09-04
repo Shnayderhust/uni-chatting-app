@@ -692,4 +692,65 @@ body #profile #name-bio #bio:hover{
     border: 1px solid var(--color);
 }
 
+body #logoutform{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #0000003e;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+body #logoutform #logoutdiv{
+    width: 60%;
+    height: 30%;
+    border-radius: 1rem;
+    padding-left: 1rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+}
+
+body #logoutform #logoutdiv #diva{
+    width: 60%;
+    height: 100%;
+    padding-top: 2rem;
+}
+
+body #logoutform #logoutdiv #diva p{
+    color: var(--color);
+}
+
+body #logoutform #logoutdiv #divb{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-right:  1rem;
+    padding-bottom:  1rem;
+}
+
+body #logoutform #logoutdiv button{
+    width: 100%;
+    height: 3rem;
+    background-color: white;
+    border-radius: .5rem;
+    border: 1px solid rgba(0, 0, 0, 0.445);
+    margin-left: .3rem;
+    font-size: 1.3rem;
+    color: var(--color);
+}
+
+body #logoutform #logoutdiv button:first-child:hover{
+    box-shadow: 0 4px 4px #f46c6c7e;
+    border: 1px solid #f46c6cb5;
+    color: red;
+}
+
+body #logoutform #logoutdiv button:last-child:hover{
+    box-shadow: 0 4px 4px #7e6cf47e;
+    border: 1px solid #7e6cf4b5;
+}
 
