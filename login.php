@@ -6,10 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./assets/pics and icons/favicon.png">
     <link rel="stylesheet" href="./assets/reg.css">
-    <title>Unigram | Log In</title>
+    <title>Document</title>
 </head>
 
 <body>
+
+    <!-- Explanation for this file refer the register file given both this file and register file are designed the same way and ofcourse use the same css and js file 
+
+    The difference is only how the js file target its event i changed some class and id names so the js file could only refer to events target available in this file only
+    -->
+
     <section class="left">
         <div>
             <h1 class="mlogo"><img src="./assets/pics and icons/favicon.png" alt="">Unigram</h1>
@@ -39,6 +45,7 @@
         </form>
 
     </section>
+
     <section class="right">
 
     </section>

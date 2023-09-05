@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./assets/pics and icons/favicon.png">
+
+    <!-- linking css file named index.css found on assets folder -->
     <link rel="stylesheet" href="./assets/index.css">
     <title>Unigram | Secure and Reliable</title>
 </head>
@@ -22,14 +24,16 @@
         </ul>
 
         <div class="reg">
+            <!-- Class mlogin is set in log in so the javascript can listen to event using js script in nav.js -->
             <button class="mlogin">Log In</button>
+            <!-- Class reglink is set in log in so the javascript can listen to event using js script in nav.js -->
             <button class="reglink">Register</button>
         </div>
     </header>
 
     <main>
         <img src="./assets/pics and icons/homepic.png" alt="pic" id="mainpic">
-        <div class="overpic"></div>
+        <!-- <div class="overpic"></div> -->
         <div class="parag">
             <h1>Message Privately</h1>
             <p>Simple, reliable, private messaging with<br> fellow university colleagues<br>all over the country</p><br>
@@ -45,8 +49,7 @@
 
     </footer>
 
-    <!-- fcfhc -->
-
+    <!-- Linking Javascript file called nav which mainly handles event on the site like button clicked -->
     <script src="nav.js"></script>
 </body>
 

@@ -1,6 +1,5 @@
-<!-- <?php  ?> -->
 <?php
-require './connection.php';
+require "./assets/modules/dbconnection.inc.php";
 
 if (isset($_POST['regbutt'])) {
     $firstname = $_POST['fn'];
@@ -13,7 +12,7 @@ if (isset($_POST['regbutt'])) {
 
     $query = "INSERT INTO users (firstname,lastname,username,email,password,reg_date) values('$firstname','$lastname','$username','$email','$password','$date')";
 
-    $register = $unigram_conn->query($query) or die($unigram_conn->error . __LINE__);
+    // $register = $unigram_conn->query($query) or die($unigram_conn->error . __LINE__);
 }
 
 
@@ -26,13 +25,20 @@ if (isset($_POST['regbutt'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- linking shortcut icon at the header of the site on the tab named favicon found in assets the pics and icons subfolder -->
     <link rel="shortcut icon" href="./assets/pics and icons/favicon.png">
+    <!-- linking css file named reg.css found in assets folder -->
     <link rel="stylesheet" href="./assets/reg.css">
     <title>Unigram | Register</title>
 </head>
 
 <body>
+
+    <!-- in body container there are two container named section one with class of left and another with class of right -->
+
+    <!-- this section tag is like a container that hold other html contents  -->
     <section class="left">
+        <!-- the div bellow acts as the header of the this section -->
         <div>
             <h1 class="mlogo"><img src="./assets/pics and icons/favicon.png" alt="">Unigram</h1>
             <p>Unigram makes it easy and fun to communicate!.</p>
@@ -43,6 +49,13 @@ if (isset($_POST['regbutt'])) {
                 <hr>
             </div>
         </div>
+
+        <!-- This is the inputs form that a user fill out his/her details for registration
+    
+        Each input and its lable are wrapped inside section just for easy and responsive styling with css
+
+        The method of form is set to Post which is more secure than get in the case of submitting user data
+        -->
 
         <form action="./register.php" id="regform" method="POST">
             <section>
@@ -70,14 +83,17 @@ if (isset($_POST['regbutt'])) {
                 <input type="password" name="pas" placeholder="Enter Your Password"><br>
             </section>
 
-            <button type="button" id="regbutt" class="mlogin">Sign Up</button>
+            <button type="button" class="mlogin">Sign Up</button>
             <p>Already got an account?<span class="mlogin">Log in</span></p>
         </form>
 
     </section>
+
+    <!-- This section with clss of rigth is the one with purple color in the registration form which is empty we can fill it with some dope design like the app logo or a picture later -->
     <section class="right">
 
     </section>
+
 
     <script src="nav.js"></script>
 </body>
