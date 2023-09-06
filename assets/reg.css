@@ -52,7 +52,6 @@ body {
   padding-top: 3rem;
   font-size: 2rem;
   cursor: pointer;
-  /* margin-bottom: 0.5rem; */
 }
 
 .left div h1 img {
@@ -103,6 +102,10 @@ body {
   padding-right: 1rem;
 }
 
+.left div #noerror {
+  display: none;
+}
+
 .left div #errorcontainer {
   margin-top: 2.5rem;
   height: auto;
@@ -123,6 +126,32 @@ body {
   color: red;
   margin-bottom: 0.5rem;
   font-weight: 600;
+}
+
+.left div #normalsignup {
+  display: none;
+}
+
+.left div #signupsuccess {
+  margin-top: 2.5rem;
+  height: auto;
+  width: 80%;
+  background-color: rgb(230, 255, 232);
+  border-radius: 1rem;
+  outline: 3px solid rgb(21, 255, 83);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.left div #signupsuccess .signupsuccessmessage {
+  color: black;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .left form {

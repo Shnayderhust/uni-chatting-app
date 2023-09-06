@@ -1,3 +1,9 @@
+<?php
+require_once "./modules/signup.view.inc.php";
+require_once "./modules/sessionconfig.inc.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,6 +31,14 @@
                 <hr>
                 <span>OR</span>
                 <hr>
+            </div>
+
+            <div id="<?php if (isset($_GET["signup"])) {
+                            echo 'signupsuccess';
+                        } else {
+                            echo 'normalsignup';
+                        } ?>">
+                <?php signupsuccess() ?>
             </div>
         </div>
 

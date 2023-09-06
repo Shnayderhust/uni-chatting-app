@@ -38,15 +38,12 @@ require_once "./modules/sessionconfig.inc.php";
 
             <!-- This Container Bellow is Responsible for Receiving Error Messages On Registration -->
 
-            <div id="errorcontainer">
-                <?php
-
-                display_error();
-
-                // echo display_error();
-
-                ?>
-
+            <div id="<?php if (isset($_SESSION["error_signup"])) {
+                            echo 'errorcontainer';
+                        } else {
+                            echo 'noerror';
+                        } ?>">
+                <?php display_error(); ?>
             </div>
 
         </div>

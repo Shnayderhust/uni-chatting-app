@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         create_user($unigram_conn, $firstname, $lastname, $username, $email, $password);
-        header("location: ../login.php");
+        header("location: ../login.php?signup=success");
         $unigram_conn = null;
         $stmt = null;
 
