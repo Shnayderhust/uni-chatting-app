@@ -82,7 +82,7 @@ require_once "./assets/modules/sessionconfig.inc.php";
                 <input type="password" name="pas" placeholder="Enter Your Password"><br>
             </section>
 
-            <button type="button" class="mlogin">Sign Up</button>
+            <button>Sign Up</button>
             <p>Already got an account?<span class="mlogin">Log in</span></p>
         </form>
 

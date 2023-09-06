@@ -1,6 +1,6 @@
 <?php
 
-require_once "dbconnecction.php";
+require_once "./assets/modules/dbconnection.inc.php";
 
 ini_set("session.use_only_cookies", 1);
 ini_set("session.use_strict_mode", 1);
