@@ -29,16 +29,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $errors["registered_email"] = "The email you used is already registered";
         }
 
-        require_once "../modules/sessionconfig.inc.php";
+        require_once "./sessionconfig.inc.php";
         if ($errors) {
             $_SESSION["error_signup"] = $errors;
-            header("Location: ../Unigram/signup.php");
+            header("Location: ../signup.php");
             die();
         }
+
+        create_user($unigram_conn, $firstname, $lastname, $username, $email, $password);
+        header("location: ../login.php");
+        $unigram_conn = null;
+        $stmt = null;
+
+        die();
     } catch (PDOException $e) {
         die("connection error:" . $e->getMessage());
     };
 } else {
-    header("location: ../../signup.php");
+    header("location: ../signup.php");
     die();
 }

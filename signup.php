@@ -1,6 +1,6 @@
 <?php
-require_once "./assets/modules/signup.view.inc.php";
-require_once "./assets/modules/sessionconfig.inc.php";
+require_once "./modules/signup.view.inc.php";
+require_once "./modules/sessionconfig.inc.php";
 
 ?>
 
@@ -43,6 +43,8 @@ require_once "./assets/modules/sessionconfig.inc.php";
 
                 display_error();
 
+                // echo display_error();
+
                 ?>
 
             </div>
@@ -56,7 +58,7 @@ require_once "./assets/modules/sessionconfig.inc.php";
         The method of form is set to Post which is more secure than get in the case of submitting user data
         -->
 
-        <form action="./assets/modules/signup.inc.php" id="regform" method="POST">
+        <form action="./modules/signup.inc.php" id="regform" method="POST">
             <section>
                 <label for="first name">First Name</label>
                 <input type="text" name="fn" placeholder="Enter Your First Name"><br>

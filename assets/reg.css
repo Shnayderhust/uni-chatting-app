@@ -110,7 +110,7 @@ body {
   background-color: rgb(255, 215, 215);
   border-radius: 1rem;
   outline: 3px solid red;
-  display: none;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;

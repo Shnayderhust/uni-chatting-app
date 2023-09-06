@@ -9,6 +9,6 @@ function display_error()
             echo '<p class="errormessage"> ' . $error . ' </p>';
         }
 
-        unset($errors);
+        unset($_SESSION["error_signup"]);
     }
 }

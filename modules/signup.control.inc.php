@@ -35,3 +35,8 @@ function is_email_registered(object $unigram_conn, $email)
         return false;
     }
 }
+
+function create_user(object $unigram_conn, $firstname, $lastname, $username, $email, $password)
+{
+    set_user($unigram_conn, $firstname, $lastname, $username, $email, $password);
+}
