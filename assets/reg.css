@@ -41,7 +41,7 @@ body {
 }
 
 .left div {
-  height: 50%;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -75,6 +75,12 @@ body {
   cursor: pointer;
 }
 
+.left div button:hover {
+  box-shadow: 0 6px 8px rgba(149, 186, 255, 0.674);
+  background-color: rgba(178, 205, 255, 0.192);
+  cursor: pointer;
+}
+
 .left div .div {
   width: 100%;
   height: 1rem;
@@ -97,10 +103,26 @@ body {
   padding-right: 1rem;
 }
 
-.left div button:hover {
-  box-shadow: 0 6px 8px rgba(149, 186, 255, 0.674);
-  background-color: rgba(178, 205, 255, 0.192);
-  cursor: pointer;
+.left div #errorcontainer {
+  margin-top: 2.5rem;
+  height: auto;
+  width: 80%;
+  background-color: rgb(255, 215, 215);
+  border-radius: 1rem;
+  outline: 3px solid red;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.left div #errorcontainer .errormessage {
+  justify-items: end;
+  color: red;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 .left form {
@@ -109,26 +131,41 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 
 .left form section {
   width: 80%;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
 }
 
 .left form input {
   width: 100%;
   height: 3.5rem;
   border-radius: 0.5rem;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.342);
   background-color: white;
   font-weight: 500;
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: 1rem;
+}
+
+.left form input::placeholder {
+  color: #76709f;
+  font-weight: 300;
+}
+
+.left form input:focus-visible {
+  outline: none;
+  border: 1px solid #7e6cf48a;
+  box-shadow: 0 6px 6px rgba(149, 186, 255, 0.674);
+}
+
+.left form input:focus::placeholder {
+  color: #7f6cf4;
+  font-weight: 400;
 }
 
 .left form button {

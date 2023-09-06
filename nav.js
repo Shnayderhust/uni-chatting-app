@@ -1,6 +1,6 @@
 addEventListener('click', (event) => {
     if (event.target.matches('.reglink')) {
-        window.location.href = "register.php";
+        window.location.href = "signup.php";
     }
     else if (event.target.matches('.mlogin')) {
         window.location.href = "login.php";

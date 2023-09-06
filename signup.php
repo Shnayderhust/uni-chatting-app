@@ -1,21 +1,6 @@
 <?php
-require "./assets/modules/dbconnection.inc.php";
-
-if (isset($_POST['regbutt'])) {
-    $firstname = $_POST['fn'];
-    $lastname = $_POST['ln'];
-    $username = $_POST['us'];
-    $email = $_POST['em'];
-
-    $password = password_hash($_POST["pas"], PASSWORD_DEFAULT);
-    $date = date("Y-m-d");
-
-    $query = "INSERT INTO users (firstname,lastname,username,email,password,reg_date) values('$firstname','$lastname','$username','$email','$password','$date')";
-
-    // $register = $unigram_conn->query($query) or die($unigram_conn->error . __LINE__);
-}
-
-
+require_once "./assets/modules/signup.view.inc.php";
+require_once "./assets/modules/sessionconfig.inc.php";
 
 ?>
 
@@ -48,6 +33,20 @@ if (isset($_POST['regbutt'])) {
                 <span>OR</span>
                 <hr>
             </div>
+
+
+
+            <!-- This Container Bellow is Responsible for Receiving Error Messages On Registration -->
+
+            <div id="errorcontainer">
+                <?php
+
+                display_error();
+
+                ?>
+
+            </div>
+
         </div>
 
         <!-- This is the inputs form that a user fill out his/her details for registration
@@ -57,7 +56,7 @@ if (isset($_POST['regbutt'])) {
         The method of form is set to Post which is more secure than get in the case of submitting user data
         -->
 
-        <form action="./register.php" id="regform" method="POST">
+        <form action="./assets/modules/signup.inc.php" id="regform" method="POST">
             <section>
                 <label for="first name">First Name</label>
                 <input type="text" name="fn" placeholder="Enter Your First Name"><br>
