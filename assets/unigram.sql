@@ -4,7 +4,7 @@ CREATE TABLE users (
   lastname VARCHAR(120) NOT NULL,
   username VARCHAR(40) NOT NULL,
   email VARCHAR(200) NOT NULL,
-  `password` VARCHAR(50) NOT NULL,
+  `password` VARCHAR(100) NOT NULL,
   reg_date VARCHAR(30) NOT NULL,
   profile_pic VARCHAR(300) NOT NULL DEFAULT 'avatar.jpg',
   `status` TINYINT(1) NOT NULL DEFAULT 0
@@ -45,4 +45,3 @@ CREATE TABLE notification (
   FOREIGN KEY (sender_id) REFERENCES users(user_id),
   FOREIGN KEY (message_id) REFERENCES messages(id)
 );
-
