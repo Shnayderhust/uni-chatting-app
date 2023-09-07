@@ -21,3 +21,6 @@ DATABASE DESIGN
 #Messages Table
 #Contacts Table
 Notification Table
+
+
+############### NOW THE REGISTRATION AND LOGIN SYSTEM IS WORKING IN ORDER TO LOGIN YOU NEED TO CREATE NEW USER #############
