@@ -1,5 +1,6 @@
 <?php
-require_once "./modules/signup.view.inc.php";
+require_once "./modules/signup_view.inc.php";
+require_once "./modules/login_view.inc.php";
 require_once "./modules/sessionconfig.inc.php";
 
 ?>
@@ -24,7 +25,7 @@ require_once "./modules/sessionconfig.inc.php";
 
     <section class="left">
         <div>
-            <h1 class="mlogo"><img src="./assets/pics and icons/favicon.png" alt="">Unigram</h1>
+            <h1 class="mlogo"><img src="./assets/pics and icons/favicon.png" class="mlogo" alt="">Unigram</h1>
             <p>Unigram makes it easy and fun to communicate!.</p>
             <button>Log In With Google</button>
             <div class="div">
@@ -33,28 +34,37 @@ require_once "./modules/sessionconfig.inc.php";
                 <hr>
             </div>
 
-            <div id="<?php if (isset($_GET["signup"])) {
-                            echo 'signupsuccess';
+            <div id="<?php if (isset($_SESSION["error_login"])) {
+                            echo 'loginerror';
                         } else {
-                            echo 'normalsignup';
+                            if (isset($_GET["signup"])) {
+                                echo 'signupsuccess';
+                            } else {
+                                echo 'normalsignup';
+                            }
                         } ?>">
-                <?php signupsuccess() ?>
+                <?php if (isset($_SESSION["error_login"])) {
+                    display_login_error();
+                } else {
+                    signupsuccess();
+                } ?>
             </div>
+
         </div>
 
-        <form action="" id="loginform" method="POST">
+        <form action="./modules/login.inc.php" id="loginform" method="POST">
 
             <section>
                 <label for="user name">User Name</label>
-                <input type="text" id="un" placeholder="Enter Your Username" autocomplete="off"><br>
+                <input type="text" name="username" id="un" placeholder="Enter Your Username" autocomplete="off"><br>
             </section>
 
             <section>
                 <label for="password" id="ps">Password</label>
-                <input type="password" placeholder="Enter Your Password"><br>
+                <input type="password" name="password" placeholder="Enter Your Password"><br>
             </section>
 
-            <button type="button" name="login" id="gochat">Log In</button>
+            <button name="login">Log In</button>
             <p>Dont have an account yet?<span class="reglink">Sign up for free</span></p>
         </form>
 

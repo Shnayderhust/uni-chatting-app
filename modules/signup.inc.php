@@ -9,8 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     try {
         require_once "./dbconnection.inc.php";
-        require_once "./signup.model.inc.php";
-        require_once "./signup.control.inc.php";
+        require_once "./signup_model.inc.php";
+        require_once "./signup_control.inc.php";
 
         // ERROR HANDLING
         $errors = [];
@@ -20,7 +20,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         if (is_email_invalid($email)) {
-            $errors["invalid_email"] = "Please fill out a valid email";
+            if (is_input_empty($firstname, $lastname, $username, $email, $password)) {
+                $errors["invalid_email"];
+            } else {
+                $errors["invalid_email"] = "Please fill out a valid email";
+            }
         }
         if (is_username_taken($unigram_conn, $username)) {
             $errors["username_taken"] = "The username you choose is already taken";

@@ -1,5 +1,5 @@
 <?php
-require_once "./modules/signup.view.inc.php";
+require_once "./modules/signup_view.inc.php";
 require_once "./modules/sessionconfig.inc.php";
 
 ?>
@@ -58,27 +58,27 @@ require_once "./modules/sessionconfig.inc.php";
         <form action="./modules/signup.inc.php" id="regform" method="POST">
             <section>
                 <label for="first name">First Name</label>
-                <input type="text" name="fn" placeholder="Enter Your First Name"><br>
+                <input type="text" name="fn" placeholder="Enter Your First Name">
             </section>
 
             <section>
                 <label for="last name">Last Name</label>
-                <input type="text" name="ln" placeholder="Enter Your Last Name"><br>
+                <input type="text" name="ln" placeholder="Enter Your Last Name">
             </section>
 
             <section>
                 <label for="user name">User Name</label>
-                <input type="text" name="us" placeholder="Choose a Unique username" autocomplete="off"><br>
+                <input type="text" name="us" placeholder="Choose a Unique username" autocomplete="off">
             </section>
 
             <section>
                 <label for="email">Email</label>
-                <input type="email" name="em" placeholder="Enter Your Email"><br>
+                <input type="email" name="em" placeholder="Enter Your Email">
             </section>
 
             <section>
                 <label for="password">Password</label>
-                <input type="password" name="pas" placeholder="Enter Your Password"><br>
+                <input type="password" name="pas" placeholder="Enter Your Password">
             </section>
 
             <button>Sign Up</button>

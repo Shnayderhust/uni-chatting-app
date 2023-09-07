@@ -111,7 +111,7 @@ body {
   height: auto;
   width: 80%;
   background-color: rgb(255, 215, 215);
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   outline: 3px solid red;
   display: flex;
   flex-direction: column;
@@ -119,6 +119,28 @@ body {
   justify-content: center;
   padding: 1rem;
   margin-bottom: 1rem;
+}
+
+.left div #loginerror {
+  margin-top: 2.5rem;
+  height: auto;
+  width: 80%;
+  background-color: rgb(255, 215, 215);
+  border-radius: 0.5rem;
+  outline: 3px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.left div #loginerror #loginerrormessage {
+  justify-items: end;
+  color: red;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 .left div #errorcontainer .errormessage {
@@ -164,9 +186,16 @@ body {
 }
 
 .left form section {
+  height: max-content;
   width: 80%;
   display: flex;
   flex-direction: column;
+  padding-bottom: 1.5rem;
+}
+
+.left form section:focus-within label {
+  color: var(--color);
+  font-weight: 600;
 }
 
 .left form input {
@@ -188,7 +217,7 @@ body {
 
 .left form input:focus-visible {
   outline: none;
-  border: 1px solid #7e6cf48a;
+  border: 1px solid #7e6cf481;
   box-shadow: 0 6px 6px rgba(149, 186, 255, 0.674);
 }
 
@@ -226,3 +255,11 @@ body {
   height: 100%;
   background-color: var(--color);
 }
+
+/* <div id="<?php if ($_SESSION["error_login"]) {
+  echo 'loginsuccess';
+} else {
+  echo 'loginerror';
+}; ?>">
+<?php display_login_error() ?>
+</div> */

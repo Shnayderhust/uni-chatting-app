@@ -37,7 +37,7 @@ addEventListener('click', (event) => {
         document.getElementById('logoutform').style.display = "flex";
     }
     else if (event.target.matches('#yeslogout')) {
-        window.location.href = "index.php";
+        window.location.href = "login.php";
     }
     else if (event.target.matches('#nostay')) {
         document.getElementById('unorderd').style.display = "none";

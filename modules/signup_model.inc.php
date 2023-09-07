@@ -24,7 +24,7 @@ function get_email(object $unigram_conn, $email)
 
 function set_user(object $unigram_conn, $firstname, $lastname, $username, $email, $password)
 {
-    $query = "INSERT INTO users (firstname, lastname, username, email, `password`) VALUES (:firstname, :lastname, :username, :email, :password);";
+    $query = "INSERT INTO users (firstname, lastname, username, email, `password`) VALUES (:firstname, :lastname, :username, :email, :hashedpassword);";
     $stmt = $unigram_conn->prepare($query);
 
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
@@ -33,6 +33,6 @@ function set_user(object $unigram_conn, $firstname, $lastname, $username, $email
     $stmt->bindParam(":lastname", $lastname);
     $stmt->bindParam(":username", $username);
     $stmt->bindParam(":email", $email);
-    $stmt->bindParam(":password", $hashedPassword);
+    $stmt->bindParam(":hashedpassword", $hashedPassword);
     $stmt->execute();
 }
