@@ -24,6 +24,7 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
+  overflow-y: hidden;
 }
 
 body .left {
@@ -112,10 +113,11 @@ body .left #chats {
   flex-direction: column;
   align-items: center;
   height: 80%;
+  width: 100%;
 }
 
 body .left #chats .tempo {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   height: 100%;
@@ -141,6 +143,62 @@ body .left #chats .tempo h3 {
   margin-right: 4rem;
 }
 
+body .left #chats .chatslist {
+  width: 100%;
+  height: auto;
+  overflow-y: scroll;
+}
+
+body .left #chats .chatslist #onechat {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  margin-top: 1rem;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+body .left #chats .chatslist #onechat:hover {
+  background-color: #e3dfff;
+}
+
+body .left #chats .chatslist #onechat #profpic {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+body .left #chats .chatslist #onechat #details {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0.5rem;
+  /* padding-top: 0.5rem; */
+  width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 100%;
+  justify-content: center;
+}
+
+body .left #chats .chatslist #onechat #jina {
+  font-weight: 600;
+}
+
+body .left #chats .chatslist #onechat .message {
+  max-width: calc(79%);
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+body .left #chats .chatslist #onechat .message #text {
+  color: #6a6a6a;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
 body .right {
   width: 60%;
   height: 100%;
@@ -152,7 +210,7 @@ body .right {
 body .right #noactivechat {
   height: 100%;
   width: 100%;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -186,8 +244,10 @@ body .right #noactivechat button:hover {
 }
 
 body .right #activechat {
-  display: none;
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  width: 100%;
 }
 
 body .right #activechat #chatnav {
@@ -221,10 +281,55 @@ body .right #activechat #messagespace {
   height: 80%;
   width: 100%;
   overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
   align-items: flex-end;
-  padding-right: 3rem;
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+body .right #activechat #messagespace .incoming {
+  width: 70%;
+}
+
+body .right #activechat #messagespace .outgoing {
+  width: 70%;
+  margin-left: 30%;
+}
+
+body .right #activechat #messagespace .incomingmessage {
+  width: auto;
+  max-width: 25rem;
+  max-height: max-content;
+  min-height: 4rem;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 40px 1px #1818182d;
+  color: rgb(0, 0, 0);
+  border-radius: 1rem 1rem 1rem 0;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+body .right #activechat #messagespace .outgoingmessage {
+  width: auto;
+  max-width: 25rem;
+  max-height: max-content;
+  min-height: 4rem;
+  background-color: rgb(11, 11, 11);
+  box-shadow: 0 0 40px 1px #1818185c;
+  color: white;
+  border-radius: 1rem 1rem 0 1rem;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+  margin-left: calc(50%);
+}
+
+body .right #activechat #messagespace .actualmessage {
+  width: auto;
+  /* max-width: 25rem; */
+  white-space: normal;
+  height: auto;
 }
 
 body .right #activechat #chatspace {
@@ -312,8 +417,156 @@ body #newchat #usernav .innerusernav input {
   padding-left: 1rem;
 }
 
-body #newchat #users {
+body #newchat #friendsearchresult {
+  display: none;
+  width: 85%;
+  height: 18rem;
+  border-radius: 1rem;
+  position: absolute;
+  top: 13rem;
+  left: 2rem;
+  background-color: white;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.139);
+  margin-bottom: 0.5rem;
   overflow-y: scroll;
+  padding-top: 1rem;
+  border: 1px solid var(--color);
+}
+
+body #newchat .noresult {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 85%;
+  height: 18rem;
+  border-radius: 1rem;
+  position: absolute;
+  top: 13rem;
+  left: 2rem;
+  background-color: white;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.139);
+  margin-bottom: 0.5rem;
+  overflow-y: scroll;
+  padding-top: 1rem;
+  border: 1px solid var(--color);
+}
+
+body #newchat #friendsearchresult .onefriend {
+  display: flex;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+  height: 4rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+body #newchat #friendsearchresult .onefriend:hover {
+  border-bottom: 1px solid #7f6cf4;
+  color: #7f6cf4;
+}
+
+body #newchat #friendsearchresult .onefriend .leftprof {
+  display: flex;
+}
+
+body #newchat #friendsearchresult .onefriend .details {
+  margin-left: 1.5rem;
+}
+body #newchat #friendsearchresult .onefriend .details .friendbio {
+  color: rgba(0, 0, 0, 0.523);
+}
+
+body #newchat #friendsearchresult .onefriend .addfriend {
+  width: 4rem;
+  height: 2.1rem;
+  border: 1px solid rgba(0, 0, 0, 0.26);
+  background-color: white;
+  border-radius: 0.5rem;
+  color: #7f6cf4;
+  cursor: pointer;
+}
+
+body #newchat #friendsearchresult .onefriend .addfriend:hover {
+  border: 1px solid #7e6cf4a1;
+  box-shadow: 0 4px 4px rgba(126, 108, 244, 0.628);
+  font-weight: 600;
+}
+
+body #newchat #friendsearchresult .profpic {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+body #newchat .userfriendlist {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: white;
+  margin-bottom: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 3.5rem;
+}
+
+body #newchat .userfriendlist .userfriend {
+  display: flex;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+  height: 4rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+body #newchat .userfriendlist .userfriend:hover {
+  border-bottom: 1px solid #7f6cf4;
+  color: #7f6cf4;
+}
+
+body #newchat .userfriendlist .userfriend .leftprof {
+  display: flex;
+}
+
+body #newchat .userfriendlist .userfriend .details {
+  margin-left: 1.5rem;
+}
+body #newchat .userfriendlist .userfriend .details .friendbio {
+  color: rgba(0, 0, 0, 0.523);
+}
+
+body #newchat .userfriendlist .userfriend .addfriend {
+  width: 4rem;
+  height: 2.1rem;
+  border: 1px solid rgba(0, 0, 0, 0.26);
+  background-color: white;
+  border-radius: 0.5rem;
+  color: #7f6cf4;
+  cursor: pointer;
+}
+
+body #newchat .userfriendlist .userfriend .addfriend:hover {
+  border: 1px solid #7e6cf4a1;
+  box-shadow: 0 4px 4px rgba(126, 108, 244, 0.628);
+  font-weight: 600;
+}
+
+body #newchat .userfriendlist .profpic {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+body #newchat #users {
+  /* overflow-y: scroll; */
   padding-left: 1rem;
   padding-right: 1rem;
   height: 70%;

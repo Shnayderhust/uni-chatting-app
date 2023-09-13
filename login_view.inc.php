@@ -12,3 +12,11 @@ function display_login_error()
         unset($_SESSION["error_login"]);
     }
 }
+
+function logout()
+{
+    if (isset($_POST["logout"])) {
+        session_destroy();
+        header("location: ../Unigram/login.php");
+    }
+}

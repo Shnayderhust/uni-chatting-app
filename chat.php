@@ -1,4 +1,15 @@
 <!-- NOTE THIS FILE WILL HAVE MANY CHANGES IN THE FUTURE -->
+
+<?php
+require_once "chat_view.inc.php";
+require_once "friends.inc.php";
+require_once "sessionconfig.inc.php";
+
+if (!isset($_SESSION["userid"])) {
+    header("location: login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,8 +17,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="shortcut icon" href="./assets/pics and icons/favicon.png">
-    <link rel="stylesheet" href="./assets/chat.css">
+    <link rel="shortcut icon" href="assets/picsandicons/favicon.png">
+    <link rel="stylesheet" href="assets/chat.css">
     <title>Unigram | Chat</title>
 </head>
 
@@ -20,9 +31,13 @@
 
     <div class="left">
         <nav id="nav">
-            <img src="./assets/pics and icons/profpic.jpg" alt="profilepic" class="profpic">
+            <img src="<?php if (isset($_SESSION["fileDestination"])) {
+                            echo $_SESSION["fileDestination"];
+                        } else {
+                            echo './assets/UserPics/user.png';
+                        } ?>" alt="" class="profpic">
             <div class="nextnav">
-                <img src="./assets/pics and icons/new message.svg" alt="new text" class="creatchat">
+                <img src="assets/picsandicons/new message.svg" alt="new text" class="creatchat">
                 <i class="fa-solid fa-ellipsis-vertical" id="ul"></i>
             </div>
         </nav>
@@ -39,7 +54,21 @@
                 <h2></h2>
                 <h3></h3>
             </div>
+            <!-- <div class="chatslist">
+                <div id="onechat">
+                    <img src="./assets/picsandicons/avatar.jpg" alt="" id="profpic">
+                    <div id="details">
+                        <h3 id="jina">Shnayder</h3>
+                        <div class="message">
+                            <p id="text">Hellow there how have you been doing ghuvd sdkvoiu sdui</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div> -->
         </div>
+    </div>
     </div>
 
     <div class="right">
@@ -54,7 +83,7 @@
         -->
 
         <section id="noactivechat">
-            <img src="./assets/pics and icons/favicon.png" alt="">
+            <img src="assets/picsandicons/favicon.png" alt="">
             <h1>Unigram</h1>
             <p>Unigram makes it easy and fun to stay close to your favorite people.</p>
             <button type="button" class="creatchat">New Chat</button>
@@ -70,10 +99,22 @@
             </div>
             <div id="messagespace">
 
+                <div class="outgoing">
+                    <div class="outgoingmessage">
+                        <p class="actualmessage">what up girl</p>
+                    </div>
+                </div>
+
+                <div class="incoming">
+                    <div class="incomingmessage">
+                        <p class="actualmessage">what up</p>
+                    </div>
+                </div>
+
             </div>
 
             <div id="chatspace">
-                <img src="./assets/pics and icons/emoji.svg" alt="emoji">
+                <img src="assets/picsandicons/emoji.svg" alt="emoji">
                 <i class="fa-solid fa-plus"></i>
                 <input type="text" placeholder="Type a message">
             </div>
@@ -91,14 +132,21 @@
 
         <div id="usernav">
             <div class="innerusernav">
-                <i class="fa-solid fa-arrow-left"></i>
-                <input type="search" placeholder="Search Accounts">
+                <i class="fa-solid fa-arrow-left" id="fsearchreturn"></i>
+                <input type="search" placeholder="Search Friends" id="friendsearch">
             </div>
+        </div>
+
+        <div id="friendsearchresult">
+            <?php displayuserprof($users) ?>
         </div>
 
         <div id="users">
             <h2>Your Friends</h2>
             <hr>
+            <div class="userfriendlist">
+                <?php displayuserfriends($allUserData) ?>
+            </div>
         </div>
 
     </div>
@@ -133,10 +181,14 @@
         <div id="setlist">
 
             <div id="setprof">
-                <img src="./assets/pics and icons/profpic.jpg" alt="" class="profpic">
+                <img src="<?php if (isset($_SESSION["fileDestination"])) {
+                                echo $_SESSION["fileDestination"];
+                            } else {
+                                echo './assets/UserPics/user.png';
+                            } ?>" alt="" class="profpic">
                 <div>
-                    <h1 id="username">Shnayder</h1>
-                    <p id="bio">Se'mi bi Oba</p>
+                    <h1 id="username"><?php displayusername() ?></h1>
+                    <p id="bio"><?php displaybio() ?></p>
                 </div>
             </div>
 
@@ -164,7 +216,11 @@
         </div>
 
         <div id="profpicture">
-            <img src="./assets/pics and icons/profpic.jpg" alt="profpic">
+            <img src="<?php if (isset($_SESSION["fileDestination"])) {
+                            echo $_SESSION["fileDestination"];
+                        } else {
+                            echo './assets/UserPics/user.png';
+                        } ?>" alt="">
             <div id="topprofdiv">
                 <i class="fa-solid fa-camera"></i>
                 <p>CHANGE <br> PROFILE PICTURE</p>
@@ -175,14 +231,14 @@
             <div id="name">
                 <div>
                     <p>Your Username</p>
-                    <h1>Shnayder</h1>
+                    <h1><?php displayusername() ?></h1>
                 </div>
                 <i class="fa-solid fa-pen"></i>
             </div>
             <div id="bio">
                 <div>
                     <p>Your Bio</p>
-                    <h1>Se'mi bi Oba</h1>
+                    <h1><?php displaybio() ?></h1>
                 </div>
                 <i class="fa-solid fa-pen"></i>
             </div>
@@ -191,7 +247,7 @@
 
     <!-- This is log out form that is displayed only when a user try to log out of the system -->
 
-    <div id="logoutform">
+    <form action="login_view.inc.php" method="Post" id="logoutform">
 
         <div id="logoutdiv">
             <div id="diva">
@@ -199,14 +255,15 @@
                 <p>Are You Sure You Want To Log Out?</p>
             </div>
             <div id="divb">
-                <button type="button" id="yeslogout">Yes</button>
+                <button type="button" name="logout">Yes<?php ?></button>
                 <button type="button" id="nostay">No</button>
             </div>
         </div>
 
-    </div>
+    </form>
 
     <script src="nav.js"></script>
+    <script src="chat.js"></script>
 </body>
 
 </html>

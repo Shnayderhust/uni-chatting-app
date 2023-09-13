@@ -43,13 +43,53 @@ addEventListener('click', (event) => {
         document.getElementById('unorderd').style.display = "none";
         document.getElementById('logoutform').style.display = "none";
     }
-    else {
-        const unorderd = document.getElementById('unorderd');
-        if (event.target.matches('#ul')) {
-            unorderd.style.display = "flex";
-        }
+    else if (event.target.matches('#return')) {
+        document.getElementById('topprof').style.display = "none";
+    } else if (event.target.matches('#friendsearch')) {
+        document.getElementById('friendsearchresult').style.display = "block";
+    } else if (event.target.matches('#fsearchreturn')) {
+        document.getElementById('friendsearchresult').style.display = "none";
+    } else if (!event.target.matches('#friendsearch')) {
+        document.getElementById('friendsearchresult').style.display = "none";
     }
+
 });
+
+
+addEventListener('click', (event) => {
+    if (event.target.matches('#ul')) {
+        document.getElementById('unorderd').style.display = "flex";
+    } else if (!event.target.matches('#ul')) {
+        document.getElementById('unorderd').style.display = "none";
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // BIG NOTE 
