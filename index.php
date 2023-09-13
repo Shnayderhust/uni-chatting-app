@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./assets/pics and icons/favicon.png">
+    <link rel="shortcut icon" href="./assets/picsandicons/favicon.png">
 
     <!-- linking css file named index.css found on assets folder -->
     <link rel="stylesheet" href="./assets/index.css">
@@ -14,7 +14,7 @@
 <body>
     <header>
         <div class="logo">
-            <h1><img src="./assets/pics and icons/favicon.png" alt="logo" class="mlogo">Unigram</h1>
+            <h1><img src="./assets/picsandicons/favicon.png" alt="logo" class="mlogo">Unigram</h1>
         </div>
 
         <ul>
@@ -32,7 +32,7 @@
     </header>
 
     <main>
-        <img src="./assets/pics and icons/homepic.png" alt="pic" id="mainpic">
+        <img src="./assets/picsandicons/homepic.png" alt="pic" id="mainpic">
         <!-- <div class="overpic"></div> -->
         <div class="parag">
             <h1>Message Privately</h1>

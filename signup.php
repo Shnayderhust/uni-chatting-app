@@ -1,6 +1,6 @@
 <?php
-require_once "./modules/signup_view.inc.php";
-require_once "./modules/sessionconfig.inc.php";
+require_once "signup_view.inc.php";
+require_once "sessionconfig.inc.php";
 
 ?>
 
@@ -10,8 +10,9 @@ require_once "./modules/sessionconfig.inc.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- linking shortcut icon at the header of the site on the tab named favicon found in assets the pics and icons subfolder -->
-    <link rel="shortcut icon" href="./assets/pics and icons/favicon.png">
+    <link rel="shortcut icon" href="./assets/picsandicons/favicon.png">
     <!-- linking css file named reg.css found in assets folder -->
     <link rel="stylesheet" href="./assets/reg.css">
     <title>Unigram | Register</title>
@@ -24,10 +25,13 @@ require_once "./modules/sessionconfig.inc.php";
     <!-- this section tag is like a container that hold other html contents  -->
     <section class="left">
         <!-- the div bellow acts as the header of the this section -->
-        <div>
-            <h1 class="mlogo"><img src="./assets/pics and icons/favicon.png" alt="">Unigram</h1>
+        <div id="header">
+            <div class="mlogo" id="h1">
+                <img src="assets/picsandicons/favicon.png" id="img" class="mlogo">
+                <h1 class="mlogo">Unigram</h1>
+            </div>
             <p>Unigram makes it easy and fun to communicate!.</p>
-            <button>Sign Up With Google</button>
+            <button id="google">Sign Up With Google</button>
             <div class="div">
                 <hr>
                 <span>OR</span>
@@ -38,12 +42,7 @@ require_once "./modules/sessionconfig.inc.php";
 
             <!-- This Container Bellow is Responsible for Receiving Error Messages On Registration -->
 
-            <div id="<?php if (isset($_SESSION["error_signup"])) {
-                            echo 'errorcontainer';
-                        } else {
-                            echo 'noerror';
-                        } ?>">
-                <?php display_error(); ?>
+            <div id=errorcontainer>
             </div>
 
         </div>
@@ -55,7 +54,7 @@ require_once "./modules/sessionconfig.inc.php";
         The method of form is set to Post which is more secure than get in the case of submitting user data
         -->
 
-        <form action="./modules/signup.inc.php" id="regform" method="POST">
+        <form id="regform">
             <section>
                 <label for="first name">First Name</label>
                 <input type="text" name="fn" placeholder="Enter Your First Name">
@@ -64,11 +63,6 @@ require_once "./modules/sessionconfig.inc.php";
             <section>
                 <label for="last name">Last Name</label>
                 <input type="text" name="ln" placeholder="Enter Your Last Name">
-            </section>
-
-            <section>
-                <label for="user name">User Name</label>
-                <input type="text" name="us" placeholder="Choose a Unique username" autocomplete="off">
             </section>
 
             <section>
@@ -81,9 +75,12 @@ require_once "./modules/sessionconfig.inc.php";
                 <input type="password" name="pas" placeholder="Enter Your Password">
             </section>
 
-            <button>Sign Up</button>
-            <p>Already got an account?<span class="mlogin">Log in</span></p>
+            <div id="bottom">
+                <button id="finalButt" type="submit" name="signupbut">Sign Up</button>
+                <p>Already got an account?<span class="mlogin">Log in</span></p>
+            </div>
         </form>
+
 
     </section>
 
@@ -92,7 +89,48 @@ require_once "./modules/sessionconfig.inc.php";
 
     </section>
 
+    <div id="topprof">
+        <form enctype="multipart/form-data" id="bigcontainer">
+            <div id="kichwa">
+                <i class="fa-solid fa-arrow-left" id="return"></i>
+                <h2 id="title">Now Customize Your Profile</h2>
+            </div>
+            <div id="profcontainer">
+                <p class="explainingtext">In order to log in you need a unique username</p>
+                <div id="proferrorcontainer">
 
+                </div>
+                <section id="profname">
+                    <label for="user name" id="usernamelabel">User Name</label>
+                    <input type="text" name="us" placeholder="Choose a Unique username" autocomplete="off">
+                </section>
+                <section id="profname">
+                    <label for="user name" id="biolabel">Biograph</label>
+                    <input type="text" name="bio" placeholder="Write short bio bout yourself" autocomplete="off">
+                </section>
+
+                <section class="profcustom">
+                    <div id="profpic"><img src="<?php if (isset($_SESSION["fileDestination"])) {
+                                                    echo $_SESSION["fileDestination"];
+                                                } else {
+                                                    echo './assets/UserPics/user.png';
+                                                } ?>" alt=""></div>
+                    <div id="buttons">
+                        <label for="chooseprof" id="fileLabel">Choose Image</label>
+                        <input type="file" name="file" id="chooseprof">
+                        <label for="kusanya" id="kusanyalabel">Next</label>
+                        <input type="submit" name="kusanya" id="kusanya">
+                    </div>
+                </section>
+            </div>
+
+
+        </form>
+    </div>
+
+
+    <script src="formdata.js"></script>
+    <script src="reg.js"></script>
     <script src="nav.js"></script>
 </body>
 

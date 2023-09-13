@@ -1,7 +1,7 @@
 <?php
-require_once "./modules/signup_view.inc.php";
-require_once "./modules/login_view.inc.php";
-require_once "./modules/sessionconfig.inc.php";
+require_once "signup_view.inc.php";
+require_once "login_view.inc.php";
+require_once "sessionconfig.inc.php";
 
 ?>
 
@@ -11,7 +11,7 @@ require_once "./modules/sessionconfig.inc.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./assets/pics and icons/favicon.png">
+    <link rel="shortcut icon" href="./assets/picsandicons/favicon.png">
     <link rel="stylesheet" href="./assets/reg.css">
     <title>Unigram | Log In</title>
 </head>
@@ -24,10 +24,13 @@ require_once "./modules/sessionconfig.inc.php";
     -->
 
     <section class="left">
-        <div>
-            <h1 class="mlogo"><img src="./assets/pics and icons/favicon.png" class="mlogo" alt="">Unigram</h1>
+        <div id="header">
+            <div class="mlogo" id="h1">
+                <img src="./assets/picsandicons/favicon.png" class="mlogo" alt="" id="img" class="mlogo">
+                <h1 class="mlogo">Unigram</h1>
+            </div>
             <p>Unigram makes it easy and fun to communicate!.</p>
-            <button>Log In With Google</button>
+            <button id="google">Log In With Google</button>
             <div class="div">
                 <hr>
                 <span>OR</span>
@@ -52,19 +55,19 @@ require_once "./modules/sessionconfig.inc.php";
 
         </div>
 
-        <form action="./modules/login.inc.php" id="loginform" method="POST">
+        <form action="login.inc.php" id="regform" method="POST">
 
             <section>
                 <label for="user name">User Name</label>
-                <input type="text" name="username" id="un" placeholder="Enter Your Username" autocomplete="off"><br>
+                <input type="text" name="username" id="un" placeholder="Enter Your Username" autocomplete="off">
             </section>
 
             <section>
                 <label for="password" id="ps">Password</label>
-                <input type="password" name="password" placeholder="Enter Your Password"><br>
+                <input type="password" name="password" placeholder="Enter Your Password">
             </section>
 
-            <button name="login">Log In</button>
+            <button id="finalButt" name="login">Log In</button>
             <p>Dont have an account yet?<span class="reglink">Sign up for free</span></p>
         </form>
 
