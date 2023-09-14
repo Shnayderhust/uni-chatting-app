@@ -11,7 +11,8 @@ CREATE TABLE users (
   `status` TINYINT(1) NOT NULL DEFAULT 0
 );
 CREATE TABLE `conversation` (
-  conver_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  convor_id INT(11),
   user1_id INT(11),
   user2_id INT(11),
   `timestamp` TIMESTAMP NOT NULL,
@@ -26,7 +27,7 @@ CREATE TABLE messages (
   `message` TEXT NOT NULL,
   `timestamp` TIMESTAMP NOT NULL,
   read_status TINYINT(1),
-  FOREIGN KEY (conversation_id) REFERENCES `conversation`(conver_id),
+  FOREIGN KEY (conversation_id) REFERENCES `conversation`(convor_id),
   FOREIGN KEY (sender_id) REFERENCES users(user_id)
 );
 CREATE TABLE friends (

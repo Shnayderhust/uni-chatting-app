@@ -11,7 +11,7 @@ addEventListener('click', (event) => {
     else if (event.target.matches('#gochat')) {
         window.location.href = "chat.php";
     }
-    else if (event.target.matches('.profpic')) {
+    else if (event.target.matches('.myprofpic')) {
         document.getElementById('newchat').style.left = "-100%";
         document.getElementById('settings').style.left = "-100%";
         document.getElementById('profile').style.left = "0";
@@ -51,6 +51,9 @@ addEventListener('click', (event) => {
         document.getElementById('friendsearchresult').style.display = "none";
     } else if (!event.target.matches('#friendsearch')) {
         document.getElementById('friendsearchresult').style.display = "none";
+    } else if (event.target.matches('.addfriend')) {
+        document.getElementById('noactivechat').style.display = "none";
+        document.getElementById('activechat').style.display = "flex";
     }
 
 });

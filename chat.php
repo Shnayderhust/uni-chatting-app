@@ -35,7 +35,7 @@ if (!isset($_SESSION["userid"])) {
                             echo $_SESSION["fileDestination"];
                         } else {
                             echo './assets/UserPics/user.png';
-                        } ?>" alt="" class="profpic">
+                        } ?>" alt="" class="myprofpic">
             <div class="nextnav">
                 <img src="assets/picsandicons/new message.svg" alt="new text" class="creatchat">
                 <i class="fa-solid fa-ellipsis-vertical" id="ul"></i>
@@ -54,8 +54,8 @@ if (!isset($_SESSION["userid"])) {
                 <h2></h2>
                 <h3></h3>
             </div>
-            <!-- <div class="chatslist">
-                <div id="onechat">
+            <div class="chatslist">
+                <!-- <div id="onechat">
                     <img src="./assets/picsandicons/avatar.jpg" alt="" id="profpic">
                     <div id="details">
                         <h3 id="jina">Shnayder</h3>
@@ -64,9 +64,9 @@ if (!isset($_SESSION["userid"])) {
                         </div>
                     </div>
 
-                </div>
+                </div> -->
 
-            </div> -->
+            </div>
         </div>
     </div>
     </div>
@@ -81,7 +81,6 @@ if (!isset($_SESSION["userid"])) {
 
         **--IN FUTURE I'LL UPDATE THIS CODE--**
         -->
-
         <section id="noactivechat">
             <img src="assets/picsandicons/favicon.png" alt="">
             <h1>Unigram</h1>
@@ -91,7 +90,7 @@ if (!isset($_SESSION["userid"])) {
 
         <section id="activechat">
             <div id="chatnav">
-                <p><img src="./assets/pics and icons/profpic02.jpg" alt="">Shnayder</p>
+                <p><img src="" alt="">Shnayder</p>
                 <div id="nextchatnav">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -122,7 +121,7 @@ if (!isset($_SESSION["userid"])) {
 
     </div>
 
-    <!-- This div with id of newchat is displayed only when the button attached with an event to display this div is clicked... by default in chat.css file it have a display of none... refer nav.js and chat.css -->
+
     <div id="newchat">
 
         <div id="header">
@@ -144,8 +143,10 @@ if (!isset($_SESSION["userid"])) {
         <div id="users">
             <h2>Your Friends</h2>
             <hr>
-            <div class="userfriendlist">
-                <?php displayuserfriends($allUserData) ?>
+            <div id="userfriendlist">
+
+
+
             </div>
         </div>
 
@@ -161,7 +162,6 @@ if (!isset($_SESSION["userid"])) {
             <li class="logoutform">Log Out</li>
         </ul>
     </div>
-
 
     <!-- This is setting form that is displayed only when a user choose to go to settings form and click setting within unorder small form  -->
     <div id="settings">
@@ -185,7 +185,7 @@ if (!isset($_SESSION["userid"])) {
                                 echo $_SESSION["fileDestination"];
                             } else {
                                 echo './assets/UserPics/user.png';
-                            } ?>" alt="" class="profpic">
+                            } ?>" alt="" class="myprofpic">
                 <div>
                     <h1 id="username"><?php displayusername() ?></h1>
                     <p id="bio"><?php displaybio() ?></p>
@@ -264,6 +264,7 @@ if (!isset($_SESSION["userid"])) {
 
     <script src="nav.js"></script>
     <script src="chat.js"></script>
+    <script src="convo.js"></script>
 </body>
 
 </html>
