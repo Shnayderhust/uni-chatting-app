@@ -206,35 +206,20 @@ function get_alluserfriendsdata(object $unigram_conn, $allUserFriendsId)
 }
 
 
+function get_allConvoIdOfOneUser(object $unigram_conn, $currentLogedInUserId)
+{
+    $query = "SELECT convor_id FROM conversation WHERE user1_id = :user1_id;";
+
+    $stmt = $unigram_conn->prepare($query);
+    $stmt->bindParam(":user1_id", $currentLogedInUserId);
+    $stmt->execute();
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function get_allConvoIdOfOneUser(object $unigram_conn, $currentLogedInUserId)
-// {
-//     $query = "SELECT convor_id FROM conversation WHERE user1_id = :user1_id;";
-
-//     $stmt = $unigram_conn->prepare($query);
-//     $stmt->bindParam(":user1_id", $currentLogedInUserId);
-//     $stmt->execute();
-
-//     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//     return $result;
-// }
 
 // function get_allconvoDataOfOneUser(object $unigram_conn, $allConvoIds)
 // {

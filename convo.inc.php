@@ -15,7 +15,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $allUserFriendsId = get_allFriendsId($unigram_conn, $currentLogedInUserId);
         $allUserFriendsData = get_alluserfriendsdata($unigram_conn, $allUserFriendsId);
 
-        echo json_encode($allUserFriendsData);
+        $currentLoggedUserConvoIds = get_allConvoIdOfOneUser($unigram_conn, $currentLogedInUserId);
+
+        $response = array(
+            'allUserFriendsData' => $allUserFriendsData,
+            'currentLoggedUserConvoIds' => $currentLoggedUserConvoIds
+        );
+
+        echo json_encode($response);
         http_response_code(200);
     } else {
 
@@ -26,12 +33,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             $userOneFriendData = get_useronefrienddata($unigram_conn, $userIdToStartConvo);
 
-            // $convoId = get_convoid($unigram_conn, $currentLogedInUserId, $userIdToStartConvo);
-            // $allConvoData = get_convodata($unigram_conn, $convoId["convor_id"]);
+            $convoId = get_convoid($unigram_conn, $currentLogedInUserId, $userIdToStartConvo);
+            $allConvoData = get_convodata($unigram_conn, $convoId["convor_id"]);
 
-            // $lastConvoRowData = end($allConvoData);
+            $lastConvoRowData = end($allConvoData);
 
-            echo json_encode($userOneFriendData);
+            $response = array(
+                'userOneFriendData' => $userOneFriendData,
+                'convoId' => $convoId
+            );
+            echo json_encode($response);
             http_response_code(200);
         }
     }

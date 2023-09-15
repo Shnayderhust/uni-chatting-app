@@ -245,13 +245,23 @@ body .right #noactivechat button:hover {
 }
 
 body .right #activechat {
-  display: flex;
-  flex-direction: column;
   height: 100%;
   width: 100%;
+  background-color: var(--color2);
 }
 
-body .right #activechat #chatnav {
+body .right #activechat #activechatspace {
+  display: flex;
+  position: fixed;
+  right: -100%;
+  flex-direction: column;
+  height: 100%;
+  width: 60%;
+  background-color: white;
+  transition: 0.8s;
+}
+
+body .right #activechat #activechatspace .chatnav {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -262,23 +272,28 @@ body .right #activechat #chatnav {
   padding-right: 2rem;
 }
 
-body .right #activechat #chatnav p {
+body .right #activechat #activechatspace .chatnav .chatnavheader {
   display: flex;
   align-items: center;
+  width: 10rem;
 }
 
-body .right #activechat #nextchatnav i {
-  padding-left: 1rem;
+body .right #activechat #activechatspace .chatnav .chatnavheader .friendname {
+  margin-left: 1rem;
 }
 
-body .right #activechat #chatnav p img {
+body .right #activechat #activechatspace .chatnav .chatnavheader .friendprof {
   width: 2.7rem;
   height: 2.7rem;
   border-radius: 50%;
   margin-right: 0.5rem;
 }
 
-body .right #activechat #messagespace {
+body .right #activechat #activechatspace .nextchatnav i {
+  padding-left: 1rem;
+}
+
+body .right #activechat #activechatspace .messagespace {
   height: 80%;
   width: 100%;
   overflow-y: scroll;
@@ -288,16 +303,16 @@ body .right #activechat #messagespace {
   padding-top: 0.5rem;
 }
 
-body .right #activechat #messagespace .incoming {
+body .right #activechat #activechatspace .messagespace .incoming {
   width: 70%;
 }
 
-body .right #activechat #messagespace .outgoing {
+body .right #activechat #activechatspace .messagespace .outgoing {
   width: 70%;
   margin-left: 30%;
 }
 
-body .right #activechat #messagespace .incomingmessage {
+body .right #activechat #activechatspace .messagespace .incomingmessage {
   width: auto;
   max-width: 25rem;
   max-height: max-content;
@@ -311,7 +326,7 @@ body .right #activechat #messagespace .incomingmessage {
   margin-left: 1rem;
   margin-bottom: 0.5rem;
 }
-body .right #activechat #messagespace .outgoingmessage {
+body .right #activechat #activechatspace .messagespace .outgoingmessage {
   width: auto;
   max-width: 25rem;
   max-height: max-content;
@@ -326,14 +341,21 @@ body .right #activechat #messagespace .outgoingmessage {
   margin-left: calc(50%);
 }
 
-body .right #activechat #messagespace .actualmessage {
+body .right #activechat #activechatspace .messagespace .actualincomingmessage {
   width: auto;
   /* max-width: 25rem; */
   white-space: normal;
   height: auto;
 }
 
-body .right #activechat #chatspace {
+body .right #activechat #activechatspace .messagespace .actualoutgoingmessage {
+  width: auto;
+  /* max-width: 25rem; */
+  white-space: normal;
+  height: auto;
+}
+
+body .right #activechat #activechatspace .chatspace {
   height: 4rem;
   background-color: var(--nav-color);
   display: flex;
@@ -341,13 +363,13 @@ body .right #activechat #chatspace {
   padding-left: 1rem;
 }
 
-body .right #activechat #chatspace img {
+body .right #activechat #activechatspace .chatspace .receiverprof {
   width: 1.5rem;
   height: 1.5rem;
   margin-right: 1rem;
 }
 
-body .right #activechat #chatspace input {
+body .right #activechat #activechatspace .chatspace .textInput {
   width: 80%;
   height: 2.7rem;
   border-radius: 0.5rem;

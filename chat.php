@@ -77,33 +77,35 @@ if (!isset($_SESSION["userid"])) {
         </section>
 
         <section id="activechat">
-            <div id="chatnav">
-                <p><img src="" alt="">Shnayder</p>
-                <div id="nextchatnav">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-            </div>
-            <div id="messagespace">
-
-                <div class="outgoing">
-                    <div class="outgoingmessage">
-                        <p class="actualmessage">what up girl</p>
+            <div id="activechatspace">
+                <!--  <div id="chatnav">
+                    <p><img src="" alt="">Shnayder</p>
+                    <div id="nextchatnav">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
                 </div>
+                <div id="messagespace">
 
-                <div class="incoming">
-                    <div class="incomingmessage">
-                        <p class="actualmessage">what up</p>
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualmessage">what up girl</p>
+                        </div>
                     </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualmessage">what up</p>
+                        </div>
+                    </div>
+
                 </div>
 
-            </div>
-
-            <div id="chatspace">
-                <img src="assets/picsandicons/emoji.svg" alt="emoji">
-                <i class="fa-solid fa-plus"></i>
-                <input type="text" placeholder="Type a message">
+                <div id="chatspace">
+                    <img src="assets/UserPics//userDefaultProfile.png" alt="emoji" id="receiverprof">
+                    <i class="fa-solid fa-plus"></i>
+                    <input type="text" placeholder="Type a message" id="textInput">
+                </div> -->
             </div>
         </section>
 
@@ -277,6 +279,7 @@ if (!isset($_SESSION["userid"])) {
     <script src="nav.js"></script>
     <script src="friends.js"></script>
     <script src="convo.js"></script>
+    <script src="chat.js"></script>
 </body>
 
 </html>
