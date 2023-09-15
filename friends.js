@@ -2,17 +2,20 @@ const Friends = document.querySelectorAll('.onefriend');
 const friendsearch = document.getElementById('friendsearch');
 const userfriendlist = document.getElementById('userfriendlist');
 const addFriends = document.getElementsByClassName('addfriend');
-
 const removebutts = document.getElementsByClassName('remove');
-
-
-
-
 
 document.addEventListener('DOMContentLoaded', function () {
 
     onpageloaddisplayfriends()
 
+    friendAdder()
+
+    friendSearch()
+
+})
+
+
+function friendSearch() {
     // This block is used for searching through users
     friendsearch.addEventListener('input', function () {
         const searchTerm = friendsearch.value.toLowerCase();
@@ -26,7 +29,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
     })
+}
 
+
+function friendAdder() {
     // fetch for adding new friends
 
     for (const addFriend of addFriends) {
@@ -62,15 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
         })
     }
-
-
-})
-
-
-
-
-
-
+}
 
 
 function onpageloaddisplayfriends() {

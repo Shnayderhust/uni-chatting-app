@@ -78,6 +78,7 @@ require_once "sessionconfig.inc.php";
             <div id="bottom">
                 <button id="finalButt" type="submit" name="signupbut">Sign Up</button>
                 <p>Already got an account?<span class="mlogin">Log in</span></p>
+                <p>You didn't finish registration?<span id="finishreg">Click here</span></p>
             </div>
         </form>
 
@@ -110,14 +111,10 @@ require_once "sessionconfig.inc.php";
                 </section>
 
                 <section class="profcustom">
-                    <div id="profpic"><img src="<?php if (isset($_SESSION["fileDestination"])) {
-                                                    echo $_SESSION["fileDestination"];
-                                                } else {
-                                                    echo './assets/UserPics/user.png';
-                                                } ?>" alt=""></div>
+                    <div id="profpic"><img src="./assets/UserPics/userDefaultProfile.png" alt="" id="chosingprof"></div>
                     <div id="buttons">
                         <label for="chooseprof" id="fileLabel">Choose Image</label>
-                        <input type="file" name="file" id="chooseprof">
+                        <input type="file" name="file" id="chooseprof" onchange="displaySelectedImage()">
                         <label for="kusanya" id="kusanyalabel">Next</label>
                         <input type="submit" name="kusanya" id="kusanya">
                     </div>

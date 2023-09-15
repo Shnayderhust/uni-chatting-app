@@ -131,19 +131,19 @@ function check_convo(object $unigram_conn, $currentLogedInUserId, $userIdToStart
 
 function add_convo(object $unigram_conn, $currentLogedInUserId, $userIdToStartConvo)
 {
-    $convor_id = $currentLogedInUserId + $userIdToStartConvo;
+    $convor_id = $currentLogedInUserId . $userIdToStartConvo;
     $query = "INSERT INTO conversation(convor_id, user1_id, user2_id) VALUES(:convor_id, :user1_id, :user2_id);";
 
     $stmt = $unigram_conn->prepare($query);
     $stmt->bindParam(":user1_id", $currentLogedInUserId);
     $stmt->bindParam(":user2_id", $userIdToStartConvo);
-    $stmt->bindParam(":user2_id", $convor_id);
+    $stmt->bindParam(":convor_id", $convor_id);
     $stmt->execute();
 }
 
 function get_convoid(object $unigram_conn, $currentLogedInUserId, $userIdToStartConvo)
 {
-    $query = "SELECT conver_id FROM conversation WHERE user1_id = :user1_id AND user2_id = :user2_id;";
+    $query = "SELECT convor_id FROM conversation WHERE user1_id = :user1_id AND user2_id = :user2_id;";
 
     $stmt = $unigram_conn->prepare($query);
     $stmt->bindParam(":user1_id", $currentLogedInUserId);
@@ -170,3 +170,87 @@ function get_convodata(object $unigram_conn, $convoId)
 
     return $allConvoData;
 }
+
+// queryng friends id from conversation table
+
+function get_allFriendsId(object $unigram_conn, $currentLogedInUserId)
+{
+    $query = "SELECT user2_id FROM conversation WHERE user1_id = :user1_id;";
+
+    $stmt = $unigram_conn->prepare($query);
+    $stmt->bindParam(":user1_id", $currentLogedInUserId);
+    $stmt->execute();
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
+
+function get_alluserfriendsdata(object $unigram_conn, $allUserFriendsId)
+{
+    $allUserData = [];
+
+    $query = "SELECT * FROM users WHERE user_id = :user_id;";
+
+    foreach ($allUserFriendsId as $FriendId) {
+
+        $stmt = $unigram_conn->prepare($query);
+        $stmt->bindParam(":user_id", $FriendId["user2_id"]);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $allUserData[] = $result;
+    }
+
+    return $allUserData;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function get_allConvoIdOfOneUser(object $unigram_conn, $currentLogedInUserId)
+// {
+//     $query = "SELECT convor_id FROM conversation WHERE user1_id = :user1_id;";
+
+//     $stmt = $unigram_conn->prepare($query);
+//     $stmt->bindParam(":user1_id", $currentLogedInUserId);
+//     $stmt->execute();
+
+//     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//     return $result;
+// }
+
+// function get_allconvoDataOfOneUser(object $unigram_conn, $allConvoIds)
+// {
+//     $allConvoData = [];
+
+//     $query = "SELECT * FROM messages WHERE conversation_id = :conversation_id";
+
+//     foreach ($allConvoIds as $convoId) {
+//         $stmt = $unigram_conn->prepare($query);
+//         $stmt->bindParam(":conversation_id", $convoId["convor_id"]);
+//         $stmt->execute();
+
+//         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//         $allConvoData = array_merge($allConvoData, $result);
+//     };
+
+
+//     return $allConvoData;
+// }

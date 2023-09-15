@@ -67,3 +67,21 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 
 })
+
+
+function displaySelectedImage() {
+    const image = document.getElementById('chosingprof');
+    const input = document.getElementById('chooseprof');
+
+    if (input.files && input.files[0]) {
+        const filereader = new FileReader();
+
+        filereader.onload = function (e) {
+            image.src = e.target.result;
+        }
+
+        filereader.readAsDataURL(input.files[0]);
+    }
+
+
+}

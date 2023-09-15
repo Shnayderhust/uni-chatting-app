@@ -54,19 +54,7 @@ if (!isset($_SESSION["userid"])) {
                 <h2></h2>
                 <h3></h3>
             </div>
-            <div class="chatslist">
-                <!-- <div id="onechat">
-                    <img src="./assets/picsandicons/avatar.jpg" alt="" id="profpic">
-                    <div id="details">
-                        <h3 id="jina">Shnayder</h3>
-                        <div class="message">
-                            <p id="text">Hellow there how have you been doing ghuvd sdkvoiu sdui</p>
-                        </div>
-                    </div>
-
-                </div> -->
-
-            </div>
+            <div class="chatslist"></div>
         </div>
     </div>
     </div>
@@ -119,9 +107,33 @@ if (!isset($_SESSION["userid"])) {
             </div>
         </section>
 
+        <section id="friendrequests">
+            <div id="requesthead">
+                <h1>Requests</h1>
+                <i class="fa-solid fa-arrow-right" id="chatlist"></i>
+            </div>
+            <div id="requesttype">
+                <div id="sentRequests">
+                    <h2>Sent/Pending Request</h2>
+                    <div id="sentrequestlist">
+
+                    </div>
+                </div>
+                <div id="allfriendRequests">
+                    <h2>Friend Requests</h2>
+                    <div id="friendrequestlist">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </div>
 
 
+
+
+    <!-- ****************Small and medium containers for navigation and changes makins************************ -->
     <div id="newchat">
 
         <div id="header">
@@ -263,7 +275,7 @@ if (!isset($_SESSION["userid"])) {
     </form>
 
     <script src="nav.js"></script>
-    <script src="chat.js"></script>
+    <script src="friends.js"></script>
     <script src="convo.js"></script>
 </body>
 
