@@ -19,31 +19,46 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $response = array(
             'allUserFriendsData' => $allUserFriendsData,
-            'currentLoggedUserConvoIds' => $currentLoggedUserConvoIds
+            'currentLoggedUserConvoIds' => $currentLoggedUserConvoIds,
+            'currentLogedInUserId' => $currentLogedInUserId
         );
 
         echo json_encode($response);
         http_response_code(200);
+    } elseif (doesConvoExistForCurrentUser($unigram_conn, $currentLogedInUserId, $userIdToStartConvo)) {
+
+        $convoId = get_convoid($unigram_conn, $currentLogedInUserId, $userIdToStartConvo);
+
+        echo json_encode($convoId);
+        http_response_code(201);
+    } else if (doesConvoExistForBothUser($unigram_conn, $currentLogedInUserId, $userIdToStartConvo)) {
+        $convoId = get_convoid($unigram_conn, $currentLogedInUserId, $userIdToStartConvo);
+        $userOneFriendData = get_useronefrienddata($unigram_conn, $userIdToStartConvo);
+
+        $response = array(
+            'userOneFriendData' => $userOneFriendData,
+            'convoId' => $convoId,
+            'currentLogedInUserId' => $currentLogedInUserId
+        );
+
+        echo json_encode($response);
+        http_response_code(202);
     } else {
+        add_convo($unigram_conn, $currentLogedInUserId, $userIdToStartConvo);
 
-        if (check_convo($unigram_conn, $currentLogedInUserId, $userIdToStartConvo)) {
-            http_response_code(400);
-        } else {
-            add_convo($unigram_conn, $currentLogedInUserId, $userIdToStartConvo);
+        $userOneFriendData = get_useronefrienddata($unigram_conn, $userIdToStartConvo);
 
-            $userOneFriendData = get_useronefrienddata($unigram_conn, $userIdToStartConvo);
+        $convoId = get_convoid($unigram_conn, $currentLogedInUserId, $userIdToStartConvo);
+        $allConvoData = get_convodata($unigram_conn, $convoId["convor_id"]);
 
-            $convoId = get_convoid($unigram_conn, $currentLogedInUserId, $userIdToStartConvo);
-            $allConvoData = get_convodata($unigram_conn, $convoId["convor_id"]);
+        $lastConvoRowData = end($allConvoData);
 
-            $lastConvoRowData = end($allConvoData);
-
-            $response = array(
-                'userOneFriendData' => $userOneFriendData,
-                'convoId' => $convoId
-            );
-            echo json_encode($response);
-            http_response_code(200);
-        }
+        $response = array(
+            'userOneFriendData' => $userOneFriendData,
+            'convoId' => $convoId,
+            'currentLogedInUserId' => $currentLogedInUserId
+        );
+        echo json_encode($response);
+        http_response_code(200);
     }
 }

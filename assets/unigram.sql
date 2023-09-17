@@ -19,7 +19,7 @@ CREATE TABLE `conversation` (
   FOREIGN KEY (user2_id) REFERENCES users(user_id)
 );
 CREATE TABLE messages (
-  id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id INT(11) NOT NULL PRIMARY KEY,
   conversation_id INT(11) NOT NULL,
   sender_id INT(11) NOT NULL,
   receiver_id INT(11) NOT NULL,

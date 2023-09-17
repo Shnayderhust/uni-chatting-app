@@ -112,9 +112,10 @@ function get_useronefrienddata(object $unigram_conn, $userIdToStartConvo)
 
 
 // The below function deals with conversation table
-function check_convo(object $unigram_conn, $currentLogedInUserId, $userIdToStartConvo)
+function doesConvoExistForCurrentUser(object $unigram_conn, $currentLogedInUserId, $userIdToStartConvo)
 {
-    $query = "SELECT * FROM conversation WHERE user1_id = :user1_id AND user2_id = :user2_id;";
+    $query = "SELECT convor_id FROM conversation WHERE
+     (user1_id = :user1_id AND user2_id = :user2_id);";
 
     $stmt = $unigram_conn->prepare($query);
     $stmt->bindParam(":user1_id", $currentLogedInUserId);
@@ -122,6 +123,24 @@ function check_convo(object $unigram_conn, $currentLogedInUserId, $userIdToStart
     $stmt->execute();
 
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if (empty($result)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function doesConvoExistForBothUser(object $unigram_conn, $currentLogedInUserId, $userIdToStartConvo)
+{
+    $query = "SELECT convor_id FROM conversation WHERE
+     (user1_id = :user1_id AND user2_id = :user2_id) OR (user1_id = :user2_id AND user2_id = :user1_id);";
+
+    $stmt = $unigram_conn->prepare($query);
+    $stmt->bindParam(":user1_id", $currentLogedInUserId);
+    $stmt->bindParam(":user2_id", $userIdToStartConvo);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
     if (empty($result)) {
         return false;
     } else {
