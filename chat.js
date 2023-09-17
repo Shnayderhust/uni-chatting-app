@@ -19,6 +19,7 @@ document.addEventListener('click', function (event) {
 
 
     if (onechat) {
+
         receiverId = onechat.getAttribute('data-receiver-id');
         receiverName = onechat.getAttribute('data-receiver-username');
         receiverProfilePic = onechat.getAttribute('data-profilepic-id');
@@ -32,7 +33,10 @@ document.addEventListener('click', function (event) {
 
         receiverData = [receiverId, senderId, convorId,];
 
-        console.log(`receiverData: ${receiverData}`)
+        addExistingMessage();
+
+
+        // console.log(`receiverData: ${receiverData}`)
     }
 })
 
@@ -43,26 +47,19 @@ function sendMessage() {
     let receiverId = receiverData[0]
     let senderId = receiverData[1]
     let convorId = receiverData[2]
-    let timestamp = new Date().toISOString();
-    let millisecstimestamp = new Date().getMilliseconds();
-    let messageId = `${receiverId}_${senderId}_${millisecstimestamp}`;
-    // console.log(receiverId)
-
-
 
 
     if (sentMessage !== "") {
 
         let messagePackage = {
             "sentMessage": sentMessage,
-            "messageId": messageId,
             "receiverId": receiverId,
             "senderId": senderId,
             "convorId": convorId,
-            "timestamp": timestamp
+            "onloadFlag": 'not real'
         }
 
-        console.log(messagePackage);
+        textInput.value = "";
 
         fetch('sendmessage.php', {
             method: "POST",
@@ -76,20 +73,42 @@ function sendMessage() {
                     return response.json().then(function (data) {
                         messagespace.innerHTML += displayRecentSentMessage(data);
                     })
-                } else if (response.status === 201) {
-                    return response.json().then(function (data) {
-                        let allMessageContainer = displayExistingMessages(data);
-                        allMessageContainer.forEach(function (oneMessageContainer) {
-                            messagespace.appendChild(oneMessageContainer);
-                            console.log('onload Messages displayed')
-                        })
-
-                    })
                 }
             })
     }
 
 };
+
+function addExistingMessage() {
+    let onloadFlag = 'initial_load';
+    let convorId = receiverData[2];
+
+    let messagePackage = {
+        "onloadFlag": onloadFlag,
+        "convorId": convorId,
+    }
+
+    fetch('sendmessage.php', {
+        method: "POST",
+        headers: {
+            "content-Type": "application/json",
+        },
+        body: JSON.stringify({ messagePackage })
+    })
+        .then(function (response) {
+            if (response.status === 201) {
+                return response.json().then(function (data) {
+                    let allMessageContainer = displayExistingMessages(data);
+                    allMessageContainer.forEach(function (oneMessageContainer) {
+                        messagespace.appendChild(oneMessageContainer);
+                        console.log('onload Messages displayed')
+                    })
+
+                })
+            }
+
+        })
+}
 
 
 
@@ -135,96 +154,3 @@ function displayRecentSentMessage(data) {
     return outgoingMain.outerHTML;
 }
 
-
-
-
-// function startMessaging() {
-
-//     return new Promise((resolve) => {
-
-//         let receiverData = [];
-//         document.addEventListener('click', function (event) {
-
-//             let receiverId, receiverName, receiverProfilePic, convorId, senderId;
-//             let target = event.target;
-//             let onechat = target.closest('.onechat');
-
-
-//             if (onechat) {
-//                 receiverId = onechat.getAttribute('data-receiver-id');
-//                 receiverName = onechat.getAttribute('data-receiver-username');
-//                 receiverProfilePic = onechat.getAttribute('data-profilepic-id');
-//                 convorId = onechat.getAttribute('data-convor-id');
-//                 senderId = onechat.getAttribute('data-currentLogedInUserId');
-
-//                 activechatspace.style.right = "0";
-//                 noactivechat.style.display = 'none';
-//                 friendprof.src = receiverProfilePic;
-//                 friendname.textContent = receiverName;
-
-//                 receiverData = [receiverId, senderId, convorId,];
-
-//                 console.log(`receiverData: ${receiverData}`)
-//                 resolve(receiverData);
-//             }
-
-
-
-//         })
-//     })
-// }
-
-
-
-// sendbuton.addEventListener('click', sendMessage);
-
-// async function sendMessage() {
-//     const receiverData = await startMessaging();
-
-//     let sentMessage = textInput.value.trim();
-//     let receiverId = receiverData[0]
-//     let senderId = receiverData[1]
-//     let convorId = receiverData[2]
-//     let timestamp = new Date().toISOString();
-//     let millisecstimestamp = new Date().getMilliseconds();
-//     let messageId = `${receiverId}_${senderId}_${millisecstimestamp}`;
-
-//     console.log(receiverId);
-//     let messagePackage = {
-//         "sentMessage": sentMessage,
-//         "messageId": messageId,
-//         "receiverId": receiverId,
-//         "senderId": senderId,
-//         "convorId": convorId,
-//         "timestamp": timestamp
-//     }
-
-//     if (sentMessage !== "") {
-
-//         console.log(sentMessage);
-
-//         fetch('sendmessage.php', {
-//             method: "POST",
-//             headers: {
-//                 "content-Type": "application/json",
-//             },
-//             body: JSON.stringify({ messagePackage })
-//         })
-//             .then(function (response) {
-//                 if (response.status === 200) {
-//                     return response.json().then(function (data) {
-//                         messagespace.innerHTML += displayRecentSentMessage(data);
-//                     })
-//                 } else if (response.status === 201) {
-//                     return response.json().then(function (data) {
-//                         let allMessageContainer = displayExistingMessages(data);
-//                         allMessageContainer.forEach(function (oneMessageContainer) {
-//                             messagespace.appendChild(oneMessageContainer);
-//                             console.log('onload Messages displayed')
-//                         })
-
-//                     })
-//                 }
-//             })
-//     }
-// };

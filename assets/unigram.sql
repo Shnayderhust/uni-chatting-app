@@ -19,12 +19,12 @@ CREATE TABLE `conversation` (
   FOREIGN KEY (user2_id) REFERENCES users(user_id)
 );
 CREATE TABLE messages (
-  id INT(11) NOT NULL PRIMARY KEY,
+  message_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   conversation_id INT(11) NOT NULL,
   sender_id INT(11) NOT NULL,
   receiver_id INT(11) NOT NULL,
   `message` TEXT NOT NULL,
-  `timestamp` TIMESTAMP NOT NULL,
+  `timestamp` TIMESTAMP(6) NOT NULL,
   read_status TINYINT(1) DEFAULT 0,
   FOREIGN KEY (conversation_id) REFERENCES `conversation`(convor_id),
   FOREIGN KEY (sender_id) REFERENCES users(user_id)
@@ -45,5 +45,5 @@ CREATE TABLE notification (
   time_stamp TIMESTAMP,
   FOREIGN KEY (receiver_id) REFERENCES users(user_id),
   FOREIGN KEY (sender_id) REFERENCES users(user_id),
-  FOREIGN KEY (message_id) REFERENCES messages(id)
+  FOREIGN KEY (message_id) REFERENCES messages(message_id)
 );
