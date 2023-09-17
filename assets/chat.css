@@ -147,9 +147,10 @@ body .left #chats .chatslist {
   width: 100%;
   height: auto;
   overflow-y: scroll;
+  display: flex;
 }
 
-body .left #chats .chatslist #onechat {
+body .left #chats .chatslist .onechat {
   width: 100%;
   height: 5rem;
   display: flex;
@@ -159,21 +160,24 @@ body .left #chats .chatslist #onechat {
   cursor: pointer;
 }
 
-body .left #chats .chatslist #onechat:hover {
+body .left #chats .chatslist .onechat:hover {
   background-color: #e3dfff;
 }
 
-body .left #chats .chatslist #onechat #profpic {
+body .left #chats .chatslist .onechathighlighted {
+  background-color: #e3dfff;
+}
+
+body .left #chats .chatslist .onechat .profpic {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
 }
 
-body .left #chats .chatslist #onechat #details {
+body .left #chats .chatslist .onechat .details {
   display: flex;
   flex-direction: column;
   padding-left: 0.5rem;
-  /* padding-top: 0.5rem; */
   width: 80%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -181,11 +185,11 @@ body .left #chats .chatslist #onechat #details {
   justify-content: center;
 }
 
-body .left #chats .chatslist #onechat #jina {
+body .left #chats .chatslist .onechat .jina {
   font-weight: 600;
 }
 
-body .left #chats .chatslist #onechat .message {
+body .left #chats .chatslist .onechat .message {
   max-width: calc(79%);
   display: block;
   white-space: nowrap;
@@ -193,7 +197,7 @@ body .left #chats .chatslist #onechat .message {
   overflow: hidden;
 }
 
-body .left #chats .chatslist #onechat .message #text {
+body .left #chats .chatslist .onechat .message .text {
   color: #6a6a6a;
   text-overflow: ellipsis;
   display: inline-block;
@@ -210,7 +214,15 @@ body .right {
 body .right #noactivechat {
   height: 100%;
   width: 100%;
-  display: none;
+  display: block;
+  margin-top: 14rem;
+  background-color: white;
+}
+
+body .right #noactivechat .insidenoactive {
+  width: 100%;
+  height: 40%;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -244,13 +256,23 @@ body .right #noactivechat button:hover {
 }
 
 body .right #activechat {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  height: 100vh;
   width: 100%;
+  background-color: white;
 }
 
-body .right #activechat #chatnav {
+body .right #activechat #activechatspace {
+  display: block;
+  position: fixed;
+  /* right: -100%; */
+  height: 100%;
+  width: 60%;
+  background-color: white;
+  transition: 0.8s;
+  z-index: 10;
+}
+
+body .right #activechat #activechatspace .chatnav {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -261,23 +283,29 @@ body .right #activechat #chatnav {
   padding-right: 2rem;
 }
 
-body .right #activechat #chatnav p {
+body .right #activechat #activechatspace .chatnav .chatnavheader {
   display: flex;
   align-items: center;
+  min-width: 10rem;
+  max-width: max-content;
 }
 
-body .right #activechat #nextchatnav i {
-  padding-left: 1rem;
+body .right #activechat #activechatspace .chatnav .chatnavheader .friendname {
+  margin-left: 1rem;
 }
 
-body .right #activechat #chatnav p img {
+body .right #activechat #activechatspace .chatnav .chatnavheader .friendprof {
   width: 2.7rem;
   height: 2.7rem;
   border-radius: 50%;
   margin-right: 0.5rem;
 }
 
-body .right #activechat #messagespace {
+body .right #activechat #activechatspace .nextchatnav i {
+  padding-left: 1rem;
+}
+
+body .right #activechat #activechatspace .messagespace {
   height: 80%;
   width: 100%;
   overflow-y: scroll;
@@ -285,54 +313,122 @@ body .right #activechat #messagespace {
   padding-right: 1rem;
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
+  background-image: url(./picsandicons/UnigramTheme01.png);
+  background-size: contain;
 }
 
-body .right #activechat #messagespace .incoming {
-  width: 70%;
+/* Incoming Message */
+body .right #activechat #activechatspace .messagespace .incoming {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
 }
 
-body .right #activechat #messagespace .outgoing {
-  width: 70%;
-  margin-left: 30%;
-}
-
-body .right #activechat #messagespace .incomingmessage {
-  width: auto;
-  max-width: 25rem;
+body .right #activechat #activechatspace .messagespace .incomingmessage {
+  max-width: 50%;
+  min-width: 10rem;
   max-height: max-content;
-  min-height: 4rem;
+  min-height: 3rem;
   background-color: rgb(255, 255, 255);
-  box-shadow: 0 0 40px 1px #1818182d;
+  border: 2px solid rgb(174, 0, 255);
   color: rgb(0, 0, 0);
   border-radius: 1rem 1rem 1rem 0;
   padding: 0.5rem;
   padding-left: 1rem;
   margin-left: 1rem;
   margin-bottom: 0.5rem;
+  font-size: 1.2rem;
 }
-body .right #activechat #messagespace .outgoingmessage {
-  width: auto;
-  max-width: 25rem;
+
+/* Incoming Multimedia */
+body .right #activechat #activechatspace .messagespace .incomingmultmedia {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+body
+  .right
+  #activechat
+  #activechatspace
+  .messagespace
+  .incomingmultimediacontainer {
+  max-width: 50%;
+  min-width: 10rem;
+  max-height: 30rem;
+  min-height: 10rem;
+  background-color: rgb(255, 255, 255);
+  border: 3px solid rgb(174, 0, 255);
+  border-radius: 1rem 1rem 1rem 0;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.actualincomingmultmedia {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem 1rem 1rem 0;
+}
+
+/* Outgoing Message */
+body .right #activechat #activechatspace .messagespace .outgoing {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+body
+  .right
+  #activechat
+  #activechatspace
+  .messagespace
+  .outgoing
+  .outgoingmessage {
+  max-width: 50%;
+  min-width: 10rem;
   max-height: max-content;
-  min-height: 4rem;
-  background-color: rgb(11, 11, 11);
-  box-shadow: 0 0 40px 1px #1818185c;
+  min-height: 3rem;
+  background-color: #7e6cf4;
   color: white;
   border-radius: 1rem 1rem 0 1rem;
   padding: 0.5rem;
   padding-left: 1rem;
   margin-bottom: 0.5rem;
   margin-left: calc(50%);
+  font-size: 1.2rem;
 }
 
-body .right #activechat #messagespace .actualmessage {
-  width: auto;
-  /* max-width: 25rem; */
-  white-space: normal;
-  height: auto;
+/* Incoming Multimedia */
+body .right #activechat #activechatspace .messagespace .outgoingmultmedia {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
-body .right #activechat #chatspace {
+body
+  .right
+  #activechat
+  #activechatspace
+  .messagespace
+  .outgoingmultimediacontainer {
+  max-width: 50%;
+  min-width: 10rem;
+  max-height: 30rem;
+  min-height: 10rem;
+  background-color: rgb(255, 255, 255);
+  border: 3px solid rgb(72, 0, 255);
+  border-radius: 1rem 1rem 1rem 0;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.actualoutgoingmultmedia {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem 1rem 1rem 0;
+}
+
+body .right #activechat #activechatspace .chatspace {
   height: 4rem;
   background-color: var(--nav-color);
   display: flex;
@@ -340,25 +436,115 @@ body .right #activechat #chatspace {
   padding-left: 1rem;
 }
 
-body .right #activechat #chatspace img {
+body .right #activechat #activechatspace .chatspace .receiverprof {
   width: 1.5rem;
   height: 1.5rem;
   margin-right: 1rem;
 }
 
-body .right #activechat #chatspace input {
+body .right #activechat #activechatspace .chatspace #sendtextcontainer {
   width: 80%;
+  display: flex;
+  align-items: center;
   height: 2.7rem;
   border-radius: 0.5rem;
   border: none;
   outline: none;
-  padding-left: 2rem;
+  /* padding-left: 2rem; */
   margin-left: 1rem;
+  background-color: white;
 }
 
-body #newchat {
-  display: flex;
+body
+  .right
+  #activechat
+  #activechatspace
+  .chatspace
+  #sendtextcontainer
+  #textInput {
+  width: 90%;
+  height: 90%;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  padding-left: 1rem;
+}
+
+#sendicon {
+  margin-left: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+#sendbuton {
+  display: none;
+}
+
+body .right #friendrequests {
+  height: 100%;
+  width: 100%;
+  display: none;
   flex-direction: column;
+}
+
+body .right #friendrequests #requesthead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 13%;
+  border-bottom: 1px solid #7f6cf4;
+}
+
+body .right #friendrequests #requesthead i {
+  margin-left: 3rem;
+  cursor: pointer;
+}
+body .right #friendrequests #requesttype {
+  display: flex;
+  height: 87%;
+  width: 100%;
+}
+
+body .right #friendrequests #sentRequests {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  padding: 1rem;
+  padding-left: 3rem;
+  border-right: 2px solid var(--color2);
+  background-image: url(../assets/picsandicons/pexels-vedanti-245250.jpg);
+}
+
+body .right #friendrequests #sentRequests h2 {
+  height: 7%;
+  border-bottom: 2px solid var(--color);
+  color: var(--color);
+}
+
+/* body .right #friendrequests #sentRequests #sentrequestlist {
+} */
+
+body .right #friendrequests #allfriendRequests {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  padding: 1rem;
+  padding-left: 6rem;
+  background-image: url(../assets/picsandicons/pexels-vedanti-245250.jpg);
+}
+
+body .right #friendrequests #allfriendRequests h2 {
+  height: 7%;
+  border-bottom: 2px solid var(--color);
+  color: var(--color);
+}
+
+/* body .right #friendrequests #allfriendRequests #friendrequestlist {
+} */
+
+body #newchat {
+  display: block;
   position: fixed;
   background-color: white;
   top: 0;
@@ -371,19 +557,23 @@ body #newchat {
 
 body #newchat #header {
   height: 10rem;
-  background-color: white;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   padding-bottom: 1rem;
-  color: white;
-  background-color: var(--color);
+  color: rgb(255, 255, 255);
+  background-color: #7e6cf4;
 }
 
 body #newchat #header i {
   padding-right: 1rem;
   cursor: pointer;
+}
+
+body #newchat #header p {
+  font-size: 1.7rem;
+  font-weight: 400;
 }
 
 body #newchat #usernav {
@@ -503,7 +693,18 @@ body #newchat #friendsearchresult .profpic {
   border-radius: 50%;
 }
 
-body #newchat .userfriendlist {
+body #newchat #users {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  height: 70%;
+}
+
+body #newchat #users h2 {
+  padding-bottom: 0.5rem;
+  padding-top: 2rem;
+}
+
+body #newchat #userfriendlist {
   display: block;
   width: 100%;
   height: 100%;
@@ -511,10 +712,10 @@ body #newchat .userfriendlist {
   background-color: white;
   margin-bottom: 0.5rem;
   padding-top: 1rem;
-  padding-bottom: 3.5rem;
+  padding-bottom: 5rem;
 }
 
-body #newchat .userfriendlist .userfriend {
+body #newchat #userfriendlist .userfriend {
   display: flex;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -527,23 +728,23 @@ body #newchat .userfriendlist .userfriend {
   justify-content: space-between;
 }
 
-body #newchat .userfriendlist .userfriend:hover {
+body #newchat #userfriendlist .userfriend:hover {
   border-bottom: 1px solid #7f6cf4;
   color: #7f6cf4;
 }
 
-body #newchat .userfriendlist .userfriend .leftprof {
+body #newchat #userfriendlist .userfriend .leftprof {
   display: flex;
 }
 
-body #newchat .userfriendlist .userfriend .details {
+body #newchat #userfriendlist .userfriend .details {
   margin-left: 1.5rem;
 }
-body #newchat .userfriendlist .userfriend .details .friendbio {
+body #newchat #userfriendlist .userfriend .details .friendbio {
   color: rgba(0, 0, 0, 0.523);
 }
 
-body #newchat .userfriendlist .userfriend .addfriend {
+body #newchat #userfriendlist .userfriend .chat {
   width: 4rem;
   height: 2.1rem;
   border: 1px solid rgba(0, 0, 0, 0.26);
@@ -553,28 +754,33 @@ body #newchat .userfriendlist .userfriend .addfriend {
   cursor: pointer;
 }
 
-body #newchat .userfriendlist .userfriend .addfriend:hover {
+body #newchat #userfriendlist .userfriend .chat:hover {
   border: 1px solid #7e6cf4a1;
   box-shadow: 0 4px 4px rgba(126, 108, 244, 0.628);
   font-weight: 600;
 }
 
-body #newchat .userfriendlist .profpic {
+body #newchat #userfriendlist .userfriend .remove {
+  width: 4rem;
+  height: 2.1rem;
+  border: 1px solid rgba(0, 0, 0, 0.26);
+  background-color: white;
+  border-radius: 0.5rem;
+  color: #7f6cf4;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+body #newchat #userfriendlist .userfriend .remove:hover {
+  border: 1px solid #7e6cf4a1;
+  box-shadow: 0 4px 4px rgba(126, 108, 244, 0.628);
+  font-weight: 600;
+}
+
+body #newchat #userfriendlist .profpic {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-}
-
-body #newchat #users {
-  /* overflow-y: scroll; */
-  padding-left: 1rem;
-  padding-right: 1rem;
-  height: 70%;
-}
-
-body #newchat #users h2 {
-  padding-bottom: 0.5rem;
-  padding-top: 2rem;
 }
 
 body #unorderd {
@@ -588,6 +794,7 @@ body #unorderd {
   left: 31rem;
   top: 3rem;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 100;
 }
 
 body #unorderd ul {
@@ -627,8 +834,7 @@ body #unorderd ul li:first-child:hover {
 }
 
 body #settings {
-  display: flex;
-  flex-direction: column;
+  display: block;
   position: fixed;
   background-color: white;
   top: 0;
@@ -685,7 +891,6 @@ body #settings #setnav .innersetnav input {
   border: none;
   outline: none;
   padding-left: 1rem;
-  /* background-color: rgba(195, 200, 210, 0.075); */
 }
 
 body #settings #setlist {
@@ -696,6 +901,7 @@ body #settings #setlist {
   height: 100vh;
   width: 100%;
   justify-content: space-between;
+  padding-bottom: 10rem;
 }
 
 body #settings #setlist #setprof {
@@ -751,6 +957,7 @@ body #settings #setlist ul li:hover {
   border: 1px solid #7e6cf47e;
   box-shadow: 0 4px 4px #7e6cf4b5;
   color: var(--color);
+  font-size: 1.5rem;
 }
 
 body #settings #setlist ul li:last-child:hover {
@@ -787,10 +994,8 @@ body #settings #setlist button:hover {
 }
 
 body #profile {
-  display: flex;
-  flex-direction: column;
+  display: block;
   position: fixed;
-  align-items: center;
   background-color: white;
   top: 0;
   left: -100%;
@@ -816,15 +1021,29 @@ body #profile #profhead i {
   cursor: pointer;
 }
 
+body #profile #profhead p {
+  font-size: 1.7rem;
+  font-weight: 400;
+}
+
 body #profile #profpicture {
   width: 100%;
   height: 15rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
 }
 
-body #profile #profpicture img {
+body #profile #profpicture #userprofile {
+  width: 13rem;
+  height: 13rem;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+}
+
+body #profile #profpicture #userprofileimage {
   width: 13rem;
   height: 13rem;
   border-radius: 50%;
@@ -833,17 +1052,13 @@ body #profile #profpicture img {
 
 #topprofdiv {
   display: none;
-}
-
-#topprofdiv:hover {
+  position: absolute;
   width: 13rem;
   height: 13rem;
+  top: 0;
+  left: 0;
   border-radius: 50%;
-  position: absolute;
-  left: 9.39rem;
-  top: 11rem;
-  background-color: rgba(0, 0, 0, 0.187);
-  display: flex;
+  background-color: rgba(0, 0, 0, 0.47);
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -852,33 +1067,26 @@ body #profile #profpicture img {
   text-align: center;
 }
 
-body #profile #profpicture img:hover + #topprofdiv {
-  width: 13rem;
-  height: 13rem;
-  border-radius: 50%;
-  position: absolute;
-  left: 9.39rem;
-  top: 11rem;
-  background-color: rgba(255, 0, 0, 0.187);
+body #profile #profpicture #userprofileimage:hover + #topprofdiv {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  transition: all ease-in-out 0.1s;
+}
+
+#topprofdiv:hover {
+  display: flex;
 }
 
 body #profile #name-bio {
   width: 90%;
   height: 15rem;
-  /* background-color: #6cf4d2; */
   border-radius: 1rem;
-  /* row-gap: 2rem; */
+  padding-left: 2rem;
+  background-color: white;
+  padding-top: 3rem;
 }
 
 body #profile #name-bio #name {
   width: 100%;
-  height: 7rem;
+  height: 5rem;
   border: 1px solid black;
   margin-bottom: 0.5rem;
   border-radius: 1rem 1rem 0 0;
@@ -897,8 +1105,8 @@ body #profile #name-bio #name div {
 }
 
 body #profile #name-bio #name i {
-  padding-top: 5rem;
   padding-right: 1rem;
+  padding-top: 3rem;
 }
 
 body #profile #name-bio #name h1 {
@@ -912,7 +1120,7 @@ body #profile #name-bio #name:hover {
 
 body #profile #name-bio #bio {
   width: 100%;
-  height: 7rem;
+  height: 5rem;
   border: 1px solid black;
   margin-bottom: 0.5rem;
   border-radius: 0 0 1rem 1rem;
@@ -922,6 +1130,7 @@ body #profile #name-bio #bio {
   justify-content: space-between;
   color: var(--color);
   cursor: pointer;
+  position: relative;
 }
 
 body #profile #name-bio #bio div {
@@ -931,12 +1140,14 @@ body #profile #name-bio #bio div {
 }
 
 body #profile #name-bio #bio i {
-  padding-top: 5rem;
   padding-right: 1rem;
+  padding-top: 3rem;
 }
 
 body #profile #name-bio #bio h1 {
   color: black;
+  font-weight: 400;
+  font-size: 1.6rem;
 }
 
 body #profile #name-bio #bio:hover {
@@ -1005,4 +1216,12 @@ body #logoutform #logoutdiv button:first-child:hover {
 body #logoutform #logoutdiv button:last-child:hover {
   box-shadow: 0 4px 4px #7e6cf47e;
   border: 1px solid #7e6cf4b5;
+}
+
+.darkmode {
+  background-color: rgba(0, 0, 0, 0.826);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /* z-index: ; */
 }

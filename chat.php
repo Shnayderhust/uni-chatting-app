@@ -29,13 +29,14 @@ if (!isset($_SESSION["userid"])) {
     The only containers that are by default displayed on visiting this page on browser is the div with class of left and the div with class of right... THE REMAIN CONTAINERS ARE DISPLAYED AFTER CERTAIN CONDITION BEING TRUE SUCH AS WHEN A USER CLICK A BUTTON THAT SAY CREATE NEW CHAT
     -->
 
+
     <div class="left">
         <nav id="nav">
             <img src="<?php if (isset($_SESSION["fileDestination"])) {
                             echo $_SESSION["fileDestination"];
                         } else {
                             echo './assets/UserPics/user.png';
-                        } ?>" alt="" class="profpic">
+                        } ?>" alt="" class="myprofpic">
             <div class="nextnav">
                 <img src="assets/picsandicons/new message.svg" alt="new text" class="creatchat">
                 <i class="fa-solid fa-ellipsis-vertical" id="ul"></i>
@@ -54,19 +55,7 @@ if (!isset($_SESSION["userid"])) {
                 <h2></h2>
                 <h3></h3>
             </div>
-            <!-- <div class="chatslist">
-                <div id="onechat">
-                    <img src="./assets/picsandicons/avatar.jpg" alt="" id="profpic">
-                    <div id="details">
-                        <h3 id="jina">Shnayder</h3>
-                        <div class="message">
-                            <p id="text">Hellow there how have you been doing ghuvd sdkvoiu sdui</p>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div> -->
+            <div class="chatslist"></div>
         </div>
     </div>
     </div>
@@ -82,52 +71,253 @@ if (!isset($_SESSION["userid"])) {
         **--IN FUTURE I'LL UPDATE THIS CODE--**
         -->
 
-        <section id="noactivechat">
-            <img src="assets/picsandicons/favicon.png" alt="">
-            <h1>Unigram</h1>
-            <p>Unigram makes it easy and fun to stay close to your favorite people.</p>
-            <button type="button" class="creatchat">New Chat</button>
+        <section id="activechat">
+
+            <div id="activechatspace">
+                <div class="chatnav">
+                    <div class="chatnavheader">
+                        <img src="./assets/UserPics/userDefaultProfile.png" alt="" class="friendprof">
+                        <p class="friendname">Shnayder</p>
+                    </div>
+                    <div class="nextchatnav">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+                <div class="messagespace">
+                    <!-- <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up girl</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up </p>
+                        </div>
+                    </div>
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up girl</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="incomingmultmedia">
+                        <div class="incomingmultimediacontainer">
+                            <img class="actualincomingmultmedia" src="./assets/picsandicons/avatar.jpg">
+                        </div>
+                    </div>
+
+                    <div class="outgoingmultmedia">
+                        <div class="outgoingmultimediacontainer">
+                            <img class="actualoutgoingmultmedia" src="./assets/picsandicons/UnigramTheme03.png">
+                        </div>
+                    </div>
+
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up </p>
+                        </div>
+                    </div>
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up girl</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up </p>
+                        </div>
+                    </div>
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up girl</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up </p>
+                        </div>
+                    </div>
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up girl</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up </p>
+                        </div>
+                    </div>
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up girl</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up </p>
+                        </div>
+                    </div>
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up girl</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up </p>
+                        </div>
+                    </div> -->
+
+                </div>
+
+                <div class="chatspace">
+                    <img src="assets/UserPics//userDefaultProfile.png" alt="emoji" class="receiverprof">
+                    <i class="fa-solid fa-plus"></i>
+
+                    <div id="sendtextcontainer">
+                        <input type="text" placeholder="Type a message" id="textInput">
+                        <label for="sendbuton"><img role="send message" src="./assets//picsandicons/send-1-svgrepo-com.svg" alt="sendicon" id="sendicon"></label>
+                        <input type="submit" id="sendbuton">
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="noactivechat">
+                <div class="insidenoactive">
+                    <img src="assets/picsandicons/favicon.png" alt="">
+                    <h1>Unigram</h1>
+                    <p>Unigram makes it easy and fun to stay close to your favorite people.</p>
+                    <button type="button" class="creatchat">New Chat</button>
+
+                </div>
+            </div>
+
         </section>
 
-        <section id="activechat">
-            <div id="chatnav">
-                <p><img src="./assets/pics and icons/profpic02.jpg" alt="">Shnayder</p>
-                <div id="nextchatnav">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
+        <section id="friendrequests">
+            <div id="requesthead">
+                <h1>Requests</h1>
+                <i class="fa-solid fa-arrow-right" id="chatlist"></i>
             </div>
-            <div id="messagespace">
+            <div id="requesttype">
+                <div id="sentRequests">
+                    <h2>Sent/Pending Request</h2>
+                    <div id="sentrequestlist">
 
-                <div class="outgoing">
-                    <div class="outgoingmessage">
-                        <p class="actualmessage">what up girl</p>
                     </div>
                 </div>
+                <div id="allfriendRequests">
+                    <h2>Friend Requests</h2>
+                    <div id="friendrequestlist">
 
-                <div class="incoming">
-                    <div class="incomingmessage">
-                        <p class="actualmessage">what up</p>
                     </div>
                 </div>
-
-            </div>
-
-            <div id="chatspace">
-                <img src="assets/picsandicons/emoji.svg" alt="emoji">
-                <i class="fa-solid fa-plus"></i>
-                <input type="text" placeholder="Type a message">
             </div>
         </section>
 
     </div>
 
-    <!-- This div with id of newchat is displayed only when the button attached with an event to display this div is clicked... by default in chat.css file it have a display of none... refer nav.js and chat.css -->
+
+
+
+    <!-- ****************Small and medium containers for navigation and changes makins************************ -->
     <div id="newchat">
 
         <div id="header">
             <i class="fa-solid fa-arrow-left" id="chatlist"></i>
-            <h1>Create New Chat</h1>
+            <p>Create New Chat</p>
         </div>
 
         <div id="usernav">
@@ -144,8 +334,10 @@ if (!isset($_SESSION["userid"])) {
         <div id="users">
             <h2>Your Friends</h2>
             <hr>
-            <div class="userfriendlist">
-                <?php displayuserfriends($allUserData) ?>
+            <div id="userfriendlist">
+
+
+
             </div>
         </div>
 
@@ -161,7 +353,6 @@ if (!isset($_SESSION["userid"])) {
             <li class="logoutform">Log Out</li>
         </ul>
     </div>
-
 
     <!-- This is setting form that is displayed only when a user choose to go to settings form and click setting within unorder small form  -->
     <div id="settings">
@@ -185,12 +376,13 @@ if (!isset($_SESSION["userid"])) {
                                 echo $_SESSION["fileDestination"];
                             } else {
                                 echo './assets/UserPics/user.png';
-                            } ?>" alt="" class="profpic">
+                            } ?>" alt="" class="myprofpic">
                 <div>
                     <h1 id="username"><?php displayusername() ?></h1>
                     <p id="bio"><?php displaybio() ?></p>
                 </div>
             </div>
+
 
             <ul>
                 <li>Notification</li>
@@ -212,18 +404,20 @@ if (!isset($_SESSION["userid"])) {
 
         <div id="profhead">
             <i class="fa-solid fa-arrow-left" id="chatlist"></i>
-            <h1>Profile</h1>
+            <p>Profile</p>
         </div>
 
         <div id="profpicture">
-            <img src="<?php if (isset($_SESSION["fileDestination"])) {
-                            echo $_SESSION["fileDestination"];
-                        } else {
-                            echo './assets/UserPics/user.png';
-                        } ?>" alt="">
-            <div id="topprofdiv">
-                <i class="fa-solid fa-camera"></i>
-                <p>CHANGE <br> PROFILE PICTURE</p>
+            <div id="userprofile">
+                <img src="<?php if (isset($_SESSION["fileDestination"])) {
+                                echo $_SESSION["fileDestination"];
+                            } else {
+                                echo './assets/UserPics/user.png';
+                            } ?>" alt="" id="userprofileimage">
+                <div id="topprofdiv">
+                    <i class="fa-solid fa-camera"></i>
+                    <p>CHANGE <br> PROFILE PICTURE</p>
+                </div>
             </div>
         </div>
 
@@ -263,6 +457,8 @@ if (!isset($_SESSION["userid"])) {
     </form>
 
     <script src="nav.js"></script>
+    <script src="friends.js"></script>
+    <script src="convo.js"></script>
     <script src="chat.js"></script>
 </body>
 

@@ -469,3 +469,7 @@ section {
   height: 100%;
   background-color: var(--color);
 }
+
+#return {
+  cursor: pointer;
+}

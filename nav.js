@@ -11,7 +11,7 @@ addEventListener('click', (event) => {
     else if (event.target.matches('#gochat')) {
         window.location.href = "chat.php";
     }
-    else if (event.target.matches('.profpic')) {
+    else if (event.target.matches('.myprofpic')) {
         document.getElementById('newchat').style.left = "-100%";
         document.getElementById('settings').style.left = "-100%";
         document.getElementById('profile').style.left = "0";
@@ -42,8 +42,10 @@ addEventListener('click', (event) => {
     else if (event.target.matches('#nostay')) {
         document.getElementById('unorderd').style.display = "none";
         document.getElementById('logoutform').style.display = "none";
-    }
-    else if (event.target.matches('#return')) {
+    } else if (event.target.matches('#finishreg')) {
+        document.getElementById('topprof').style.display = "flex";
+        console.log('clicked')
+    } else if (event.target.matches('#return')) {
         document.getElementById('topprof').style.display = "none";
     } else if (event.target.matches('#friendsearch')) {
         document.getElementById('friendsearchresult').style.display = "block";
@@ -51,7 +53,11 @@ addEventListener('click', (event) => {
         document.getElementById('friendsearchresult').style.display = "none";
     } else if (!event.target.matches('#friendsearch')) {
         document.getElementById('friendsearchresult').style.display = "none";
+    } else if (event.target.matches('.addfriend')) {
+        document.getElementById('noactivechat').style.display = "none";
+        document.getElementById('activechat').style.display = "flex";
     }
+
 
 });
 
