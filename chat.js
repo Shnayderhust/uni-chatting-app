@@ -10,6 +10,8 @@ const friendprof = document.querySelector('.friendprof');
 const friendname = document.querySelector('.friendname');
 const sendbuton = document.getElementById('sendbuton');
 let receiverData = [];
+let messageLoaded = false;
+let chatMessages = {};
 
 document.addEventListener('click', function (event) {
 
@@ -19,7 +21,7 @@ document.addEventListener('click', function (event) {
 
 
     if (onechat) {
-
+        messagespace.innerHTML = "";
         receiverId = onechat.getAttribute('data-receiver-id');
         receiverName = onechat.getAttribute('data-receiver-username');
         receiverProfilePic = onechat.getAttribute('data-profilepic-id');
@@ -33,7 +35,15 @@ document.addEventListener('click', function (event) {
 
         receiverData = [receiverId, senderId, convorId,];
 
-        addExistingMessage();
+        console.log(receiverData)
+
+        messagespace.innerHTML = "";
+
+        if (chatMessages[convorId]) {
+            messagespace.innerHTML += chatMessages[convorId];
+        } else {
+            addExistingMessage(convorId)
+        }
 
 
         // console.log(`receiverData: ${receiverData}`)
@@ -41,6 +51,11 @@ document.addEventListener('click', function (event) {
 })
 
 sendbuton.addEventListener('click', sendMessage)
+textInput.addEventListener('keyup', function (event) {
+    if (event.key === 'Enter') {
+        sendMessage()
+    }
+})
 function sendMessage() {
 
     let sentMessage = textInput.value.trim();
@@ -71,7 +86,9 @@ function sendMessage() {
             .then(function (response) {
                 if (response.status === 200) {
                     return response.json().then(function (data) {
+                        console.log(data);
                         messagespace.innerHTML += displayRecentSentMessage(data);
+                        messagespace.scrollTop = messagespace.scrollHeight;
                     })
                 }
             })
@@ -79,9 +96,13 @@ function sendMessage() {
 
 };
 
-function addExistingMessage() {
+function addExistingMessage(convoId) {
+
+    if (chatMessages[convoId]) {
+        return;
+    }
     let onloadFlag = 'initial_load';
-    let convorId = receiverData[2];
+    let convorId = convoId;
 
     let messagePackage = {
         "onloadFlag": onloadFlag,
@@ -100,10 +121,12 @@ function addExistingMessage() {
                 return response.json().then(function (data) {
                     let allMessageContainer = displayExistingMessages(data);
                     allMessageContainer.forEach(function (oneMessageContainer) {
+                        chatMessages[convoId] = allMessageContainer;
                         messagespace.appendChild(oneMessageContainer);
-                        console.log('onload Messages displayed')
+                        messagespace.scrollTop = messagespace.scrollHeight;
                     })
 
+                    messageLoaded = true;
                 })
             }
 
@@ -138,6 +161,7 @@ function displayExistingMessages(data) {
 }
 
 function displayRecentSentMessage(data) {
+    console.log(data);
     const outgoingMain = document.createElement('div');
     outgoingMain.classList.add('outgoing');
 
