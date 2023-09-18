@@ -52,13 +52,17 @@ function friendAdder() {
                     if (response.status === 200) {
                         console.log('user added successfully')
                         return response.json().then(function (data) {
+
                             userfriendlist.innerHTML = "";
                             if (userfriendlist) {
                                 for (let userfrienddata of data) {
                                     userfriendlist.innerHTML += displayfriends(userfrienddata);
                                 }
+                                console.log('friend added successfully');
+
                             }
                         })
+
                     } else {
                         console.log('user adding failed')
                     }
@@ -93,6 +97,8 @@ function onpageloaddisplayfriends() {
                             userfriendlist.innerHTML += displayfriends(userfrienddata);
 
                         }
+                        console.log('after reload friends displayed successfully')
+
                     }
                 })
             } else {

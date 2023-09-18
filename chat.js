@@ -37,12 +37,13 @@ document.addEventListener('click', function (event) {
 
         console.log(receiverData)
 
-        messagespace.innerHTML = "";
 
         if (chatMessages[convorId]) {
-            messagespace.innerHTML += chatMessages[convorId];
+            chatMessages[convorId].forEach(function (oneMessageContainer) {
+                messagespace.appendChild(oneMessageContainer);
+            });
         } else {
-            addExistingMessage(convorId)
+            addExistingMessage(convorId);
         }
 
 
@@ -98,11 +99,12 @@ function sendMessage() {
 
 function addExistingMessage(convoId) {
 
-    if (chatMessages[convoId]) {
-        return;
+    if (!chatMessages[convoId]) {
+        chatMessages[convoId] = [];
     }
     let onloadFlag = 'initial_load';
     let convorId = convoId;
+    let senderId = receiverData[1]
 
     let messagePackage = {
         "onloadFlag": onloadFlag,
@@ -119,14 +121,18 @@ function addExistingMessage(convoId) {
         .then(function (response) {
             if (response.status === 201) {
                 return response.json().then(function (data) {
-                    let allMessageContainer = displayExistingMessages(data);
-                    allMessageContainer.forEach(function (oneMessageContainer) {
-                        chatMessages[convoId] = allMessageContainer;
-                        messagespace.appendChild(oneMessageContainer);
-                        messagespace.scrollTop = messagespace.scrollHeight;
-                    })
+                    let allMessageContainers = displayExistingMessages(data, senderId);
 
-                    messageLoaded = true;
+
+                    chatMessages[convoId].length = 0;
+
+                    allMessageContainers.forEach(function (oneMessageContainer) {
+                        chatMessages[convorId].push(oneMessageContainer); // Store messages in the array
+                    });
+
+                    chatMessages[convorId].forEach(function (oneMessageContainer) {
+                        messagespace.appendChild(oneMessageContainer);
+                    });
                 })
             }
 
@@ -136,10 +142,11 @@ function addExistingMessage(convoId) {
 
 
 
-function displayExistingMessages(data) {
-    let allMessageContainer = [];
+function displayExistingMessages(data, senderId) {
+    let allMessageContainers = [];
 
     data.forEach(function (message) {
+        // outgoing message container
         const outgoingMain = document.createElement('div');
         outgoingMain.classList.add('outgoing');
 
@@ -148,20 +155,45 @@ function displayExistingMessages(data) {
 
         const actualoutgoingmessage = document.createElement('p');
         actualoutgoingmessage.classList.add('actualoutgoingmessage');
-        actualoutgoingmessage.textContent = message.message;
 
-        outgoingContainer.appendChild(actualoutgoingmessage);
-        outgoingMain.appendChild(outgoingContainer);
+        // incoming message container
+        const incomingMain = document.createElement('div');
+        incomingMain.classList.add('incoming');
 
-        allMessageContainer.push(outgoingMain);
+        const incomingContainer = document.createElement('div');
+        incomingContainer.classList.add('incomingmessage');
+
+        const actualincomingmessage = document.createElement('p');
+        actualincomingmessage.classList.add('actualincomingmessage');
+
+
+        if (message.sender_id === senderId) {
+            actualoutgoingmessage.textContent = message.message;
+
+            outgoingContainer.appendChild(actualoutgoingmessage);
+            outgoingMain.appendChild(outgoingContainer);
+
+            allMessageContainers.push(outgoingMain);
+
+        } else {
+            actualincomingmessage.textContent = message.message;
+
+            incomingContainer.appendChild(actualincomingmessage);
+            incomingMain.appendChild(incomingContainer);
+
+            allMessageContainers.push(incomingMain);
+        }
+
     })
 
-    return allMessageContainer;
+    return allMessageContainers;
 
 }
 
 function displayRecentSentMessage(data) {
     console.log(data);
+
+    // Outgoing Messages Containers
     const outgoingMain = document.createElement('div');
     outgoingMain.classList.add('outgoing');
 
@@ -174,6 +206,7 @@ function displayRecentSentMessage(data) {
 
     outgoingContainer.appendChild(actualoutgoingmessage);
     outgoingMain.appendChild(outgoingContainer);
+
 
     return outgoingMain.outerHTML;
 }
