@@ -140,14 +140,14 @@ function onpageloaddisplayconvo() {
 
     })
         .then(function (response) {
-            if (response.status === 200) {
+            if (response.status === 203) {
 
                 return response.json().then(function (data) {
 
                     const allUserFriendsData = data.allUserFriendsData;
                     const currentLoggedUserConvoIds = data.currentLoggedUserConvoIds;
                     const currentLogedInUserId = data.currentLogedInUserId;
-                    // chatslist.innerHTML = "";
+                    console.log(data);
                     newchat.style.left = "-100%";
                     tempo.style.display = "none";
                     chatslist.style.display = "block";
@@ -179,12 +179,15 @@ function displayconvoonload(allUserFriendsData, currentLoggedUserConvoIds, curre
     for (let i = 0; i < maxLength; i++) {
         let oneUserFriendData = i < allUserFriendsData.length ? allUserFriendsData[i] : null;
         let oneConvoId = i < currentLoggedUserConvoIds.length ? currentLoggedUserConvoIds[i] : null;
-
+        // console.log(oneConvoId);
+        // console.log(oneUserFriendData);
 
         const onechat = document.createElement('div');
         onechat.classList.add('onechat')
         onechat.setAttribute('data-receiver-id', oneUserFriendData["user_id"]);
-        onechat.setAttribute('data-convor-id', oneConvoId["convor_id"]);
+        if (oneConvoId != null) {
+            onechat.setAttribute('data-convor-id', oneConvoId['convor_id']);
+        }
         onechat.setAttribute('data-profilepic-id', oneUserFriendData["profile_pic_id"]);
         onechat.setAttribute('data-receiver-username', oneUserFriendData["username"]);
         onechat.setAttribute('data-currentLogedInUserId', currentLogedInUserId);

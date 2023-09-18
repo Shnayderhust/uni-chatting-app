@@ -24,8 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         );
 
         echo json_encode($response);
-        http_response_code(200);
-    } elseif (doesConvoExistForCurrentUser($unigram_conn, $currentLogedInUserId, $userIdToStartConvo)) {
+        http_response_code(203);
+    } else if (doesConvoExistForCurrentUser($unigram_conn, $currentLogedInUserId, $userIdToStartConvo)) {
 
         $convoId = get_convoid($unigram_conn, $currentLogedInUserId, $userIdToStartConvo);
 

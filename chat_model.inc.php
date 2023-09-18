@@ -162,7 +162,7 @@ function add_convo(object $unigram_conn, $currentLogedInUserId, $userIdToStartCo
 
 function get_convoid(object $unigram_conn, $currentLogedInUserId, $userIdToStartConvo)
 {
-    $query = "SELECT convor_id FROM conversation WHERE user1_id = :user1_id AND user2_id = :user2_id;";
+    $query = "SELECT convor_id FROM conversation WHERE user1_id = :user1_id AND user2_id = :user2_id OR user1_id = :user2_id AND user2_id = :user1_id;";
 
     $stmt = $unigram_conn->prepare($query);
     $stmt->bindParam(":user1_id", $currentLogedInUserId);
@@ -194,14 +194,22 @@ function get_convodata(object $unigram_conn, $convoId)
 
 function get_allFriendsId(object $unigram_conn, $currentLogedInUserId)
 {
-    $query = "SELECT user2_id FROM conversation WHERE user1_id = :user1_id;";
+    $query1 = "SELECT user1_id FROM conversation WHERE user2_id = :user_id";
+    $query2 = "SELECT user2_id FROM conversation WHERE user1_id = :user_id";
 
-    $stmt = $unigram_conn->prepare($query);
-    $stmt->bindParam(":user1_id", $currentLogedInUserId);
-    $stmt->execute();
+    $stmt1 = $unigram_conn->prepare($query1);
+    $stmt1->bindParam(":user_id", $currentLogedInUserId);
+    $stmt1->execute();
+    $result1 = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $result;
+    $stmt2 = $unigram_conn->prepare($query2);
+    $stmt2->bindParam(":user_id", $currentLogedInUserId);
+    $stmt2->execute();
+    $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
+    $allFriends = array_merge($result1, $result2);
+
+    return $allFriends;
 }
 
 function get_alluserfriendsdata(object $unigram_conn, $allUserFriendsId)
@@ -211,14 +219,29 @@ function get_alluserfriendsdata(object $unigram_conn, $allUserFriendsId)
     $query = "SELECT * FROM users WHERE user_id = :user_id;";
 
     foreach ($allUserFriendsId as $FriendId) {
+        $user1Data = null;
+        $user2Data = null;
 
-        $stmt = $unigram_conn->prepare($query);
-        $stmt->bindParam(":user_id", $FriendId["user2_id"]);
-        $stmt->execute();
+        if (isset($FriendId["user2_id"])) {
+            $stmt2 = $unigram_conn->prepare($query);
+            $stmt2->bindParam(":user_id", $FriendId["user2_id"]);
+            $stmt2->execute();
+            $user2Data = $stmt2->fetch(PDO::FETCH_ASSOC);
+        }
 
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if (isset($FriendId["user1_id"])) {
+            $stmt1 = $unigram_conn->prepare($query);
+            $stmt1->bindParam(":user_id", $FriendId["user1_id"]);
+            $stmt1->execute();
+            $user1Data = $stmt1->fetch(PDO::FETCH_ASSOC);
+        }
 
-        $allUserData[] = $result;
+        if ($user1Data) {
+            $allUserData[] = $user1Data;
+        }
+        if ($user2Data) {
+            $allUserData[] = $user2Data;
+        }
     }
 
     return $allUserData;
@@ -227,10 +250,12 @@ function get_alluserfriendsdata(object $unigram_conn, $allUserFriendsId)
 
 function get_allConvoIdOfOneUser(object $unigram_conn, $currentLogedInUserId)
 {
-    $query = "SELECT convor_id FROM conversation WHERE user1_id = :user1_id;";
+    $query = "SELECT convor_id FROM conversation WHERE user1_id = :user1_id;
+    UNION SELECT convor_id FROM conversation WHERE user2_id = :user2_id;";
 
     $stmt = $unigram_conn->prepare($query);
     $stmt->bindParam(":user1_id", $currentLogedInUserId);
+    $stmt->bindParam(":user2_id", $currentLogedInUserId);
     $stmt->execute();
 
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -257,4 +282,40 @@ function get_allConvoIdOfOneUser(object $unigram_conn, $currentLogedInUserId)
 
 
 //     return $allConvoData;
+// }
+
+// function get_alluserfriendsdata(object $unigram_conn, $allUserFriendsId)
+// {
+//     $allUserData = [];
+
+//     $query = "SELECT * FROM users WHERE user_id = :user_id;";
+
+//     foreach ($allUserFriendsId as $FriendId) {
+
+//         $userIdToQuery = isset($FriendId["user1_id"]) ? $FriendId["user1_id"] : $FriendId["user2_id"];
+
+//         $stmt = $unigram_conn->prepare($query);
+//         $stmt->bindParam(":user_id", $userIdToQuery);
+//         $stmt->execute();
+
+//         $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+//         $allUserData[] = $result;
+//     }
+
+//     return $allUserData;
+// }
+
+
+// function get_allFriendsId(object $unigram_conn, $currentLogedInUserId)
+// {
+//     $query = "SELECT user2_id FROM conversation WHERE user1_id = :user1_id;
+//     UNION SELECT user1_id FROM conversation WHERE user2_id = :user2_id;";
+
+//     $stmt = $unigram_conn->prepare($query);
+//     $stmt->bindParam(":user1_id", $currentLogedInUserId);
+//     $stmt->bindParam(":user2_id", $currentLogedInUserId);
+//     $stmt->execute();
+//     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//     return $result;
 // }
