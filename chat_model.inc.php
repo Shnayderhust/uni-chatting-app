@@ -162,7 +162,7 @@ function add_convo(object $unigram_conn, $currentLogedInUserId, $userIdToStartCo
 
 function get_convoid(object $unigram_conn, $currentLogedInUserId, $userIdToStartConvo)
 {
-    $query = "SELECT convor_id FROM conversation WHERE user1_id = :user1_id AND user2_id = :user2_id OR user1_id = :user2_id AND user2_id = :user1_id;";
+    $query = "SELECT convor_id FROM conversation WHERE (user1_id = :user1_id AND user2_id = :user2_id) OR (user1_id = :user2_id AND user2_id = :user1_id);";
 
     $stmt = $unigram_conn->prepare($query);
     $stmt->bindParam(":user1_id", $currentLogedInUserId);
@@ -250,7 +250,7 @@ function get_alluserfriendsdata(object $unigram_conn, $allUserFriendsId)
 
 function get_allConvoIdOfOneUser(object $unigram_conn, $currentLogedInUserId)
 {
-    $query = "SELECT convor_id FROM conversation WHERE user1_id = :user1_id;
+    $query = "SELECT convor_id FROM conversation WHERE user1_id = :user1_id
     UNION SELECT convor_id FROM conversation WHERE user2_id = :user2_id;";
 
     $stmt = $unigram_conn->prepare($query);

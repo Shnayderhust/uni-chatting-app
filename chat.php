@@ -24,11 +24,6 @@ if (!isset($_SESSION["userid"])) {
 
 <body>
 
-    <!-- To understand this file please refer more to css code given that note every container/secction in this file are displayed at the same time  
-    
-    The only containers that are by default displayed on visiting this page on browser is the div with class of left and the div with class of right... THE REMAIN CONTAINERS ARE DISPLAYED AFTER CERTAIN CONDITION BEING TRUE SUCH AS WHEN A USER CLICK A BUTTON THAT SAY CREATE NEW CHAT
-    -->
-
 
     <div class="left">
         <nav id="nav">
@@ -61,15 +56,6 @@ if (!isset($_SESSION["userid"])) {
     </div>
 
     <div class="right">
-
-        <!-- within this div with class of right not all section containers are shown at the same time 
-
-        By default the noactivechat div is shown when a user visit at the first time given he/she wont have previous chats...
-
-        Then after creating new chats the activechat container will be displayed to user showing the chat he/she choose or create
-
-        **--IN FUTURE I'LL UPDATE THIS CODE--**
-        -->
 
         <section id="activechat">
 

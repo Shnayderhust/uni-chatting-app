@@ -27,7 +27,6 @@ function addConvo() {
             })
                 .then(function (response) {
                     if (response.status === 200) {
-                        // console.log('convo added successfully');
 
                         return response.json().then(function (data) {
 
@@ -40,6 +39,8 @@ function addConvo() {
                             chatslist.style.display = "block";
                             chatslist.innerHTML += displayconvo(userOneFriendData, convoId, currentLogedInUserId);
                             const allChats = document.getElementsByClassName('onechat');
+                            console.log('convo added successfully');
+
                             // console.log('convo displayed successfully')
                         })
                     } else if (response.status === 201) {
@@ -54,7 +55,7 @@ function addConvo() {
                                         newchat.style.left = "-100%";
                                         onechat.click();
                                         onechat.classList.add('onechathighlighted');
-                                        console.log('displaying existing convo')
+                                        console.log('convo exist opening convo')
 
                                         setTimeout(() => {
                                             onechat.classList.remove('onechathighlighted');
@@ -71,11 +72,13 @@ function addConvo() {
                             const userOneFriendData = data.userOneFriendData;
                             const currentLogedInUserId = data.currentLogedInUserId;
 
+                            console.log(convoId);
+                            console.log(data);
                             newchat.style.left = "-100%";
                             tempo.style.display = "none";
                             chatslist.style.display = "block";
                             chatslist.innerHTML += displayconvo(userOneFriendData, convoId, currentLogedInUserId);
-                            console.log('Convo was added by your friend')
+                            console.log('Convo was already added by your friend')
                         })
                     }
                 })
@@ -147,7 +150,7 @@ function onpageloaddisplayconvo() {
                     const allUserFriendsData = data.allUserFriendsData;
                     const currentLoggedUserConvoIds = data.currentLoggedUserConvoIds;
                     const currentLogedInUserId = data.currentLogedInUserId;
-                    console.log(data);
+                    console.log(`Convo data added after reload: ${data}`);
                     newchat.style.left = "-100%";
                     tempo.style.display = "none";
                     chatslist.style.display = "block";
@@ -157,7 +160,7 @@ function onpageloaddisplayconvo() {
                         chatslist.appendChild(convocontainer);
                     })
 
-                    console.log('convo displayed successfully')
+                    console.log('after reload convo displayed successfully')
                 })
             } else {
                 console.log('friends displaying failed')
@@ -168,59 +171,71 @@ function onpageloaddisplayconvo() {
         })
 }
 
-
-
-
 function displayconvoonload(allUserFriendsData, currentLoggedUserConvoIds, currentLogedInUserId) {
     let convocontainers = [];
 
-    const maxLength = Math.max(allUserFriendsData.length, currentLoggedUserConvoIds.length)
+    for (let i = 0; i < allUserFriendsData.length; i++) {
+        const oneUserFriendData = allUserFriendsData[i];
 
-    for (let i = 0; i < maxLength; i++) {
-        let oneUserFriendData = i < allUserFriendsData.length ? allUserFriendsData[i] : null;
-        let oneConvoId = i < currentLoggedUserConvoIds.length ? currentLoggedUserConvoIds[i] : null;
-        // console.log(oneConvoId);
-        // console.log(oneUserFriendData);
+        for (let j = 0; j < currentLoggedUserConvoIds.length; j++) {
+            const oneConvoId = currentLoggedUserConvoIds[j];
 
-        const onechat = document.createElement('div');
-        onechat.classList.add('onechat')
-        onechat.setAttribute('data-receiver-id', oneUserFriendData["user_id"]);
-        if (oneConvoId != null) {
-            onechat.setAttribute('data-convor-id', oneConvoId['convor_id']);
+
+
+            if (doesConvorIdMatchFriendsIdFromDb(oneConvoId["convor_id"], oneUserFriendData["user_id"], currentLogedInUserId)) {
+
+                const onechat = document.createElement('div');
+                onechat.classList.add('onechat')
+                onechat.setAttribute('data-receiver-id', oneUserFriendData["user_id"]);
+
+                onechat.setAttribute('data-convor-id', oneConvoId['convor_id']);
+                console.log(`This convo id: ${oneConvoId["convor_id"]} is for user ${oneUserFriendData["user_id"]}`);
+
+                onechat.setAttribute('data-profilepic-id', oneUserFriendData["profile_pic_id"]);
+                onechat.setAttribute('data-receiver-username', oneUserFriendData["username"]);
+                onechat.setAttribute('data-currentLogedInUserId', currentLogedInUserId);
+
+                const profpic = document.createElement('img');
+                profpic.classList.add('profpic')
+                profpic.src = oneUserFriendData["profile_pic_id"];
+
+                const details = document.createElement('div');
+                details.classList.add('details')
+
+                const jina = document.createElement('h3');
+                jina.classList.add('jina')
+                jina.textContent = oneUserFriendData["username"];
+
+                const message = document.createElement('div');
+                message.classList.add('message')
+
+                const text = document.createElement('p');
+                text.classList.add('text');
+                text.textContent = 'No message now!... Open to Chat';
+
+                message.appendChild(text);
+                details.appendChild(jina);
+                details.appendChild(message);
+                onechat.appendChild(profpic);
+                onechat.appendChild(details);
+
+                convocontainers.push(onechat);
+            }
+
         }
-        onechat.setAttribute('data-profilepic-id', oneUserFriendData["profile_pic_id"]);
-        onechat.setAttribute('data-receiver-username', oneUserFriendData["username"]);
-        onechat.setAttribute('data-currentLogedInUserId', currentLogedInUserId);
-
-        const profpic = document.createElement('img');
-        profpic.classList.add('profpic')
-        profpic.src = oneUserFriendData["profile_pic_id"];
-
-        const details = document.createElement('div');
-        details.classList.add('details')
-
-        const jina = document.createElement('h3');
-        jina.classList.add('jina')
-        jina.textContent = oneUserFriendData["username"];
-
-        const message = document.createElement('div');
-        message.classList.add('message')
-
-        const text = document.createElement('p');
-        text.classList.add('text');
-        text.textContent = 'No message now!... Open to Chat';
-
-        message.appendChild(text);
-        details.appendChild(jina);
-        details.appendChild(message);
-        onechat.appendChild(profpic);
-        onechat.appendChild(details);
-
-        convocontainers.push(onechat);
     }
 
     return convocontainers;
+}
 
+
+function doesConvorIdMatchFriendsIdFromDb(convorId, friendsId, loggedUserId) {
+
+    const trimmedConvorId = convorId.replace(new RegExp(`^${loggedUserId}|${loggedUserId}$`, 'g'), '');
+
+    friendsIdstring = friendsId.toString();
+
+    return trimmedConvorId === friendsIdstring;
 }
 
 
