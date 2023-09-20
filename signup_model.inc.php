@@ -22,9 +22,9 @@ function get_email(object $unigram_conn, $email)
     return $result;
 }
 
-function set_user(object $unigram_conn, $firstname, $lastname, $email, $password)
+function set_user(object $unigram_conn, $firstname, $lastname, $email, $password, $university)
 {
-    $query = "INSERT INTO users (firstname, lastname, email, `password`) VALUES (:firstname, :lastname, :email, :hashedpassword);";
+    $query = "INSERT INTO users (firstname, lastname, email, `password`, university) VALUES (:firstname, :lastname, :email, :hashedpassword, :university);";
     $stmt = $unigram_conn->prepare($query);
 
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
@@ -33,6 +33,7 @@ function set_user(object $unigram_conn, $firstname, $lastname, $email, $password
     $stmt->bindParam(":lastname", $lastname);
     $stmt->bindParam(":email", $email);
     $stmt->bindParam(":hashedpassword", $hashedPassword);
+    $stmt->bindParam(":university", $university);
     $stmt->execute();
 
     $query = "SELECT * FROM users WHERE email = :email";
@@ -66,4 +67,38 @@ function get_user(object $unigram_conn, $email)
 
     $result = $selectstmt->fetch(PDO::FETCH_ASSOC);
     return $result;
+}
+
+
+function update_profile(object $unigram_conn, $email, $profile_pic_id)
+{
+    $query = "UPDATE users SET profile_pic_id = :profile_pic_id WHERE email = :email;";
+    $stmt = $unigram_conn->prepare($query);
+
+
+    $stmt->bindParam(":profile_pic_id", $profile_pic_id);
+    $stmt->bindParam(":email", $email);
+    $stmt->execute();
+}
+
+function update_username(object $unigram_conn, $email, $username)
+{
+    $query = "UPDATE users SET username = :username WHERE email = :email;";
+    $stmt = $unigram_conn->prepare($query);
+
+
+    $stmt->bindParam(":username", $username);
+    $stmt->bindParam(":email", $email);
+    $stmt->execute();
+}
+
+function update_bio(object $unigram_conn, $email, $bio)
+{
+    $query = "UPDATE users SET bio = :bio WHERE email = :email;";
+    $stmt = $unigram_conn->prepare($query);
+
+
+    $stmt->bindParam(":bio", $bio);
+    $stmt->bindParam(":email", $email);
+    $stmt->execute();
 }

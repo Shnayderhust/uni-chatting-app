@@ -1,8 +1,8 @@
 <?php
 
-function is_input_empty($firstname, $lastname, $email, $password)
+function is_input_empty($firstname, $lastname, $email, $password, $university)
 {
-    if (empty($firstname) || empty($lastname) || empty($email) || empty($password)) {
+    if (empty($firstname) || empty($lastname) || empty($email) || empty($password) || empty($university)) {
         return true;
     } else {
         return false;

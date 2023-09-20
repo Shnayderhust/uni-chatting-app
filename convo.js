@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function addConvo() {
     addEventListener('click', function (event) {
         if (event.target.matches('.chat')) {
-            const getUserId = event.target.getAttribute('data-user-id');
+            const convoPackage = event.target.getAttribute('data-user-id');
 
 
 
@@ -22,7 +22,7 @@ function addConvo() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ getUserId })
+                body: JSON.stringify({ convoPackage })
 
             })
                 .then(function (response) {
@@ -117,9 +117,11 @@ function displayconvo(userOneFriendData, convoId, currentLogedInUserId) {
 
     const text = document.createElement('p');
     text.classList.add('text');
-    text.textContent = 'No message now!... Open to Chat';
+    text.textContent = 'Open to Chat!......';
 
-
+    const deletechat = document.createElement('input');
+    deletechat.classList.add('deletechat');
+    deletechat.textContent = "Delete";
 
     message.appendChild(text);
     details.appendChild(jina);
@@ -139,7 +141,7 @@ function onpageloaddisplayconvo() {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ getUserId: 'initial_load' })
+        body: JSON.stringify({ convoPackage: 'initial_load' })
 
     })
         .then(function (response) {
@@ -211,7 +213,7 @@ function displayconvoonload(allUserFriendsData, currentLoggedUserConvoIds, curre
 
                 const text = document.createElement('p');
                 text.classList.add('text');
-                text.textContent = 'No message now!... Open to Chat';
+                text.textContent = 'Open to Chat!.......';
 
                 message.appendChild(text);
                 details.appendChild(jina);
@@ -237,6 +239,13 @@ function doesConvorIdMatchFriendsIdFromDb(convorId, friendsId, loggedUserId) {
 
     return trimmedConvorId === friendsIdstring;
 }
+
+
+
+
+
+
+
 
 
 

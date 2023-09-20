@@ -47,6 +47,10 @@ addEventListener('click', (event) => {
         console.log('clicked')
     } else if (event.target.matches('#return')) {
         document.getElementById('topprof').style.display = "none";
+    } else if (event.target.matches('#returnfromfilepreview')) {
+        document.getElementById('filepreview').style.display = "none";
+    } else if (event.target.matches('#submitfile')) {
+        document.getElementById('filepreview').style.display = "none";
     } else if (event.target.matches('#friendsearch')) {
         document.getElementById('friendsearchresult').style.display = "block";
     } else if (event.target.matches('#fsearchreturn')) {
@@ -56,9 +60,8 @@ addEventListener('click', (event) => {
     } else if (event.target.matches('.addfriend')) {
         document.getElementById('noactivechat').style.display = "none";
         document.getElementById('activechat').style.display = "flex";
+        document.getElementById('friendrequests').style.right = "0%";
     }
-
-
 });
 
 
@@ -69,6 +72,27 @@ addEventListener('click', (event) => {
         document.getElementById('unorderd').style.display = "none";
     }
 })
+
+addEventListener('click', (event) => {
+    if (event.target.matches('#fileuploader')) {
+        document.getElementById('filepreview').style.display = "flex";
+    } else if (!event.target.matches('#fileuploader')) {
+        document.getElementById('filepreview').style.display = "none";
+
+    }
+})
+
+// const tumaDocument = document.getElementById('uploadyourdocument');
+// const uploadyourphoto = document.getElementById('uploadyourphoto');
+
+// tumaDocument.addEventListener('click', () => {
+//     document.querySelector('documentfilepreview').style.display = "flex";
+// })
+
+// uploadyourphoto.addEventListener('click', () => {
+//     document.querySelector('photofilepreview').style.display = "flex";
+// })
+
 
 
 

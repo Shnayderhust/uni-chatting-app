@@ -2,7 +2,7 @@
 
 require_once "dbconnection.inc.php";
 require_once "sessionconfig.inc.php";
-require_once "chat_model.inc.php";
+require_once "friend_model.inc.php";
 
 $currentLogedInUserId = $_SESSION["userid"];
 
@@ -30,6 +30,7 @@ function displayuserprof($users)
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $data = json_decode(file_get_contents("php://input"));
     $userIdToAdd = $data->getUserId;
+
 
     if ($userIdToAdd === 'initial_load') {
         $UserFriendsId = get_userfriendsid($unigram_conn, $currentLogedInUserId);

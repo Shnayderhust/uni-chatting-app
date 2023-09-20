@@ -158,6 +158,7 @@ body .left #chats .chatslist .onechat {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  position: relative;
 }
 
 body .left #chats .chatslist .onechat:hover {
@@ -209,6 +210,7 @@ body .right {
   background-color: white;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 body .right #noactivechat {
@@ -264,7 +266,7 @@ body .right #activechat {
 body .right #activechat #activechatspace {
   display: block;
   position: fixed;
-  /* right: -100%; */
+  right: -100%;
   height: 100%;
   width: 60%;
   background-color: white;
@@ -313,6 +315,7 @@ body .right #activechat #activechatspace .messagespace {
   padding-right: 1rem;
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
+  /* background-color: #292929; */
   background-image: url(./picsandicons/UnigramTheme01.png);
   background-size: contain;
 }
@@ -442,6 +445,13 @@ body .right #activechat #activechatspace .chatspace .receiverprof {
   margin-right: 1rem;
 }
 
+body .right #activechat #activechatspace .chatspace #fileuploader {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
 body .right #activechat #activechatspace .chatspace #sendtextcontainer {
   width: 80%;
   display: flex;
@@ -485,13 +495,17 @@ body .right #friendrequests {
   height: 100%;
   width: 100%;
   display: none;
-  flex-direction: column;
+  position: absolute;
+  transition: right 1s ease-in-out 0.1s;
+  right: -100%;
+  background-color: rgba(255, 255, 255, 0.352);
+  backdrop-filter: blur(18px);
 }
 
 body .right #friendrequests #requesthead {
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding-left: 5rem;
   height: 13%;
   border-bottom: 1px solid #7f6cf4;
 }
@@ -510,38 +524,64 @@ body .right #friendrequests #sentRequests {
   height: 100%;
   width: 50%;
   display: flex;
-  padding: 1rem;
-  padding-left: 3rem;
+  flex-direction: column;
+  background-color: #ebfffa;
+  align-items: center;
+  padding-top: 0.7rem;
   border-right: 2px solid var(--color2);
-  background-image: url(../assets/picsandicons/pexels-vedanti-245250.jpg);
+  background-image: url(./picsandicons/UnigramTheme01.png);
+}
+
+#Requestsheader {
+  width: 20rem;
+  height: 4rem;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.114);
+  backdrop-filter: blur(18px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 body .right #friendrequests #sentRequests h2 {
-  height: 7%;
-  border-bottom: 2px solid var(--color);
   color: var(--color);
 }
 
-/* body .right #friendrequests #sentRequests #sentrequestlist {
-} */
+body .right #friendrequests #sentRequests #sentrequestlist {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 
 body .right #friendrequests #allfriendRequests {
   height: 100%;
   width: 50%;
   display: flex;
-  padding: 1rem;
-  padding-left: 6rem;
-  background-image: url(../assets/picsandicons/pexels-vedanti-245250.jpg);
+  flex-direction: column;
+  background-color: #ebe8ff;
+  align-items: center;
+  padding-top: 0.7rem;
+  border-right: 2px solid var(--color2);
+  background-image: url(./picsandicons/UnigramTheme01.png);
 }
 
 body .right #friendrequests #allfriendRequests h2 {
-  height: 7%;
-  border-bottom: 2px solid var(--color);
   color: var(--color);
 }
 
-/* body .right #friendrequests #allfriendRequests #friendrequestlist {
-} */
+body .right #friendrequests #allfriendRequests #friendrequestlist {
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 
 body #newchat {
   display: block;
@@ -1218,10 +1258,471 @@ body #logoutform #logoutdiv button:last-child:hover {
   border: 1px solid #7e6cf4b5;
 }
 
-.darkmode {
+/* .darkmode {
   background-color: rgba(0, 0, 0, 0.826);
   width: 100%;
   height: 100%;
   position: absolute;
-  /* z-index: ; */
+} */
+
+#fileuploaderdropdown {
+  position: absolute;
+  width: 12rem;
+  height: 10rem;
+  border-radius: 1rem;
+  display: none;
+  flex-direction: column;
+  background-color: var(--color);
+  justify-content: center;
+  align-items: center;
+  top: 25rem;
+  left: 1rem;
+}
+
+#fileuploaderdropdown form {
+  width: 100%;
+}
+
+#fileuploaderdropdown form label {
+  height: 3rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.1rem;
+  border: 1px soild rgb(0, 0, 0);
+}
+
+#fileuploaderdropdown label:hover {
+  background-color: white;
+  color: #7e6cf4;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+#filepreview {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.171);
+  backdrop-filter: blur(18px);
+  margin-left: 0.5rem;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+}
+
+#returnnav {
+  width: 100%;
+}
+
+#returnfromfilepreview {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+#filepreviewbody {
+  width: 30%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#filepreviewbody #fileholder {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 1rem;
+  border: 2px solid var(--color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#imagePreview {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+}
+
+#submitcontainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 4rem;
+  padding-left: 4rem;
+  padding-top: 3rem;
+}
+
+#uploadphotobutton {
+  width: 10rem;
+  height: 3.5rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#uploadphotobutton:hover {
+  box-shadow: 0 4px 4px #7e6cf4;
+  border: 1px solid #7e6cf4;
+  font-size: 1.2rem;
+  color: #7e6cf4;
+  cursor: pointer;
+}
+
+#submitfile {
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+}
+
+.onechat .deletechat {
+  width: 5rem;
+  height: 3.5rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  display: none;
+}
+
+.friendcontainer {
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  background-color: #ffffff3e;
+  backdrop-filter: blur(18px);
+  justify-content: space-between;
+  border-radius: 1rem;
+}
+
+.friendcontainer .requestprof {
+  display: flex;
+}
+.friendcontainer .requestprof .requestphoto {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.friendcontainer .requestprof .req-details {
+  margin-left: 1.5rem;
+}
+cancel .friendcontainer .requestprof .req-details .req-friendbio {
+  color: #4d4e4d;
+}
+
+.friendcontainer .req-leftprof {
+  display: flex;
+  align-items: center;
+}
+
+.friendcontainer .req-leftprof .req-cancel {
+  width: 9rem;
+  height: 2.1rem;
+  border: 1px solid rgba(0, 0, 0, 0.26);
+  background-color: rgba(255, 255, 255, 0.183);
+  backdrop-filter: blur(18px);
+  border-radius: 0.5rem;
+  color: #7f6cf4;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.friendcontainer .req-leftprof .req-cancel:hover {
+  border: 1px solid #7e6cf4a1;
+  box-shadow: 0 4px 4px rgba(126, 108, 244, 0.628);
+  font-weight: 600;
+}
+
+.friendcontainer .req-leftprof .req-accepts {
+  width: 4rem;
+  height: 2.1rem;
+  border: 1px solid rgba(0, 0, 0, 0.26);
+  background-color: rgba(255, 255, 255, 0.183);
+  backdrop-filter: blur(18px);
+  border-radius: 0.5rem;
+  color: #7f6cf4;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.friendcontainer .req-leftprof .req-accepts:hover {
+  border: 1px solid #7e6cf4a1;
+  box-shadow: 0 4px 4px rgba(126, 108, 244, 0.628);
+  font-weight: 600;
+}
+
+.friendcontainer .req-leftprof .req-deny {
+  width: 4rem;
+  height: 2.1rem;
+  border: 1px solid rgba(0, 0, 0, 0.26);
+  background-color: rgba(255, 255, 255, 0.183);
+  backdrop-filter: blur(18px);
+  border-radius: 0.5rem;
+  color: #7f6cf4;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.friendcontainer .req-leftprof .req-deny:hover {
+  border: 1px solid #7e6cf4a1;
+  box-shadow: 0 4px 4px rgba(126, 108, 244, 0.628);
+  font-weight: 600;
+}
+
+/*  */
+/*  */
+/*  */
+
+#topprof {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 50rem;
+  background-color: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(18px);
+  z-index: 100;
+}
+
+#usernametopprof {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 50rem;
+  background-color: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(18px);
+  z-index: 100;
+}
+
+#biotopprof {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 50rem;
+  background-color: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(18px);
+  z-index: 100;
+}
+
+#kichwa {
+  display: flex;
+  align-items: baseline;
+}
+
+#kichwa h2 {
+  margin-left: 1rem;
+}
+
+#profcontainer {
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  overflow-y: scroll;
+}
+
+#changeprof #profcontainer #proferrorcontainer {
+  height: auto;
+  width: 80%;
+  background-color: rgb(255, 215, 215);
+  border-radius: 0.5rem;
+  outline: 3px solid red;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+#changeusername #profcontainer #proferrorcontainer {
+  height: auto;
+  width: 80%;
+  background-color: rgb(255, 215, 215);
+  border-radius: 0.5rem;
+  outline: 3px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.explainingtext {
+  color: #7f6cf4;
+  margin-bottom: 0.5rem;
+}
+
+#changeprof #profcontainer div#uploaderror {
+  border: 2px solid red;
+  width: 80%;
+  height: auto;
+}
+
+#changeusername #profcontainer div#uploaderror {
+  border: 2px solid red;
+  width: 80%;
+  height: auto;
+}
+
+section {
+  height: max-content;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1.5rem;
+}
+
+#profname:focus-within label {
+  color: var(--color);
+  font-weight: 600;
+}
+
+#profcontainer #profname {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#profcontainer #profname #usernamelabel {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+#profcontainer #profname #biolabel {
+  font-size: 1.3rem;
+}
+
+#profcontainer #profname input {
+  width: 80%;
+  height: 3.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.342);
+  background-color: white;
+  font-weight: 500;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1rem;
+}
+
+#profcontainer #profname input::placeholder {
+  color: #76709f;
+  font-weight: 300;
+}
+
+#profcontainer #profname input:focus-visible {
+  outline: none;
+  border: 1px solid #7e6cf481;
+  box-shadow: 0 6px 6px rgba(149, 186, 255, 0.674);
+}
+
+#profcontainer #profname input:focus::placeholder {
+  color: #7f6cf4;
+  font-weight: 400;
+}
+
+#profcontainer .profcustom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#profcontainer .profcustom #profpic {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+#profcontainer .profcustom #profpic img {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+}
+
+#profcontainer .profcustom #buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#profcontainer .profcustom #buttons #chooseprof {
+  display: none;
+  width: auto;
+  height: auto;
+  border: none;
+}
+
+#profcontainer .profcustom #buttons #fileLabel {
+  display: block;
+  width: 10rem;
+  height: 3rem;
+  background-color: #ffffff;
+  color: #7f6cf4;
+  border: 1px solid rgba(56, 55, 55, 0.511);
+  border-radius: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+#profcontainer .profcustom #buttons #fileLabel:hover {
+  box-shadow: 0 4px 4px rgba(126, 108, 244, 0.721);
+  border: 1px solid #7f6cf4;
+}
+
+#profcontainer .profcustom #buttons #kusanya {
+  display: none;
+}
+
+#kusanyalabel {
+  display: block;
+  width: 10rem;
+  height: 3rem;
+  background-color: #ffffff;
+  color: #7f6cf4;
+  border: 1px solid rgba(56, 55, 55, 0.511);
+  border-radius: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+#kusanyalabel:hover {
+  box-shadow: 0 4px 4px rgba(126, 108, 244, 0.721);
+  border: 1px solid #7f6cf4;
 }

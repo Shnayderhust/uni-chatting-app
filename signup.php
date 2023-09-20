@@ -66,6 +66,11 @@ require_once "sessionconfig.inc.php";
             </section>
 
             <section>
+                <label for="last name">University</label>
+                <input type="text" name="University" placeholder="Which university do you enroll">
+            </section>
+
+            <section>
                 <label for="email">Email</label>
                 <input type="email" name="em" placeholder="Enter Your Email">
             </section>
@@ -87,7 +92,9 @@ require_once "sessionconfig.inc.php";
 
     <!-- This section with clss of rigth is the one with purple color in the registration form which is empty we can fill it with some dope design like the app logo or a picture later -->
     <section class="right">
-
+        <img src="./assets/picsandicons/favicon.png" class="mlogo" alt="" id="rightlogo" class="mlogo">
+        <h1>Unigram</h1>
+        <p>Unigram makes it easy and fun to communicate!.</p>
     </section>
 
     <div id="topprof">

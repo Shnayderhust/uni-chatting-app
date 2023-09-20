@@ -2,7 +2,7 @@
 
 require_once "dbconnection.inc.php";
 require_once "sessionconfig.inc.php";
-require_once "message_model.inc.php";
+require_once "chatmessage_model.inc.php";
 
 $currentLogedInUserId = $_SESSION["userid"];
 
@@ -22,4 +22,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo json_encode($lastMessage);
         http_response_code(200);
     }
-}
+} 
+
+// else if ($_SERVER["REQUEST_METHOD"] === "GET") {
+//     // Query the database for new messages for the current user
+//     $newMessages = getNewMessages($unigram_conn, $currentLogedInUserId);
+
+//     // Send the new messages to the client
+//     echo json_encode($newMessages);
+//     http_response_code(200);
+// }

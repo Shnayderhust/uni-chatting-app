@@ -9,6 +9,11 @@ const receiverprof = document.getElementById('receiverprof');
 const friendprof = document.querySelector('.friendprof');
 const friendname = document.querySelector('.friendname');
 const sendbuton = document.getElementById('sendbuton');
+const deletechat = document.querySelector('.deletechat');
+
+
+const tumapicha = document.getElementById('submitcontainer');
+
 let receiverData = [];
 let messageLoaded = false;
 let chatMessages = {};
@@ -35,12 +40,13 @@ document.addEventListener('click', function (event) {
 
         receiverData = [receiverId, senderId, convorId,];
 
-        console.log(receiverData)
+        // console.log(receiverData)
 
 
         if (chatMessages[convorId]) {
             chatMessages[convorId].forEach(function (oneMessageContainer) {
                 messagespace.appendChild(oneMessageContainer);
+                console.log('messeges')
             });
         } else {
             addExistingMessage(convorId);
@@ -77,7 +83,7 @@ function sendMessage() {
 
         textInput.value = "";
 
-        fetch('sendmessage.php', {
+        fetch('chatsendmessage.php', {
             method: "POST",
             headers: {
                 "content-Type": "application/json",
@@ -87,15 +93,75 @@ function sendMessage() {
             .then(function (response) {
                 if (response.status === 200) {
                     return response.json().then(function (data) {
-                        console.log(data);
+                        // console.log(data);
                         messagespace.innerHTML += displayRecentSentMessage(data);
                         messagespace.scrollTop = messagespace.scrollHeight;
+
+                        // let newMessagehtmlstring = displayRecentSentMessage(data);
+                        // let newMessageArray = htmlStringToArray(newMessagehtmlstring)
+                        // chatMessages[convorId].push(newMessageArray);
                     })
                 }
             })
     }
 
 };
+
+function sendPhoto() {
+
+    let receiverId = receiverData[0]
+    let senderId = receiverData[1]
+    let convorId = receiverData[2]
+    let formData = new FormData(tumapicha);
+
+    formData.append('receiverId', receiverId);
+    formData.append('senderId', senderId);
+    formData.append('convorId', convorId);
+
+
+
+    fetch("multimedia.php", {
+        method: "POST",
+        body: formData
+    })
+        .then(function (response) {
+            console.log(formData)
+            if (response.status === 201) {
+                return response.json().then(function (data) {
+                    console.log(data);
+                    messagespace.innerHTML += displayRecentSentPhoto(data);
+                    messagespace.scrollTop = messagespace.scrollHeight;
+
+                })
+            }
+        })
+}
+
+// function checkForNewMessages() {
+//     // Make an AJAX request to the server to check for new messages
+//     fetch('checkformessages.php')
+//         .then(function (response) {
+//             if (response.status === 200) {
+//                 return response.json().then(function (data) {
+//                     // Process and display new messages if any
+//                     if (data.length > 0) {
+//                         data.forEach(function (message) {
+//                             messagespace.innerHTML += displayReceivedMessage(message);
+//                         });
+//                         messagespace.scrollTop = messagespace.scrollHeight;
+//                     }
+//                 });
+//             }
+//         });
+// }
+
+// setInterval(checkForNewMessages, 1000);
+
+tumapicha.addEventListener('submit', function (event) {
+    event.preventDefault();
+    sendPhoto()
+    console.log('oyaaaaaaaaaaaaaaaaaaaa')
+})
 
 function addExistingMessage(convoId) {
 
@@ -111,7 +177,7 @@ function addExistingMessage(convoId) {
         "convorId": convorId,
     }
 
-    fetch('sendmessage.php', {
+    fetch('chatsendmessage.php', {
         method: "POST",
         headers: {
             "content-Type": "application/json",
@@ -138,6 +204,49 @@ function addExistingMessage(convoId) {
 
         })
 }
+// function addExistingPhoto(convoId) {
+
+//     if (!chatMessages[convoId]) {
+//         chatMessages[convoId] = [];
+//     }
+//     let onloadFlag = 'initial_load';
+//     let convorId = convoId;
+//     let senderId = receiverData[1]
+//     let multimedia_status = 1;
+
+//     let messagePackage = {
+//         "onloadFlag": onloadFlag,
+//         "convorId": convorId,
+//         "multimedia_status": multimedia_status
+//     }
+
+//     fetch('multimediaBundle.php', {
+//         method: "POST",
+//         headers: {
+//             "content-Type": "application/json",
+//         },
+//         body: JSON.stringify({ messagePackage })
+//     })
+//         .then(function (response) {
+//             if (response.status === 201) {
+//                 return response.json().then(function (data) {
+//                     let allPhotoContainers = displayExistingPhoto(data, senderId);
+
+
+//                     chatPhoto[convoId].length = 0;
+
+//                     allPhotoContainers.forEach(function (onePhotoContainer) {
+//                         chatPhoto[convorId].push(onePhotoContainer); // Store messages in the array
+//                     });
+
+//                     chatPhoto[convorId].forEach(function (onePhotoContainer) {
+//                         messagespace.appendChild(onePhotoContainer);
+//                     });
+//                 })
+//             }
+
+//         })
+// }
 
 
 
@@ -166,22 +275,64 @@ function displayExistingMessages(data, senderId) {
         const actualincomingmessage = document.createElement('p');
         actualincomingmessage.classList.add('actualincomingmessage');
 
+        // 
+        // 
+        // 
+        // 
+        const outgoingmultmedia = document.createElement('div');
+        outgoingmultmedia.classList.add('outgoingmultmedia');
 
-        if (message.sender_id === senderId) {
+        const outgoingmultimediacontainer = document.createElement('div');
+        outgoingmultimediacontainer.classList.add('outgoingmultimediacontainer');
+
+        const actualoutgoingmultmedia = document.createElement('img');
+        actualoutgoingmultmedia.classList.add('actualoutgoingmultmedia');
+
+        // incoming Multimedia container
+        const incomingmultmedia = document.createElement('div');
+        incomingmultmedia.classList.add('incomingmultmedia');
+
+        const incomingmultimediacontainer = document.createElement('div');
+        incomingmultimediacontainer.classList.add('incomingmultimediacontainer');
+
+        const actualincomingmultmedia = document.createElement('img');
+        actualincomingmultmedia.classList.add('actualincomingmultmedia');
+
+
+
+
+        if (message.sender_id === senderId && message.multimedia_status == 0) {
             actualoutgoingmessage.textContent = message.message;
 
             outgoingContainer.appendChild(actualoutgoingmessage);
             outgoingMain.appendChild(outgoingContainer);
 
             allMessageContainers.push(outgoingMain);
+            console.log(`outgoing: ${message.multimedia_status}`)
 
-        } else {
+        } else if (message.sender_id != senderId && message.multimedia_status == 0) {
             actualincomingmessage.textContent = message.message;
 
             incomingContainer.appendChild(actualincomingmessage);
             incomingMain.appendChild(incomingContainer);
 
             allMessageContainers.push(incomingMain);
+        } else if (message.sender_id === senderId && message.multimedia_status == 1) {
+            actualoutgoingmultmedia.src = message.message;
+
+            outgoingmultimediacontainer.appendChild(actualoutgoingmultmedia);
+            outgoingmultmedia.appendChild(outgoingmultimediacontainer);
+
+            allMessageContainers.push(outgoingmultmedia);
+
+        } else if (message.sender_id != senderId && message.multimedia_status == 1) {
+            actualincomingmultmedia.src = message.message;
+
+
+            incomingmultimediacontainer.appendChild(actualincomingmultmedia);
+            incomingmultmedia.appendChild(incomingmultimediacontainer);
+
+            allMessageContainers.push(incomingmultmedia);
         }
 
     })
@@ -191,7 +342,7 @@ function displayExistingMessages(data, senderId) {
 }
 
 function displayRecentSentMessage(data) {
-    console.log(data);
+    // console.log(data);
 
     // Outgoing Messages Containers
     const outgoingMain = document.createElement('div');
@@ -210,4 +361,209 @@ function displayRecentSentMessage(data) {
 
     return outgoingMain.outerHTML;
 }
+
+function displayRecentSentPhoto(data) {
+    // console.log(data);
+
+    // Outgoing Multimedia Containers
+    const outgoingmultmedia = document.createElement('div');
+    outgoingmultmedia.classList.add('outgoingmultmedia');
+
+    const outgoingmultimediacontainer = document.createElement('div');
+    outgoingmultimediacontainer.classList.add('outgoingmultimediacontainer');
+
+    const actualoutgoingmultmedia = document.createElement('img');
+    actualoutgoingmultmedia.classList.add('actualoutgoingmultmedia');
+    actualoutgoingmultmedia.src = data.message;
+
+    outgoingmultimediacontainer.appendChild(actualoutgoingmultmedia);
+    outgoingmultmedia.appendChild(outgoingmultimediacontainer);
+
+
+    return outgoingmultmedia.outerHTML;
+}
+
+// function displayExistingPhoto(data, senderId) {
+//     let allMultimediaContainers = [];
+
+//     data.forEach(function (message) {
+//         // Outgoing Multimedia Containers
+//         const outgoingmultmedia = document.createElement('div');
+//         outgoingmultmedia.classList.add('outgoingmultmedia');
+
+//         const outgoingmultimediacontainer = document.createElement('div');
+//         outgoingmultimediacontainer.classList.add('outgoingmultimediacontainer');
+
+//         const actualoutgoingmultmedia = document.createElement('img');
+//         actualoutgoingmultmedia.classList.add('actualoutgoingmultmedia');
+
+//         // incoming Multimedia container
+//         const incomingmultmedia = document.createElement('div');
+//         incomingmultmedia.classList.add('incomingmultmedia');
+
+//         const incomingmultimediacontainer = document.createElement('div');
+//         incomingmultimediacontainer.classList.add('incomingmultimediacontainer');
+
+//         const actualincomingmultmedia = document.createElement('img');
+//         actualincomingmultmedia.classList.add('actualincomingmultmedia');
+
+
+//         if (message.sender_id === senderId) {
+//             actualoutgoingmultmedia.src = message.message;
+
+//             outgoingmultimediacontainer.appendChild(actualoutgoingmultmedia);
+//             outgoingmultmedia.appendChild(outgoingmultimediacontainer);
+
+//             allMultimediaContainers.push(outgoingmultmedia);
+
+//         } else {
+//             actualincomingmultmedia.src = message.message;
+
+
+//             incomingmultimediacontainer.appendChild(actualincomingmultmedia);
+//             incomingmultmedia.appendChild(incomingmultimediacontainer);
+
+//             allMultimediaContainers.push(incomingmultmedia);
+//         }
+
+//     })
+
+//     return allMessageContainers;
+
+// }
+
+
+
+document.addEventListener('contextmenu', function (event) {
+
+    let receiverId, receiverName, receiverProfilePic, convorId, senderId;
+    let target = event.target;
+    let onechat = target.closest('.onechat');
+
+
+    if (onechat) {
+        deletechat.style.display = "block";
+        receiverId = onechat.getAttribute('data-receiver-id');
+        receiverName = onechat.getAttribute('data-receiver-username');
+        receiverProfilePic = onechat.getAttribute('data-profilepic-id');
+        convorId = onechat.getAttribute('data-convor-id');
+        senderId = onechat.getAttribute('data-currentLogedInUserId');
+
+        receiverData = [receiverId, senderId, convorId,];
+
+        // console.log(receiverData)
+
+
+        if (chatMessages[convorId]) {
+            chatMessages[convorId].forEach(function (oneMessageContainer) {
+                messagespace.appendChild(oneMessageContainer);
+                console.log('messeges')
+            });
+        } else {
+            addExistingMessage(convorId);
+        }
+
+
+        // console.log(`receiverData: ${receiverData}`)
+    }
+})
+
+document.addEventListener('click', function (event) {
+    if (event.target.matches('.deletechat')) {
+
+    }
+})
+
+function deleteConvo() {
+
+    let receiverId = receiverData[0]
+    let senderId = receiverData[1]
+    let convorId = receiverData[2]
+
+    let convoPackage = {
+        "receiverId": receiverId,
+        "senderId": senderId,
+        "convorId": convorId,
+        "chatflag": "deleteChat"
+    }
+
+    fetch('convo.inc.php', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ convoPackage })
+
+    })
+        .then(function (response) {
+            if (response.status === 200) {
+
+                return response.json().then(function (data) {
+
+                    const convoId = data.convoId;
+                    const userOneFriendData = data.userOneFriendData;
+                    const currentLogedInUserId = data.currentLogedInUserId;
+
+                    newchat.style.left = "-100%";
+                    tempo.style.display = "none";
+                    chatslist.style.display = "block";
+                    chatslist.innerHTML += displayconvo(userOneFriendData, convoId, currentLogedInUserId);
+                    const allChats = document.getElementsByClassName('onechat');
+                    console.log('convo added successfully');
+
+                    // console.log('convo displayed successfully')
+                })
+            } else if (response.status === 201) {
+
+                return response.json().then(function (data) {
+
+                    const allChats = document.getElementsByClassName('onechat');
+
+                    if (allChats !== 0) {
+                        for (let onechat of allChats) {
+                            if (onechat.getAttribute("data-convor-id") === data["convor_id"]) {
+                                newchat.style.left = "-100%";
+                                onechat.click();
+                                onechat.classList.add('onechathighlighted');
+                                console.log('convo exist opening convo')
+
+                                setTimeout(() => {
+                                    onechat.classList.remove('onechathighlighted');
+                                }, 1500)
+                            }
+                        }
+                    }
+
+
+                })
+            } else if (response.status === 202) {
+                return response.json().then(function (data) {
+                    const convoId = data.convoId;
+                    const userOneFriendData = data.userOneFriendData;
+                    const currentLogedInUserId = data.currentLogedInUserId;
+
+                    console.log(convoId);
+                    console.log(data);
+                    newchat.style.left = "-100%";
+                    tempo.style.display = "none";
+                    chatslist.style.display = "block";
+                    chatslist.innerHTML += displayconvo(userOneFriendData, convoId, currentLogedInUserId);
+                    console.log('Convo was already added by your friend')
+                })
+            }
+        })
+        .catch(function (error) {
+            console.log("Error fetching user data:", error);
+        })
+
+}
+
+// function htmlStringToArray(htmlString) {
+
+//     const tempContainer = document.createElement('div');
+//     tempContainer.innerHTML = htmlString;
+//     const elementsArray = Array.from(tempContainer.children);
+
+//     return elementsArray;
+// }
 

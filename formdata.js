@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 })
 
 
+
 function displaySelectedImage() {
     const image = document.getElementById('chosingprof');
     const input = document.getElementById('chooseprof');
@@ -85,3 +86,45 @@ function displaySelectedImage() {
 
 
 }
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     const changeprof = document.getElementById('changeprof');
+//     const topprofdiv = document.getElementById('topprofdiv');
+//     const topprof = document.getElementById('topprof');
+
+//     topprofdiv.addEventListener('click', () => {
+//         topprof.style.display = "flex";
+//         console.log('wTF')
+//     })
+
+
+//     changeprof.addEventListener('submit', function (event) {
+//         event.preventDefault();
+
+//         let formData = new FormData(changeprof);
+
+//         fetch("customizeProf.php", {
+//             method: "POST",
+//             body: formData
+//         })
+//             .then(function (response) {
+//                 if (response.status === 200) {
+
+
+//                     return response.text();
+//                 } else if (response.status === 400) {
+//                     return response.json().then(function (data) {
+//                         proferrorcontainer.style.display = "flex";
+//                         topprof.style.display = "none";
+//                         if (proferrorcontainer) {
+//                             proferrorcontainer.innerHTML = '';
+//                             for (let kosa in data) {
+//                                 proferrorcontainer.innerHTML += '<p class="errormessage"> ' + data[kosa] + ' </p>';
+//                             }
+//                         }
+//                     })
+//                 }
+//             })
+//     })
+
+// })
