@@ -97,7 +97,7 @@ function onpageloaddisplayfriends() {
                             userfriendlist.innerHTML += displayfriends(userfrienddata);
 
                         }
-                        console.log('after reload friends displayed successfully')
+                        // console.log('after reload friends displayed successfully')
 
                     }
                 })

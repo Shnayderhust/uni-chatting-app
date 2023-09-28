@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 
 const activechatspace = document.getElementById('activechatspace');
 const messagespace = document.querySelector('.messagespace');
@@ -46,7 +46,7 @@ document.addEventListener('click', function (event) {
         if (chatMessages[convorId]) {
             chatMessages[convorId].forEach(function (oneMessageContainer) {
                 messagespace.appendChild(oneMessageContainer);
-                console.log('messeges')
+                // console.log('messeges')
             });
         } else {
             addExistingMessage(convorId);
@@ -136,10 +136,6 @@ function sendPhoto() {
             }
         })
 }
-
-// function checkForNewMessages() {
-//     // Make an AJAX request to the server to check for new messages
-//     fetch('checkformessages.php')
 //         .then(function (response) {
 //             if (response.status === 200) {
 //                 return response.json().then(function (data) {
@@ -177,6 +173,8 @@ function addExistingMessage(convoId) {
         "convorId": convorId,
     }
 
+    // console.log(messagePackage)
+
     fetch('chatsendmessage.php', {
         method: "POST",
         headers: {
@@ -188,6 +186,8 @@ function addExistingMessage(convoId) {
             if (response.status === 201) {
                 return response.json().then(function (data) {
                     let allMessageContainers = displayExistingMessages(data, senderId);
+
+                    // console.log(data);
 
 
                     chatMessages[convoId].length = 0;
@@ -204,55 +204,12 @@ function addExistingMessage(convoId) {
 
         })
 }
-// function addExistingPhoto(convoId) {
-
-//     if (!chatMessages[convoId]) {
-//         chatMessages[convoId] = [];
-//     }
-//     let onloadFlag = 'initial_load';
-//     let convorId = convoId;
-//     let senderId = receiverData[1]
-//     let multimedia_status = 1;
-
-//     let messagePackage = {
-//         "onloadFlag": onloadFlag,
-//         "convorId": convorId,
-//         "multimedia_status": multimedia_status
-//     }
-
-//     fetch('multimediaBundle.php', {
-//         method: "POST",
-//         headers: {
-//             "content-Type": "application/json",
-//         },
-//         body: JSON.stringify({ messagePackage })
-//     })
-//         .then(function (response) {
-//             if (response.status === 201) {
-//                 return response.json().then(function (data) {
-//                     let allPhotoContainers = displayExistingPhoto(data, senderId);
-
-
-//                     chatPhoto[convoId].length = 0;
-
-//                     allPhotoContainers.forEach(function (onePhotoContainer) {
-//                         chatPhoto[convorId].push(onePhotoContainer); // Store messages in the array
-//                     });
-
-//                     chatPhoto[convorId].forEach(function (onePhotoContainer) {
-//                         messagespace.appendChild(onePhotoContainer);
-//                     });
-//                 })
-//             }
-
-//         })
-// }
-
-
 
 
 function displayExistingMessages(data, senderId) {
     let allMessageContainers = [];
+
+    console.log(data);
 
     data.forEach(function (message) {
         // outgoing message container
@@ -299,6 +256,7 @@ function displayExistingMessages(data, senderId) {
         actualincomingmultmedia.classList.add('actualincomingmultmedia');
 
 
+        // console.log(message);
 
 
         if (message.sender_id === senderId && message.multimedia_status == 0) {
@@ -308,7 +266,7 @@ function displayExistingMessages(data, senderId) {
             outgoingMain.appendChild(outgoingContainer);
 
             allMessageContainers.push(outgoingMain);
-            console.log(`outgoing: ${message.multimedia_status}`)
+            // console.log(`outgoing: ${message.multimedia_status}`)
 
         } else if (message.sender_id != senderId && message.multimedia_status == 0) {
             actualincomingmessage.textContent = message.message;
@@ -336,6 +294,8 @@ function displayExistingMessages(data, senderId) {
         }
 
     })
+
+    // console.log(allMessageContainers);
 
     return allMessageContainers;
 
@@ -383,57 +343,6 @@ function displayRecentSentPhoto(data) {
     return outgoingmultmedia.outerHTML;
 }
 
-// function displayExistingPhoto(data, senderId) {
-//     let allMultimediaContainers = [];
-
-//     data.forEach(function (message) {
-//         // Outgoing Multimedia Containers
-//         const outgoingmultmedia = document.createElement('div');
-//         outgoingmultmedia.classList.add('outgoingmultmedia');
-
-//         const outgoingmultimediacontainer = document.createElement('div');
-//         outgoingmultimediacontainer.classList.add('outgoingmultimediacontainer');
-
-//         const actualoutgoingmultmedia = document.createElement('img');
-//         actualoutgoingmultmedia.classList.add('actualoutgoingmultmedia');
-
-//         // incoming Multimedia container
-//         const incomingmultmedia = document.createElement('div');
-//         incomingmultmedia.classList.add('incomingmultmedia');
-
-//         const incomingmultimediacontainer = document.createElement('div');
-//         incomingmultimediacontainer.classList.add('incomingmultimediacontainer');
-
-//         const actualincomingmultmedia = document.createElement('img');
-//         actualincomingmultmedia.classList.add('actualincomingmultmedia');
-
-
-//         if (message.sender_id === senderId) {
-//             actualoutgoingmultmedia.src = message.message;
-
-//             outgoingmultimediacontainer.appendChild(actualoutgoingmultmedia);
-//             outgoingmultmedia.appendChild(outgoingmultimediacontainer);
-
-//             allMultimediaContainers.push(outgoingmultmedia);
-
-//         } else {
-//             actualincomingmultmedia.src = message.message;
-
-
-//             incomingmultimediacontainer.appendChild(actualincomingmultmedia);
-//             incomingmultmedia.appendChild(incomingmultimediacontainer);
-
-//             allMultimediaContainers.push(incomingmultmedia);
-//         }
-
-//     })
-
-//     return allMessageContainers;
-
-// }
-
-
-
 document.addEventListener('contextmenu', function (event) {
 
     let receiverId, receiverName, receiverProfilePic, convorId, senderId;
@@ -457,7 +366,7 @@ document.addEventListener('contextmenu', function (event) {
         if (chatMessages[convorId]) {
             chatMessages[convorId].forEach(function (oneMessageContainer) {
                 messagespace.appendChild(oneMessageContainer);
-                console.log('messeges')
+                // console.log('messeges')
             });
         } else {
             addExistingMessage(convorId);
@@ -509,7 +418,7 @@ function deleteConvo() {
                     chatslist.style.display = "block";
                     chatslist.innerHTML += displayconvo(userOneFriendData, convoId, currentLogedInUserId);
                     const allChats = document.getElementsByClassName('onechat');
-                    console.log('convo added successfully');
+                    // console.log('convo added successfully');
 
                     // console.log('convo displayed successfully')
                 })
@@ -525,7 +434,7 @@ function deleteConvo() {
                                 newchat.style.left = "-100%";
                                 onechat.click();
                                 onechat.classList.add('onechathighlighted');
-                                console.log('convo exist opening convo')
+                                // console.log('convo exist opening convo')
 
                                 setTimeout(() => {
                                     onechat.classList.remove('onechathighlighted');
@@ -542,13 +451,13 @@ function deleteConvo() {
                     const userOneFriendData = data.userOneFriendData;
                     const currentLogedInUserId = data.currentLogedInUserId;
 
-                    console.log(convoId);
-                    console.log(data);
+                    // console.log(convoId);
+                    // console.log(data);
                     newchat.style.left = "-100%";
                     tempo.style.display = "none";
                     chatslist.style.display = "block";
                     chatslist.innerHTML += displayconvo(userOneFriendData, convoId, currentLogedInUserId);
-                    console.log('Convo was already added by your friend')
+                    // console.log('Convo was already added by your friend')
                 })
             }
         })
@@ -566,4 +475,10 @@ function deleteConvo() {
 
 //     return elementsArray;
 // }
+
+// function checkForNewMessages() {
+
+//     fetch('checkformessages.php')
+
+
 

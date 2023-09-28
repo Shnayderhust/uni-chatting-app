@@ -5,7 +5,8 @@ const newchat = document.getElementById('newchat');
 document.addEventListener('DOMContentLoaded', function () {
 
     onpageloaddisplayconvo();
-    addConvo()
+    addConvo();
+    // convoSearchfunction();
 
 })
 
@@ -38,7 +39,7 @@ function addConvo() {
                             tempo.style.display = "none";
                             chatslist.style.display = "block";
                             chatslist.innerHTML += displayconvo(userOneFriendData, convoId, currentLogedInUserId);
-                            const allChats = document.getElementsByClassName('onechat');
+                            // const allChats = document.getElementsByClassName('onechat');
                             console.log('convo added successfully');
 
                             // console.log('convo displayed successfully')
@@ -152,7 +153,7 @@ function onpageloaddisplayconvo() {
                     const allUserFriendsData = data.allUserFriendsData;
                     const currentLoggedUserConvoIds = data.currentLoggedUserConvoIds;
                     const currentLogedInUserId = data.currentLogedInUserId;
-                    console.log(`Convo data added after reload: ${data}`);
+                    // console.log(`Convo data added after reload: ${data}`);
                     newchat.style.left = "-100%";
                     tempo.style.display = "none";
                     chatslist.style.display = "block";
@@ -162,7 +163,7 @@ function onpageloaddisplayconvo() {
                         chatslist.appendChild(convocontainer);
                     })
 
-                    console.log('after reload convo displayed successfully')
+                    // console.log('after reload convo displayed successfully')
                 })
             } else {
                 console.log('friends displaying failed')
@@ -191,7 +192,7 @@ function displayconvoonload(allUserFriendsData, currentLoggedUserConvoIds, curre
                 onechat.setAttribute('data-receiver-id', oneUserFriendData["user_id"]);
 
                 onechat.setAttribute('data-convor-id', oneConvoId['convor_id']);
-                console.log(`This convo id: ${oneConvoId["convor_id"]} is for user ${oneUserFriendData["user_id"]}`);
+                // console.log(`This convo id: ${oneConvoId["convor_id"]} is for user ${oneUserFriendData["user_id"]}`);
 
                 onechat.setAttribute('data-profilepic-id', oneUserFriendData["profile_pic_id"]);
                 onechat.setAttribute('data-receiver-username', oneUserFriendData["username"]);
@@ -239,6 +240,27 @@ function doesConvorIdMatchFriendsIdFromDb(convorId, friendsId, loggedUserId) {
 
     return trimmedConvorId === friendsIdstring;
 }
+
+// const convoSearchbar = document.getElementById('convosearch');
+
+// function convoSearchfunction() {
+//     const convos = document.querySelectorAll('.onechat')
+//     console.log(convos)
+//     // This block is used for searching through users
+//     convoSearchbar.addEventListener('input', function () {
+//         const searchTerm = convoSearchbar.value.toLowerCase();
+
+//         convos.forEach(function (convo) {
+//             console.log(convo)
+//             const username = convo.getAttribute('data-receiver-username').toLowerCase();
+//             if (username.includes(searchTerm)) {
+//                 convo.style.display = 'flex';
+//             } else {
+//                 convo.style.display = 'none';
+//             }
+//         })
+//     })
+// }
 
 
 
