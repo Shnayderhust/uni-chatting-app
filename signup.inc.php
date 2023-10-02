@@ -10,6 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $university = $_POST["University"];
 
     try {
+
         require_once "dbconnection.inc.php";
         require_once "sessionconfig.inc.php";
         require_once "signup_model.inc.php";
@@ -35,7 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 echo json_encode($errors);
             }
         } else if (!is_input_empty($firstname, $lastname, $email, $password, $university) && !is_email_invalid($email) && !is_email_registered($unigram_conn, $email)) {
-            $result = set_user($unigram_conn, $firstname, $lastname, $email, $password, $university);
+            $result = set_users($unigram_conn, $firstname, $lastname, $email, $password, $university);
+            // error_log("what are you doing\n", 3, "debug.log");
             $_SESSION["useremail"] = $result["email"];
 
             http_response_code(200);

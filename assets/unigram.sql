@@ -6,6 +6,7 @@ CREATE TABLE users (
   bio VARCHAR(100) NOT NULL,
   email VARCHAR(200) NOT NULL UNIQUE,
   `password` VARCHAR(100) NOT NULL,
+  university VARCHAR(40) NOT NULL,
   reg_date VARCHAR(30) NOT NULL,
   profile_pic_id VARCHAR(300) NOT NULL DEFAULT 'avatar.jpg',
   `status` TINYINT(1) NOT NULL DEFAULT 0
@@ -27,7 +28,7 @@ CREATE TABLE messages (
   `timestamp` TIMESTAMP NOT NULL,
   read_status TINYINT(1),
   multimedia_status TINYINT(0),
-  FOREIGN KEY (conversation_id) REFERENCES `conversation`(conver_id),
+  FOREIGN KEY (conversation_id) REFERENCES `conversation`(convor_id),
   FOREIGN KEY (sender_id) REFERENCES users(user_id)
 );
 CREATE TABLE friends (

@@ -22,7 +22,7 @@ function get_email(object $unigram_conn, $email)
     return $result;
 }
 
-function set_user(object $unigram_conn, $firstname, $lastname, $email, $password, $university)
+function set_users(object $unigram_conn, $firstname, $lastname, $email, $password, $university)
 {
     $query = "INSERT INTO users (firstname, lastname, email, `password`, university) VALUES (:firstname, :lastname, :email, :hashedpassword, :university);";
     $stmt = $unigram_conn->prepare($query);
