@@ -2,7 +2,7 @@
 
 require_once "dbconnection.inc.php";
 require_once "sessionconfig.inc.php";
-require_once "chat_model.inc.php";
+require_once "friend_model.inc.php";
 
 $currentLogedInUserId = $_SESSION["userid"];
 
@@ -31,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $data = json_decode(file_get_contents("php://input"));
     $userIdToAdd = $data->getUserId;
 
+
     if ($userIdToAdd === 'initial_load') {
         $UserFriendsId = get_userfriendsid($unigram_conn, $currentLogedInUserId);
         $allUserFriendsData = get_userfriendsdata($unigram_conn, $UserFriendsId);
@@ -39,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         http_response_code(200);
     } else {
 
-        if (check_userfriends($unigram_conn, $currentLogedInUserId, $userIdToAdd)) {
+        if (dofriend_exist($unigram_conn, $currentLogedInUserId, $userIdToAdd)) {
             http_response_code(400);
         } else {
             add_userfriends($unigram_conn, $currentLogedInUserId, $userIdToAdd);

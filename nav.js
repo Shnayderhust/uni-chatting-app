@@ -47,6 +47,10 @@ addEventListener('click', (event) => {
         console.log('clicked')
     } else if (event.target.matches('#return')) {
         document.getElementById('topprof').style.display = "none";
+    } else if (event.target.matches('#returnfromfilepreview')) {
+        document.getElementById('filepreview').style.display = "none";
+    } else if (event.target.matches('#submitfile')) {
+        document.getElementById('filepreview').style.display = "none";
     } else if (event.target.matches('#friendsearch')) {
         document.getElementById('friendsearchresult').style.display = "block";
     } else if (event.target.matches('#fsearchreturn')) {
@@ -56,9 +60,8 @@ addEventListener('click', (event) => {
     } else if (event.target.matches('.addfriend')) {
         document.getElementById('noactivechat').style.display = "none";
         document.getElementById('activechat').style.display = "flex";
+        document.getElementById('friendrequests').style.right = "0%";
     }
-
-
 });
 
 
@@ -70,42 +73,46 @@ addEventListener('click', (event) => {
     }
 })
 
+addEventListener('click', (event) => {
+    if (event.target.matches('#fileuploader')) {
+        document.getElementById('filepreview').style.display = "flex";
+    } else if (!event.target.matches('#fileuploader')) {
+        document.getElementById('filepreview').style.display = "none";
+
+    }
+})
+
+// const tumaDocument = document.getElementById('uploadyourdocument');
+// const uploadyourphoto = document.getElementById('uploadyourphoto');
+
+// tumaDocument.addEventListener('click', () => {
+//     document.querySelector('documentfilepreview').style.display = "flex";
+// })
+
+// uploadyourphoto.addEventListener('click', () => {
+//     document.querySelector('photofilepreview').style.display = "flex";
+// })
+
+
+const rootVariables = document.documentElement;
+
+
+const colormode = document.getElementById('changemode')
+
+let darkmode = false;
+colormode.addEventListener('click', () => {
+
+    if (!darkmode) {
+        rootVariables.style.setProperty('--lightmode-background-color', '#1919199d')
+        rootVariables.style.setProperty('--lightmode-color', '#fff')
+        darkmode = true;
+    } else {
+        rootVariables.style.setProperty('--lightmode-background-color', '#fff')
+        rootVariables.style.setProperty('--lightmode-color', '#000')
+        darkmode = false;
+    }
+
+})
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// BIG NOTE 
-
-/*
-
-    The "document.getElementById" method is responsible for querying an element by its id in the html file that this js file is sourced
-
-    The "event.target.matches('')" method check for any match you provide from an html file it can be id in which the parameter of matches method will start with # or class param 'll start with . or tag
-
-    The "addEventListener('click', (event) => {}" method with first parameter of click and callback function is responsible for listening to specified click events in the dom and execute the callback function with the event param that specify the clicked event
-
-*/

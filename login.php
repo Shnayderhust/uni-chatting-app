@@ -74,7 +74,9 @@ require_once "sessionconfig.inc.php";
     </section>
 
     <section class="right">
-
+        <img src="./assets/picsandicons/favicon.png" class="mlogo" alt="" id="rightlogo">
+        <h1>Welcome To Unigram</h1>
+        <p>Unigram makes it easy and fun to communicate!.</p>
     </section>
 
     <script src="nav.js"></script>

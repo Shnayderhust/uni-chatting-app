@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
         })
             .then(function (response) {
                 if (response.status === 200) {
-                    // signupsuccess.innerHTML += '<p class="signupsuccessmessage"> You have register successfully now use your credentials to login </p>';
                     window.location.href = "./login.php";
                     return response.text();
                 } else if (response.status === 400) {
@@ -67,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 
 })
+
 
 
 function displaySelectedImage() {

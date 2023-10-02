@@ -29,15 +29,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $errors["wrong_password"] = "Incorect Password";
         } else if (!is_input_empty($username, $password) && !is_password_invalid($password, $hashed_pass_db) && !is_username_invalid($result["username"])) {
 
-            unset($_SESSION["useremail"]);
             unset($_SESSION["makosa"]);
             $_SESSION["userid"] = $result["user_id"];
             $_SESSION["username"] = $result["username"];
+            $_SESSION["university"] = $result["university"];
             $_SESSION["userbio"] = $result["bio"];
             $_SESSION["fileDestination"] = $result["profile_pic_id"];
             $profile_pic_id = $_SESSION["fileDestination"];
+            $_SESSION["useremail"] = $result["email"];
 
             sessionRegenerateLogin();
+
             header("location: chat.php");
 
             exit();

@@ -97,7 +97,7 @@ function onpageloaddisplayfriends() {
                             userfriendlist.innerHTML += displayfriends(userfrienddata);
 
                         }
-                        console.log('after reload friends displayed successfully')
+                        // console.log('after reload friends displayed successfully')
 
                     }
                 })
@@ -165,5 +165,43 @@ function displayfriends(userfrienddata) {
 
     return userfriend.outerHTML;
 
+}
+
+addEventListener('click', (event) => {
+    if (event.target.matches('#requestlist')) {
+        document.getElementById('friendrequests').style.right = "-100%";
+    } else if (event.target.matches('.addfriend')) {
+        document.getElementById('friendrequests').style.right = "0";
+    }
+})
+
+addEventListener('click', function (event) {
+    if (event.target.matches('.remove')) {
+        const userId = event.target.getAttribute('data-user-id')
+        removeUser(userId);
+    }
+})
+
+function removeUser(userId) {
+
+
+    let getUserId = {
+        "userId": userId,
+        "removeFlag": 'removeFriend'
+    }
+
+    fetch('removefriend.inc.php', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ getUserId })
+
+    })
+        .then(function (response) {
+            if (response.status === 200) {
+                console.log('user added successfully')
+            }
+        })
 }
 
