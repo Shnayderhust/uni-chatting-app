@@ -32,7 +32,7 @@
     </header>
 
     <main>
-        <img src="./assets/picsandicons/homepic.png" alt="pic" id="mainpic">
+        <img src="./assets/picsandicons/Apple-Computer-Science-Education-Week-hero_big.jpg.large_2x.jpg" alt="pic" id="mainpic">
         <!-- <div class="overpic"></div> -->
         <div class="parag">
             <h1>Message Privately</h1>

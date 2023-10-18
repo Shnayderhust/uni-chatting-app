@@ -1,3 +1,4 @@
+--@block
 CREATE TABLE users (
   user_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   firstname VARCHAR(200) NOT NULL,
@@ -11,6 +12,7 @@ CREATE TABLE users (
   profile_pic_id VARCHAR(300) NOT NULL DEFAULT 'avatar.jpg',
   `status` TINYINT(1) NOT NULL DEFAULT 0
 );
+--@block
 CREATE TABLE `conversation` (
   convor_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user1_id INT(11),
@@ -19,6 +21,7 @@ CREATE TABLE `conversation` (
   FOREIGN KEY (user1_id) REFERENCES users(user_id),
   FOREIGN KEY (user2_id) REFERENCES users(user_id)
 );
+--@block
 CREATE TABLE messages (
   id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   conversation_id INT(11) NOT NULL,
@@ -31,6 +34,7 @@ CREATE TABLE messages (
   FOREIGN KEY (conversation_id) REFERENCES `conversation`(convor_id),
   FOREIGN KEY (sender_id) REFERENCES users(user_id)
 );
+--@block
 CREATE TABLE friends (
   user_id INT(11) NOT NULL,
   friend_id INT(11) NOT NULL,
@@ -38,6 +42,7 @@ CREATE TABLE friends (
   FOREIGN KEY (user_id) REFERENCES users(user_id),
   FOREIGN KEY (friend_id) REFERENCES users(user_id)
 );
+--@block
 CREATE TABLE notification (
   id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   receiver_id INT(11),
