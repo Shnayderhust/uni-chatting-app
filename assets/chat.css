@@ -509,6 +509,7 @@ body .right #friendrequests {
   right: -100%;
   background-color: rgba(255, 255, 255, 0.352);
   backdrop-filter: blur(18px);
+  padding: 0;
 }
 
 body .right #friendrequests #requesthead {
@@ -1422,6 +1423,7 @@ body #logoutform #logoutdiv button:last-child:hover {
   backdrop-filter: blur(18px);
   justify-content: space-between;
   border-radius: 1rem;
+  border: 2px solid black;
 }
 
 .friendcontainer .requestprof {
@@ -1446,7 +1448,7 @@ cancel .friendcontainer .requestprof .req-details .req-friendbio {
 }
 
 .friendcontainer .req-leftprof .req-cancel {
-  width: 9rem;
+  width: 8rem;
   height: 2.1rem;
   border: 1px solid rgba(0, 0, 0, 0.26);
   background-color: rgba(255, 255, 255, 0.183);

@@ -165,7 +165,7 @@ if (!isset($_SESSION["userid"])) {
 
 
         </section>
-        <!-- 
+
         <section id="friendrequests">
             <div id="requesthead">
                 <h1>Requests</h1>
@@ -178,12 +178,12 @@ if (!isset($_SESSION["userid"])) {
                     </div>
                     <div id="sentrequestlist">
 
-                        <div class="friendcontainer" data-username="yasri">
+                        <div class="friendcontainer" data-username="Shnayder">
                             <div class="requestprof">
-                                <img src="assets/UserPics/6509596e919722.41231379.jpg" class="requestphoto">
+                                <img src="assets/UserPics/profpic.jpg" class="requestphoto">
                                 <div class="req-details">
-                                    <h3 class="req-jina">yasri</h3>
-                                    <p class="req-friendbio">yasri</p>
+                                    <h3 class="req-jina">Shnayder</h3>
+                                    <p class="req-friendbio">Se'mi bi Oba</p>
                                 </div>
                             </div>
                             <div class="req-leftprof">
@@ -198,12 +198,12 @@ if (!isset($_SESSION["userid"])) {
                         <h2>Friend Requests</h2>
                     </div>
                     <div id="friendrequestlist">
-                        <div class="friendcontainer" data-username="yasri">
+                        <div class="friendcontainer" data-username="Shnayder">
                             <div class="requestprof">
-                                <img src="assets/UserPics/6509596e919722.41231379.jpg" class="requestphoto">
+                                <img src="assets/UserPics/profpic.jpg" class="requestphoto">
                                 <div class="req-details">
-                                    <h3 class="req-jina">yasri</h3>
-                                    <p class="req-friendbio">yasri</p>
+                                    <h3 class="req-jina">Shnayder</h3>
+                                    <p class="req-friendbio">Se'mi bi Oba</p>
                                 </div>
                             </div>
                             <div class="req-leftprof">
@@ -215,7 +215,7 @@ if (!isset($_SESSION["userid"])) {
                     </div>
                 </div>
             </div>
-        </section> -->
+        </section>
 
     </div>
 
