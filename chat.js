@@ -92,15 +92,16 @@ function sendMessage() {
         })
             .then(function (response) {
                 if (response.status === 200) {
-                    return response.json().then(function (data) {
-                        // console.log(data);
-                        messagespace.innerHTML += displayRecentSentMessage(data);
-                        messagespace.scrollTop = messagespace.scrollHeight;
+                    return response.json()
+                        .then(function (data) {
+                            // console.log(data);
+                            messagespace.innerHTML += displayRecentSentMessage(data);
+                            messagespace.scrollTop = messagespace.scrollHeight;
 
-                        // let newMessagehtmlstring = displayRecentSentMessage(data);
-                        // let newMessageArray = htmlStringToArray(newMessagehtmlstring)
-                        // chatMessages[convorId].push(newMessageArray);
-                    })
+                            // let newMessagehtmlstring = displayRecentSentMessage(data);
+                            // let newMessageArray = htmlStringToArray(newMessagehtmlstring)
+                            // chatMessages[convorId].push(newMessageArray);
+                        })
                 }
             })
     }

@@ -27,7 +27,7 @@ function set_users(object $unigram_conn, $firstname, $lastname, $email, $passwor
     $query = "INSERT INTO users (firstname, lastname, email, `password`, university) VALUES (:firstname, :lastname, :email, :hashedpassword, :university);";
     $stmt = $unigram_conn->prepare($query);
 
-    $hashedPassword = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
+    $hashedPassword = password_hash($password, PASSWORD_BCRYPT, ['cost' => 15]);
 
     $stmt->bindParam(":firstname", $firstname);
     $stmt->bindParam(":lastname", $lastname);

@@ -38,29 +38,13 @@ addEventListener('click', (event) => {
     }
     else if (event.target.matches('#yeslogout')) {
         window.location.href = "login.php";
-    }
-    else if (event.target.matches('#nostay')) {
-        document.getElementById('unorderd').style.display = "none";
-        document.getElementById('logoutform').style.display = "none";
     } else if (event.target.matches('#finishreg')) {
         document.getElementById('topprof').style.display = "flex";
         console.log('clicked')
-    } else if (event.target.matches('#return')) {
-        document.getElementById('topprof').style.display = "none";
-    } else if (event.target.matches('#returnfromfilepreview')) {
-        document.getElementById('filepreview').style.display = "none";
-    } else if (event.target.matches('#submitfile')) {
-        document.getElementById('filepreview').style.display = "none";
-    } else if (event.target.matches('#friendsearch')) {
-        document.getElementById('friendsearchresult').style.display = "block";
     } else if (event.target.matches('#fsearchreturn')) {
         document.getElementById('friendsearchresult').style.display = "none";
     } else if (!event.target.matches('#friendsearch')) {
         document.getElementById('friendsearchresult').style.display = "none";
-    } else if (event.target.matches('.addfriend')) {
-        document.getElementById('noactivechat').style.display = "none";
-        document.getElementById('activechat').style.display = "flex";
-        document.getElementById('friendrequests').style.right = "0%";
     }
 });
 
@@ -94,25 +78,8 @@ addEventListener('click', (event) => {
 // })
 
 
-const rootVariables = document.documentElement;
 
 
-const colormode = document.getElementById('changemode')
-
-let darkmode = false;
-colormode.addEventListener('click', () => {
-
-    if (!darkmode) {
-        rootVariables.style.setProperty('--lightmode-background-color', '#1919199d')
-        rootVariables.style.setProperty('--lightmode-color', '#fff')
-        darkmode = true;
-    } else {
-        rootVariables.style.setProperty('--lightmode-background-color', '#fff')
-        rootVariables.style.setProperty('--lightmode-color', '#000')
-        darkmode = false;
-    }
-
-})
 
 
 

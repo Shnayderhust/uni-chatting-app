@@ -12,3 +12,12 @@ document.getElementById('chooseprof').addEventListener('change', function () {
 document.getElementById('kusanyalabel').addEventListener('change', function () {
     document.getElementById('kusanya').click();
 })
+
+addEventListener('click', (event) => {
+
+    if (event.target.matches('#return')) {
+        document.getElementById('topprof').style.display = "none";
+    } else if (event.target.matches('#submitfile')) {
+        document.getElementById('filepreview').style.display = "none";
+    }
+})
