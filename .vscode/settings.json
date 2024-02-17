@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "liveServer.settings.port": 5501,
   "sqltools.connections": [
@@ -29,3 +30,8 @@
     }
   ]
 }
+=======
+{
+  "liveServer.settings.port": 5501
+}
+>>>>>>> 3529bbc (Refactor: Addition of old code)
