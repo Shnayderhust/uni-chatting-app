@@ -42,11 +42,26 @@ addEventListener('click', (event) => {
     } else if (event.target.matches('#finishreg')) {
         document.getElementById('topprof').style.display = "flex";
         console.log('clicked')
+<<<<<<< HEAD
+=======
+    } else if (event.target.matches('#return')) {
+        document.getElementById('topprof').style.display = "none";
+    } else if (event.target.matches('#friendsearch')) {
+        document.getElementById('friendsearchresult').style.display = "block";
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
     } else if (event.target.matches('#fsearchreturn')) {
         document.getElementById('friendsearchresult').style.display = "none";
     } else if (!event.target.matches('#friendsearch')) {
         document.getElementById('friendsearchresult').style.display = "none";
+<<<<<<< HEAD
+=======
+    } else if (event.target.matches('.addfriend')) {
+        document.getElementById('noactivechat').style.display = "none";
+        document.getElementById('activechat').style.display = "flex";
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
     }
+
+
 });
 
 
@@ -57,27 +72,6 @@ addEventListener('click', (event) => {
         document.getElementById('unorderd').style.display = "none";
     }
 })
-
-addEventListener('click', (event) => {
-    if (event.target.matches('#fileuploader')) {
-        document.getElementById('filepreview').style.display = "flex";
-    } else if (!event.target.matches('#fileuploader')) {
-        document.getElementById('filepreview').style.display = "none";
-
-    }
-})
-
-// const tumaDocument = document.getElementById('uploadyourdocument');
-// const uploadyourphoto = document.getElementById('uploadyourphoto');
-
-// tumaDocument.addEventListener('click', () => {
-//     document.querySelector('documentfilepreview').style.display = "flex";
-// })
-
-// uploadyourphoto.addEventListener('click', () => {
-//     document.querySelector('photofilepreview').style.display = "flex";
-// })
-
 
 
 

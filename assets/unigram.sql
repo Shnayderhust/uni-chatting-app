@@ -8,9 +8,14 @@ CREATE TABLE users (
   bio VARCHAR(100) NOT NULL,
   email VARCHAR(200) NOT NULL UNIQUE,
   `password` VARCHAR(100) NOT NULL,
+<<<<<<< HEAD
   university VARCHAR(40) NOT NULL,
   reg_date VARCHAR(30) NOT NULL,
   profile_pic_id VARCHAR(300) NOT NULL DEFAULT 'avatar.jpg',
+=======
+  registration_date TIMESTAMP NOT NULL,
+  profile_pic_id VARCHAR(300) NOT NULL DEFAULT 'assets/UserPics/userDefaultProfile.png',
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
   `status` TINYINT(1) NOT NULL DEFAULT 0
 );
 --@block
@@ -29,9 +34,14 @@ CREATE TABLE messages (
   sender_id INT(11) NOT NULL,
   receiver_id INT(11) NOT NULL,
   `message` TEXT NOT NULL,
+<<<<<<< HEAD
   `timestamp` TIMESTAMP NOT NULL,
   read_status TINYINT(1),
   multimedia_status TINYINT(0),
+=======
+  `timestamp` TIMESTAMP(6) NOT NULL,
+  read_status TINYINT(1) DEFAULT 0,
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
   FOREIGN KEY (conversation_id) REFERENCES `conversation`(convor_id),
   FOREIGN KEY (sender_id) REFERENCES users(user_id)
 );
@@ -43,7 +53,10 @@ CREATE TABLE friends (
   FOREIGN KEY (user_id) REFERENCES users(user_id),
   FOREIGN KEY (friend_id) REFERENCES users(user_id)
 );
+<<<<<<< HEAD
 --@block
+=======
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
 CREATE TABLE notification (
   id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   receiver_id INT(11),

@@ -23,9 +23,13 @@ function get_email(object $unigram_conn, $email)
     return $result;
 }
 
+<<<<<<< HEAD
 function set_users(object $unigram_conn, $firstname, $lastname, $email, $password, $university)
+=======
+function set_user(object $unigram_conn, $firstname, $lastname, $email, $password)
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
 {
-    $query = "INSERT INTO users (firstname, lastname, email, `password`, university) VALUES (:firstname, :lastname, :email, :hashedpassword, :university);";
+    $query = "INSERT INTO users (firstname, lastname, email, `password`) VALUES (:firstname, :lastname, :email, :hashedpassword);";
     $stmt = $unigram_conn->prepare($query);
 
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT, ['cost' => 15]);
@@ -34,7 +38,6 @@ function set_users(object $unigram_conn, $firstname, $lastname, $email, $passwor
     $stmt->bindParam(":lastname", $lastname);
     $stmt->bindParam(":email", $email);
     $stmt->bindParam(":hashedpassword", $hashedPassword);
-    $stmt->bindParam(":university", $university);
     $stmt->execute();
 
     $query = "SELECT * FROM users WHERE email = :email";
@@ -69,6 +72,7 @@ function get_user(object $unigram_conn, $email)
     $result = $selectstmt->fetch(PDO::FETCH_ASSOC);
     return $result;
 }
+<<<<<<< HEAD
 
 
 function update_profile(object $unigram_conn, $email, $profile_pic_id)
@@ -209,3 +213,5 @@ function update_bio(object $unigram_conn, $email, $bio)
     $stmt->execute();
 }
 >>>>>>> 3529bbc (Refactor: Addition of old code)
+=======
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))

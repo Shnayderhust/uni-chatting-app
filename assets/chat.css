@@ -166,7 +166,6 @@ body .left #chats .chatslist .onechat {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  position: relative;
 }
 
 body .left #chats .chatslist .onechat:hover {
@@ -218,7 +217,6 @@ body .right {
   background-color: var(--lightmode-background-color);
   display: flex;
   flex-direction: column;
-  position: relative;
 }
 
 body .right #noactivechat {
@@ -274,7 +272,7 @@ body .right #activechat {
 body .right #activechat #activechatspace {
   display: block;
   position: fixed;
-  right: -100%;
+  /* right: -100%; */
   height: 100%;
   width: 60%;
   background-color: var(--lightmode-background-color);
@@ -323,7 +321,10 @@ body .right #activechat #activechatspace .messagespace {
   padding-right: 1rem;
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
+<<<<<<< HEAD
   background-color: var(--lightmode-background-color);
+=======
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
   background-image: url(./picsandicons/UnigramTheme01.png);
   background-size: contain;
 }
@@ -453,13 +454,6 @@ body .right #activechat #activechatspace .chatspace .receiverprof {
   margin-right: 1rem;
 }
 
-body .right #activechat #activechatspace .chatspace #fileuploader {
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-right: 1rem;
-  cursor: pointer;
-}
-
 body .right #activechat #activechatspace .chatspace #sendtextcontainer {
   width: 80%;
   display: flex;
@@ -505,18 +499,22 @@ body .right #friendrequests {
   height: 100%;
   width: 100%;
   display: none;
+<<<<<<< HEAD
   position: absolute;
   transition: right 1s ease-in-out 0.1s;
   right: -100%;
   background-color: rgba(255, 255, 255, 0.352);
   backdrop-filter: blur(18px);
   padding: 0;
+=======
+  flex-direction: column;
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
 }
 
 body .right #friendrequests #requesthead {
   display: flex;
   align-items: center;
-  padding-left: 5rem;
+  justify-content: center;
   height: 13%;
   border-bottom: 1px solid #7f6cf4;
 }
@@ -535,64 +533,38 @@ body .right #friendrequests #sentRequests {
   height: 100%;
   width: 50%;
   display: flex;
-  flex-direction: column;
-  background-color: #ebfffa;
-  align-items: center;
-  padding-top: 0.7rem;
+  padding: 1rem;
+  padding-left: 3rem;
   border-right: 2px solid var(--color2);
-  background-image: url(./picsandicons/UnigramTheme01.png);
-}
-
-#Requestsheader {
-  width: 20rem;
-  height: 4rem;
-  border-radius: 1rem;
-  background-color: rgba(255, 255, 255, 0.114);
-  backdrop-filter: blur(18px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-image: url(../assets/picsandicons/pexels-vedanti-245250.jpg);
 }
 
 body .right #friendrequests #sentRequests h2 {
+  height: 7%;
+  border-bottom: 2px solid var(--color);
   color: var(--color);
 }
 
-body .right #friendrequests #sentRequests #sentrequestlist {
-  width: 100%;
-  height: 100%;
-  overflow-y: scroll;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
+/* body .right #friendrequests #sentRequests #sentrequestlist {
+} */
 
 body .right #friendrequests #allfriendRequests {
   height: 100%;
   width: 50%;
   display: flex;
-  flex-direction: column;
-  background-color: #ebe8ff;
-  align-items: center;
-  padding-top: 0.7rem;
-  border-right: 2px solid var(--color2);
-  background-image: url(./picsandicons/UnigramTheme01.png);
+  padding: 1rem;
+  padding-left: 6rem;
+  background-image: url(../assets/picsandicons/pexels-vedanti-245250.jpg);
 }
 
 body .right #friendrequests #allfriendRequests h2 {
+  height: 7%;
+  border-bottom: 2px solid var(--color);
   color: var(--color);
 }
 
-body .right #friendrequests #allfriendRequests #friendrequestlist {
-  height: 100%;
-  width: 100%;
-  overflow-y: scroll;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
+/* body .right #friendrequests #allfriendRequests #friendrequestlist {
+} */
 
 body #newchat {
   display: block;
@@ -1273,11 +1245,12 @@ body #logoutform #logoutdiv button:last-child:hover {
   border: 1px solid #7e6cf4b5;
 }
 
-/* .darkmode {
+.darkmode {
   background-color: rgba(0, 0, 0, 0.826);
   width: 100%;
   height: 100%;
   position: absolute;
+<<<<<<< HEAD
 } */
 
 #fileuploaderdropdown {
@@ -1742,6 +1715,9 @@ section {
 #kusanyalabel:hover {
   box-shadow: 0 4px 4px rgba(126, 108, 244, 0.721);
   border: 1px solid #7f6cf4;
+=======
+  /* z-index: ; */
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
 }
 =======
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;700;800&display=swap");

@@ -10,11 +10,6 @@ const receiverprof = document.getElementById('receiverprof');
 const friendprof = document.querySelector('.friendprof');
 const friendname = document.querySelector('.friendname');
 const sendbuton = document.getElementById('sendbuton');
-const deletechat = document.querySelector('.deletechat');
-
-
-const tumapicha = document.getElementById('submitcontainer');
-
 let receiverData = [];
 let messageLoaded = false;
 let chatMessages = {};
@@ -41,13 +36,16 @@ document.addEventListener('click', function (event) {
 
         receiverData = [receiverId, senderId, convorId,];
 
-        // console.log(receiverData)
+        console.log(receiverData)
 
 
         if (chatMessages[convorId]) {
             chatMessages[convorId].forEach(function (oneMessageContainer) {
                 messagespace.appendChild(oneMessageContainer);
+<<<<<<< HEAD
                 // console.log('messeges')
+=======
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
             });
         } else {
             addExistingMessage(convorId);
@@ -84,7 +82,7 @@ function sendMessage() {
 
         textInput.value = "";
 
-        fetch('chatsendmessage.php', {
+        fetch('sendmessage.php', {
             method: "POST",
             headers: {
                 "content-Type": "application/json",
@@ -93,6 +91,7 @@ function sendMessage() {
         })
             .then(function (response) {
                 if (response.status === 200) {
+<<<<<<< HEAD
                     return response.json()
                         .then(function (data) {
                             // console.log(data);
@@ -103,12 +102,20 @@ function sendMessage() {
                             // let newMessageArray = htmlStringToArray(newMessagehtmlstring)
                             // chatMessages[convorId].push(newMessageArray);
                         })
+=======
+                    return response.json().then(function (data) {
+                        console.log(data);
+                        messagespace.innerHTML += displayRecentSentMessage(data);
+                        messagespace.scrollTop = messagespace.scrollHeight;
+                    })
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
                 }
             })
     }
 
 };
 
+<<<<<<< HEAD
 function sendPhoto() {
 
     let receiverId = receiverData[0]
@@ -161,6 +168,8 @@ tumapicha.addEventListener('submit', function (event) {
     console.log('oyaaaaaaaaaaaaaaaaaaaa')
 })
 
+=======
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
 function addExistingMessage(convoId) {
 
     if (!chatMessages[convoId]) {
@@ -175,9 +184,13 @@ function addExistingMessage(convoId) {
         "convorId": convorId,
     }
 
+<<<<<<< HEAD
     // console.log(messagePackage)
 
     fetch('chatsendmessage.php', {
+=======
+    fetch('sendmessage.php', {
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
         method: "POST",
         headers: {
             "content-Type": "application/json",
@@ -206,6 +219,11 @@ function addExistingMessage(convoId) {
 
         })
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
 
 
 function displayExistingMessages(data, senderId) {
@@ -234,13 +252,8 @@ function displayExistingMessages(data, senderId) {
         const actualincomingmessage = document.createElement('p');
         actualincomingmessage.classList.add('actualincomingmessage');
 
-        // 
-        // 
-        // 
-        // 
-        const outgoingmultmedia = document.createElement('div');
-        outgoingmultmedia.classList.add('outgoingmultmedia');
 
+<<<<<<< HEAD
         const outgoingmultimediacontainer = document.createElement('div');
         outgoingmultimediacontainer.classList.add('outgoingmultimediacontainer');
 
@@ -262,37 +275,27 @@ function displayExistingMessages(data, senderId) {
 
 
         if (message.sender_id === senderId && message.multimedia_status == 0) {
+=======
+        if (message.sender_id === senderId) {
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
             actualoutgoingmessage.textContent = message.message;
 
             outgoingContainer.appendChild(actualoutgoingmessage);
             outgoingMain.appendChild(outgoingContainer);
 
             allMessageContainers.push(outgoingMain);
+<<<<<<< HEAD
             // console.log(`outgoing: ${message.multimedia_status}`)
+=======
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
 
-        } else if (message.sender_id != senderId && message.multimedia_status == 0) {
+        } else {
             actualincomingmessage.textContent = message.message;
 
             incomingContainer.appendChild(actualincomingmessage);
             incomingMain.appendChild(incomingContainer);
 
             allMessageContainers.push(incomingMain);
-        } else if (message.sender_id === senderId && message.multimedia_status == 1) {
-            actualoutgoingmultmedia.src = message.message;
-
-            outgoingmultimediacontainer.appendChild(actualoutgoingmultmedia);
-            outgoingmultmedia.appendChild(outgoingmultimediacontainer);
-
-            allMessageContainers.push(outgoingmultmedia);
-
-        } else if (message.sender_id != senderId && message.multimedia_status == 1) {
-            actualincomingmultmedia.src = message.message;
-
-
-            incomingmultimediacontainer.appendChild(actualincomingmultmedia);
-            incomingmultmedia.appendChild(incomingmultimediacontainer);
-
-            allMessageContainers.push(incomingmultmedia);
         }
 
     })
@@ -304,7 +307,7 @@ function displayExistingMessages(data, senderId) {
 }
 
 function displayRecentSentMessage(data) {
-    // console.log(data);
+    console.log(data);
 
     // Outgoing Messages Containers
     const outgoingMain = document.createElement('div');
@@ -324,6 +327,7 @@ function displayRecentSentMessage(data) {
     return outgoingMain.outerHTML;
 }
 
+<<<<<<< HEAD
 function displayRecentSentPhoto(data) {
     // console.log(data);
 
@@ -961,3 +965,5 @@ function deleteConvo() {
 
 
 >>>>>>> 3529bbc (Refactor: Addition of old code)
+=======
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))

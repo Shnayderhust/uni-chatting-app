@@ -3,16 +3,16 @@
 
 require_once "dbconnection.inc.php";
 require_once "sessionconfig.inc.php";
-require_once "convo_model.inc.php";
+require_once "chat_model.inc.php";
 
 $currentLogedInUserId = $_SESSION["userid"];
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $data = json_decode(file_get_contents("php://input"));
-    $convoPackage = $data->convoPackage;
+    $userIdToStartConvo = $data->getUserId;
 
-    if ($convoPackage === 'initial_load') {
+    if ($userIdToStartConvo === 'initial_load') {
         $allUserFriendsId = get_allFriendsId($unigram_conn, $currentLogedInUserId);
         $allUserFriendsData = get_alluserfriendsdata($unigram_conn, $allUserFriendsId);
 
@@ -26,15 +26,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         echo json_encode($response);
         http_response_code(203);
-    } else if (doesConvoExistForCurrentUser($unigram_conn, $currentLogedInUserId, $convoPackage)) {
+    } else if (doesConvoExistForCurrentUser($unigram_conn, $currentLogedInUserId, $userIdToStartConvo)) {
 
-        $convoId = get_convoid($unigram_conn, $currentLogedInUserId, $convoPackage);
+        $convoId = get_convoid($unigram_conn, $currentLogedInUserId, $userIdToStartConvo);
 
         echo json_encode($convoId);
         http_response_code(201);
-    } else if (doesConvoExistForBothUser($unigram_conn, $currentLogedInUserId, $convoPackage)) {
-        $convoId = get_convoid($unigram_conn, $currentLogedInUserId, $convoPackage);
-        $userOneFriendData = get_useronefrienddata($unigram_conn, $convoPackage);
+    } else if (doesConvoExistForBothUser($unigram_conn, $currentLogedInUserId, $userIdToStartConvo)) {
+        $convoId = get_convoid($unigram_conn, $currentLogedInUserId, $userIdToStartConvo);
+        $userOneFriendData = get_useronefrienddata($unigram_conn, $userIdToStartConvo);
 
         $response = array(
             'userOneFriendData' => $userOneFriendData,
@@ -45,11 +45,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo json_encode($response);
         http_response_code(202);
     } else {
-        add_convo($unigram_conn, $currentLogedInUserId, $convoPackage);
+        add_convo($unigram_conn, $currentLogedInUserId, $userIdToStartConvo);
 
-        $userOneFriendData = get_useronefrienddata($unigram_conn, $convoPackage);
+        $userOneFriendData = get_useronefrienddata($unigram_conn, $userIdToStartConvo);
 
-        $convoId = get_convoid($unigram_conn, $currentLogedInUserId, $convoPackage);
+        $convoId = get_convoid($unigram_conn, $currentLogedInUserId, $userIdToStartConvo);
         $allConvoData = get_convodata($unigram_conn, $convoId["convor_id"]);
 
         $lastConvoRowData = end($allConvoData);

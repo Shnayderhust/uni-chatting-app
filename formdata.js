@@ -69,7 +69,6 @@ document.addEventListener("DOMContentLoaded", function () {
 })
 
 
-
 function displaySelectedImage() {
     const image = document.getElementById('chosingprof');
     const input = document.getElementById('chooseprof');
@@ -86,6 +85,7 @@ function displaySelectedImage() {
 
 
 }
+<<<<<<< HEAD
 =======
 document.addEventListener("DOMContentLoaded", function () {
     const Regform = document.getElementById('regform');
@@ -175,3 +175,5 @@ function displaySelectedImage() {
 
 }
 >>>>>>> 3529bbc (Refactor: Addition of old code)
+=======
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))

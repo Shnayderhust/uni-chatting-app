@@ -168,6 +168,7 @@ function displayfriends(userfrienddata) {
 
 }
 
+<<<<<<< HEAD
 addEventListener('click', (event) => {
     if (event.target.matches('#requestlist')) {
         document.getElementById('friendrequests').style.right = "-100%";
@@ -460,3 +461,5 @@ function removeUser(userId) {
 }
 
 >>>>>>> 3529bbc (Refactor: Addition of old code)
+=======
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))

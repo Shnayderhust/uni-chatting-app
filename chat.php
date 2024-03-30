@@ -25,6 +25,7 @@ if (!isset($_SESSION["userid"])) {
 
 <body>
 
+<<<<<<< HEAD
     <div id="filepreview">
 
         <nav id="returnnav">
@@ -50,6 +51,8 @@ if (!isset($_SESSION["userid"])) {
         </form>
 
     </div>
+=======
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
 
     <div class="left">
         <nav id="nav">
@@ -87,13 +90,11 @@ if (!isset($_SESSION["userid"])) {
 
         <section id="activechat">
 
-
             <div id="activechatspace">
-
                 <div class="chatnav">
                     <div class="chatnavheader">
                         <img src="./assets/UserPics/userDefaultProfile.png" alt="" class="friendprof">
-                        <p class="friendname">Username</p>
+                        <p class="friendname">Shnayder</p>
                     </div>
                     <div class="nextchatnav">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -101,8 +102,42 @@ if (!isset($_SESSION["userid"])) {
                     </div>
                 </div>
                 <div class="messagespace">
+                    <!-- <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up girl</p>
+                        </div>
+                    </div>
 
-                    <!-- <div class="incomingmultmedia">
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up </p>
+                        </div>
+                    </div>
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up girl</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="incomingmultmedia">
                         <div class="incomingmultimediacontainer">
                             <img class="actualincomingmultmedia" src="./assets/picsandicons/avatar.jpg">
                         </div>
@@ -112,37 +147,140 @@ if (!isset($_SESSION["userid"])) {
                         <div class="outgoingmultimediacontainer">
                             <img class="actualoutgoingmultmedia" src="./assets/picsandicons/UnigramTheme03.png">
                         </div>
+                    </div>
+
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up </p>
+                        </div>
+                    </div>
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up girl</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up </p>
+                        </div>
+                    </div>
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up girl</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up </p>
+                        </div>
+                    </div>
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up girl</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up </p>
+                        </div>
+                    </div>
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up girl</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up </p>
+                        </div>
+                    </div>
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up girl</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="outgoing">
+                        <div class="outgoingmessage">
+                            <p class="actualoutgoingmessage">what up Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit deleniti dolorum</p>
+                        </div>
+                    </div>
+
+                    <div class="incoming">
+                        <div class="incomingmessage">
+                            <p class="actualincomingmessage">what up </p>
+                        </div>
                     </div> -->
 
                 </div>
 
-                <!-- <section>
-
-
-                </section> -->
-
                 <div class="chatspace">
-                    <!-- <div id="fileuploaderdropdown"> -->
-                    <!-- <form id="photoform" enctype="multipart/form-data" method="POST">
-                            <label for="uploadphoto">Photos</label>
-                            <input type="file" id="uploadphoto" name="photo" onchange="goToPreviewPage()" style="display: none;">
-                        </form> -->
-
-                    <!-- <form id="documentform" enctype="multipart/form-data">
-                            <label for="uploaddocument">Document</label>
-                            <input type="file" id="uploaddocument" name="document" style="display: none;">
-                        </form>
-
-                        <form id="videoform" enctype="multipart/form-data">
-                            <label for="uploadvideo">Video</label>
-                            <input type="file" id="uploadvideo" name="video" style="display: none;">
-                        </form> -->
-                    <!-- </div> -->
-
-                    <img src="assets/picsandicons/smile-circle-svgrepo-com.svg" alt="emoji" class="receiverprof">
-                    <img src="./assets/picsandicons/plus-svgrepo-com.svg" alt="" id="fileuploader">
-
-
+                    <img src="assets/UserPics//userDefaultProfile.png" alt="emoji" class="receiverprof">
+                    <i class="fa-solid fa-plus"></i>
 
                     <div id="sendtextcontainer">
                         <input type="text" placeholder="Type a message" id="textInput">
@@ -163,22 +301,19 @@ if (!isset($_SESSION["userid"])) {
                 </div>
             </div>
 
-
-
         </section>
 
         <section id="friendrequests">
             <div id="requesthead">
                 <h1>Requests</h1>
-                <i class="fa-solid fa-arrow-right" id="requestlist"></i>
+                <i class="fa-solid fa-arrow-right" id="chatlist"></i>
             </div>
             <div id="requesttype">
                 <div id="sentRequests">
-                    <div id="Requestsheader">
-                        <h2>Sent/Pending Request</h2>
-                    </div>
+                    <h2>Sent/Pending Request</h2>
                     <div id="sentrequestlist">
 
+<<<<<<< HEAD
                         <div class="friendcontainer" data-username="Shnayder">
                             <div class="requestprof">
                                 <img src="assets/UserPics/profpic.jpg" class="requestphoto">
@@ -192,13 +327,14 @@ if (!isset($_SESSION["userid"])) {
                             </div>
                         </div>
 
+=======
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
                     </div>
                 </div>
                 <div id="allfriendRequests">
-                    <div id="Requestsheader">
-                        <h2>Friend Requests</h2>
-                    </div>
+                    <h2>Friend Requests</h2>
                     <div id="friendrequestlist">
+<<<<<<< HEAD
                         <div class="friendcontainer" data-username="Shnayder">
                             <div class="requestprof">
                                 <img src="assets/UserPics/profpic.jpg" class="requestphoto">
@@ -212,6 +348,8 @@ if (!isset($_SESSION["userid"])) {
                                 <button class="req-deny" data-user-id="2">Deny</button>
                             </div>
                         </div>
+=======
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
 
                     </div>
                 </div>
@@ -330,6 +468,7 @@ if (!isset($_SESSION["userid"])) {
                     <p>CHANGE <br> PROFILE PICTURE</p>
                 </div>
             </div>
+<<<<<<< HEAD
 
             <div id="topprof">
                 <form enctype="multipart/form-data" id="changeprof">
@@ -418,6 +557,8 @@ if (!isset($_SESSION["userid"])) {
 
                 </form>
             </div>
+=======
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
         </div>
 
         <div id="name-bio">
@@ -426,14 +567,14 @@ if (!isset($_SESSION["userid"])) {
                     <p>Your Username</p>
                     <h1><?php displayusername() ?></h1>
                 </div>
-                <i class="fa-solid fa-pen" id="changeyourusername"></i>
+                <i class="fa-solid fa-pen"></i>
             </div>
             <div id="bio">
                 <div>
                     <p>Your Bio</p>
                     <h1><?php displaybio() ?></h1>
                 </div>
-                <i class="fa-solid fa-pen" id="changeyourbio"></i>
+                <i class="fa-solid fa-pen"></i>
             </div>
         </div>
     </div>
@@ -459,8 +600,6 @@ if (!isset($_SESSION["userid"])) {
     <script src="friends.js"></script>
     <script src="convo.js"></script>
     <script src="chat.js"></script>
-    <script src="multimedia.js"></script>
-    <script src="customProf.js"></script>
 </body>
 
 =======

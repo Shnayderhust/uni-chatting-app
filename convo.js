@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function addConvo() {
     addEventListener('click', function (event) {
         if (event.target.matches('.chat')) {
-            const convoPackage = event.target.getAttribute('data-user-id');
+            const getUserId = event.target.getAttribute('data-user-id');
 
 
 
@@ -24,7 +24,7 @@ function addConvo() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ convoPackage })
+                body: JSON.stringify({ getUserId })
 
             })
                 .then(function (response) {
@@ -119,11 +119,9 @@ function displayconvo(userOneFriendData, convoId, currentLogedInUserId) {
 
     const text = document.createElement('p');
     text.classList.add('text');
-    text.textContent = 'Open to Chat!......';
+    text.textContent = 'No message now!... Open to Chat';
 
-    const deletechat = document.createElement('input');
-    deletechat.classList.add('deletechat');
-    deletechat.textContent = "Delete";
+
 
     message.appendChild(text);
     details.appendChild(jina);
@@ -143,7 +141,7 @@ function onpageloaddisplayconvo() {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ convoPackage: 'initial_load' })
+        body: JSON.stringify({ getUserId: 'initial_load' })
 
     })
         .then(function (response) {
@@ -215,7 +213,7 @@ function displayconvoonload(allUserFriendsData, currentLoggedUserConvoIds, curre
 
                 const text = document.createElement('p');
                 text.classList.add('text');
-                text.textContent = 'Open to Chat!.......';
+                text.textContent = 'No message now!... Open to Chat';
 
                 message.appendChild(text);
                 details.appendChild(jina);
@@ -264,6 +262,7 @@ function doesConvorIdMatchFriendsIdFromDb(convorId, friendsId, loggedUserId) {
 // }
 
 
+<<<<<<< HEAD
 
 
 
@@ -547,3 +546,5 @@ function doesConvorIdMatchFriendsIdFromDb(convorId, friendsId, loggedUserId) {
 
 
 >>>>>>> 3529bbc (Refactor: Addition of old code)
+=======
+>>>>>>> parent of 6bf26d2 (Some minor updates and one major (multimedia sharing))
