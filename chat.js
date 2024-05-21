@@ -96,10 +96,6 @@ function sendMessage() {
                         // console.log(data);
                         messagespace.innerHTML += displayRecentSentMessage(data);
                         messagespace.scrollTop = messagespace.scrollHeight;
-
-                        // let newMessagehtmlstring = displayRecentSentMessage(data);
-                        // let newMessageArray = htmlStringToArray(newMessagehtmlstring)
-                        // chatMessages[convorId].push(newMessageArray);
                     })
                 }
             })
@@ -136,22 +132,6 @@ function sendPhoto() {
             }
         })
 }
-//         .then(function (response) {
-//             if (response.status === 200) {
-//                 return response.json().then(function (data) {
-//                     // Process and display new messages if any
-//                     if (data.length > 0) {
-//                         data.forEach(function (message) {
-//                             messagespace.innerHTML += displayReceivedMessage(message);
-//                         });
-//                         messagespace.scrollTop = messagespace.scrollHeight;
-//                     }
-//                 });
-//             }
-//         });
-// }
-
-// setInterval(checkForNewMessages, 1000);
 
 tumapicha.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -232,8 +212,6 @@ function displayExistingMessages(data, senderId) {
         const actualincomingmessage = document.createElement('p');
         actualincomingmessage.classList.add('actualincomingmessage');
 
-        // 
-        // 
         // 
         // 
         const outgoingmultmedia = document.createElement('div');
@@ -419,8 +397,6 @@ function deleteConvo() {
                     chatslist.innerHTML += displayconvo(userOneFriendData, convoId, currentLogedInUserId);
                     const allChats = document.getElementsByClassName('onechat');
                     // console.log('convo added successfully');
-
-                    // console.log('convo displayed successfully')
                 })
             } else if (response.status === 201) {
 
@@ -466,19 +442,5 @@ function deleteConvo() {
         })
 
 }
-
-// function htmlStringToArray(htmlString) {
-
-//     const tempContainer = document.createElement('div');
-//     tempContainer.innerHTML = htmlString;
-//     const elementsArray = Array.from(tempContainer.children);
-
-//     return elementsArray;
-// }
-
-// function checkForNewMessages() {
-
-//     fetch('checkformessages.php')
-
 
 

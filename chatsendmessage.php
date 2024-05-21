@@ -23,12 +23,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         http_response_code(200);
     }
 } 
-
-// else if ($_SERVER["REQUEST_METHOD"] === "GET") {
-//     // Query the database for new messages for the current user
-//     $newMessages = getNewMessages($unigram_conn, $currentLogedInUserId);
-
-//     // Send the new messages to the client
-//     echo json_encode($newMessages);
-//     http_response_code(200);
-// }

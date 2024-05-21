@@ -1,8 +1,6 @@
 <?php
 require_once "sessionconfig.inc.php";
 
-
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST["username"];
     $password_received = $_POST["password"];

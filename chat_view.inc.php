@@ -1,7 +1,4 @@
 <?php
-// require_once "dbconnection.inc.php";
-// require_once "sessionconfig.inc.php";
-// require_once "chat_model.in.php";
 
 function displayusername()
 {

@@ -1,6 +1,4 @@
 <?php
-// queryng friends id from conversation table
-
 function get_allFriendsId(object $unigram_conn, $currentLogedInUserId)
 {
     $query1 = "SELECT user1_id FROM conversation WHERE user2_id = :user_id";
@@ -70,7 +68,6 @@ function get_allConvoIdOfOneUser(object $unigram_conn, $currentLogedInUserId)
     return $result;
 }
 
-// The below function deals with conversation table
 function doesConvoExistForCurrentUser(object $unigram_conn, $currentLogedInUserId, $userIdToStartConvo)
 {
     $query = "SELECT convor_id FROM conversation WHERE

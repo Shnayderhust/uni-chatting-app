@@ -3,7 +3,6 @@
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $bio = $_POST["custombio"];
-    // $bio = $_POST["bio"];
 
     try {
 

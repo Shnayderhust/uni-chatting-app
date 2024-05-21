@@ -3,7 +3,6 @@
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $username = $_POST["customusername"];
-    // $bio = $_POST["bio"];
 
     try {
 
@@ -11,7 +10,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         require_once "dbconnection.inc.php";
         require_once "signup_model.inc.php";
         require_once "signup_control.inc.php";
-
 
         // ERROR HANDLING
         $makosa = [];

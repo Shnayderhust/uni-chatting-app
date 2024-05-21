@@ -3,20 +3,14 @@ const tempo = document.querySelector('.tempo');
 const newchat = document.getElementById('newchat');
 
 document.addEventListener('DOMContentLoaded', function () {
-
     onpageloaddisplayconvo();
     addConvo();
-    // convoSearchfunction();
-
 })
 
 function addConvo() {
     addEventListener('click', function (event) {
         if (event.target.matches('.chat')) {
             const convoPackage = event.target.getAttribute('data-user-id');
-
-
-
 
             fetch('convo.inc.php', {
                 method: "POST",
@@ -136,7 +130,6 @@ function displayconvo(userOneFriendData, convoId, currentLogedInUserId) {
 
 function onpageloaddisplayconvo() {
 
-    // fetch for displaying conversation which already exist in database
     fetch('convo.inc.php', {
         method: "POST",
         headers: {
@@ -182,8 +175,6 @@ function displayconvoonload(allUserFriendsData, currentLoggedUserConvoIds, curre
 
         for (let j = 0; j < currentLoggedUserConvoIds.length; j++) {
             const oneConvoId = currentLoggedUserConvoIds[j];
-
-
 
             if (doesConvorIdMatchFriendsIdFromDb(oneConvoId["convor_id"], oneUserFriendData["user_id"], currentLogedInUserId)) {
 
@@ -240,34 +231,3 @@ function doesConvorIdMatchFriendsIdFromDb(convorId, friendsId, loggedUserId) {
 
     return trimmedConvorId === friendsIdstring;
 }
-
-// const convoSearchbar = document.getElementById('convosearch');
-
-// function convoSearchfunction() {
-//     const convos = document.querySelectorAll('.onechat')
-//     console.log(convos)
-//     // This block is used for searching through users
-//     convoSearchbar.addEventListener('input', function () {
-//         const searchTerm = convoSearchbar.value.toLowerCase();
-
-//         convos.forEach(function (convo) {
-//             console.log(convo)
-//             const username = convo.getAttribute('data-receiver-username').toLowerCase();
-//             if (username.includes(searchTerm)) {
-//                 convo.style.display = 'flex';
-//             } else {
-//                 convo.style.display = 'none';
-//             }
-//         })
-//     })
-// }
-
-
-
-
-
-
-
-
-
-

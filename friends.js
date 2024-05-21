@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function friendSearch() {
-    // This block is used for searching through users
     friendsearch.addEventListener('input', function () {
         const searchTerm = friendsearch.value.toLowerCase();
 
@@ -33,7 +32,6 @@ function friendSearch() {
 
 
 function friendAdder() {
-    // fetch for adding new friends
 
     for (const addFriend of addFriends) {
 
@@ -77,7 +75,6 @@ function friendAdder() {
 
 function onpageloaddisplayfriends() {
 
-    // fetch for displaying friends who already exist in database
     fetch('friends.inc.php', {
         method: "POST",
         headers: {

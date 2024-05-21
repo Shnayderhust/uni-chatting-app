@@ -15,7 +15,6 @@ session_set_cookie_params([
 
 session_start();
 
-// The Blocks below is for security measures of user session
 if (isset($_SESSION["userid"])) {
     if (!isset($_SESSION["last_regenarate"])) {
         sessionRegenerateLogin();

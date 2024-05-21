@@ -11,20 +11,13 @@ require_once "sessionconfig.inc.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- linking shortcut icon at the header of the site on the tab named favicon found in assets the pics and icons subfolder -->
     <link rel="shortcut icon" href="./assets/picsandicons/favicon.png">
-    <!-- linking css file named reg.css found in assets folder -->
     <link rel="stylesheet" href="./assets/reg.css">
     <title>Unigram | Register</title>
 </head>
 
 <body>
-
-    <!-- in body container there are two container named section one with class of left and another with class of right -->
-
-    <!-- this section tag is like a container that hold other html contents  -->
     <section class="left">
-        <!-- the div bellow acts as the header of the this section -->
         <div id="header">
             <div class="mlogo" id="h1">
                 <img src="assets/picsandicons/favicon.png" id="img" class="mlogo">
@@ -40,19 +33,10 @@ require_once "sessionconfig.inc.php";
 
 
 
-            <!-- This Container Bellow is Responsible for Receiving Error Messages On Registration -->
-
             <div id=errorcontainer>
             </div>
 
         </div>
-
-        <!-- This is the inputs form that a user fill out his/her details for registration
-    
-        Each input and its lable are wrapped inside section just for easy and responsive styling with css
-
-        The method of form is set to Post which is more secure than get in the case of submitting user data
-        -->
 
         <form id="regform">
             <section>
@@ -90,7 +74,6 @@ require_once "sessionconfig.inc.php";
 
     </section>
 
-    <!-- This section with clss of rigth is the one with purple color in the registration form which is empty we can fill it with some dope design like the app logo or a picture later -->
     <section class="right">
         <img src="./assets/picsandicons/favicon.png" class="mlogo" alt="" id="rightlogo" class="mlogo">
         <h1>Unigram</h1>

@@ -72,22 +72,3 @@ function add_photofile(object $unigram_conn, $imagepackage)
 
     return $result;
 }
-
-// function get_photos(object $unigram_conn, $converId, $multimedia_status)
-// {
-//     $query = "SELECT * FROM messages WHERE conversation_id = :conversation_id AND multimedia_status = :multimedia_status;";
-
-//     $stmt = $unigram_conn->prepare($query);
-//     $stmt->bindParam(":conversation_id", $converId);
-//     $stmt->bindParam(":multimedia_status", $multimedia_status);
-//     $stmt->execute();
-
-//     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-//     return $result;
-// }
-
-
-// function getNewMessages(object $unigram_conn, $currentLogedInUserId);{
-
-// }

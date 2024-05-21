@@ -18,11 +18,6 @@ require_once "sessionconfig.inc.php";
 
 <body>
 
-    <!-- Explanation for this file refer the register file given both this file and register file are designed the same way and ofcourse use the same css and js file 
-
-    The difference is only how the js file target its event i changed some class and id names so the js file could only refer to events target available in this file only
-    -->
-
     <section class="left">
         <div id="header">
             <div class="mlogo" id="h1">

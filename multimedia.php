@@ -15,9 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $photoError = $_FILES["photo"]["error"];
     $photoType = $_FILES["photo"]["type"];
 
-
-
-    // Process file to get Extansion
     $photoExt = explode('.', $photoName);
     $photoActualExt = strtolower(end($photoExt));
 
@@ -25,10 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
     try {
-
-        // require_once "dbconnection.inc.php";
-        // require_once "sessionconfig.inc.php";
-
         $db_host = 'localhost';
         $db_name = 'unigramdb';
         $db_user = 'root';

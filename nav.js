@@ -82,18 +82,6 @@ addEventListener('click', (event) => {
     }
 })
 
-// const tumaDocument = document.getElementById('uploadyourdocument');
-// const uploadyourphoto = document.getElementById('uploadyourphoto');
-
-// tumaDocument.addEventListener('click', () => {
-//     document.querySelector('documentfilepreview').style.display = "flex";
-// })
-
-// uploadyourphoto.addEventListener('click', () => {
-//     document.querySelector('photofilepreview').style.display = "flex";
-// })
-
-
 const rootVariables = document.documentElement;
 
 

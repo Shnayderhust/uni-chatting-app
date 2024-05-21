@@ -9,7 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $fileError = $_FILES["file"]["error"];
     $fileType = $_FILES["file"]["type"];
 
-    // Process file to get Extansion
     $fileExt = explode('.', $fileName);
     $fileActualExt = strtolower(end($fileExt));
 
@@ -21,8 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         require_once "sessionconfig.inc.php";
         require_once "dbconnection.inc.php";
         require_once "signup_model.inc.php";
-        // require_once "signup_control.inc.php";
-
 
         // ERROR HANDLING
         $makosa = [];
