@@ -28,7 +28,7 @@
     </header>
 
     <main>
-        <img src="./assets/picsandicons/Apple-Computer-Science-Education-Week-hero_big.jpg.large_2x.jpg" alt="pic" id="mainpic">
+        <img src="./assets/picsandicons/Pins/motiv.jpg" alt="pic" id="mainpic">
         <div class="parag">
             <h1>Message Privately</h1>
             <p>Simple, reliable, private messaging with<br> fellow university colleagues<br>all over the country</p><br>

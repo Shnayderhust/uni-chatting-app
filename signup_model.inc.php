@@ -24,7 +24,8 @@ function get_email(object $unigram_conn, $email)
 
 function set_users(object $unigram_conn, $firstname, $lastname, $email, $password, $university)
 {
-    $query = "INSERT INTO users (firstname, lastname, email, `password`, university) VALUES (:firstname, :lastname, :email, :hashedpassword, :university);";
+    try{
+        $query = "INSERT INTO users (firstname, lastname, email, `password`, university) VALUES (:firstname, :lastname, :email, :hashedpassword, :university);";
     $stmt = $unigram_conn->prepare($query);
 
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
@@ -36,13 +37,16 @@ function set_users(object $unigram_conn, $firstname, $lastname, $email, $passwor
     $stmt->bindParam(":university", $university);
     $stmt->execute();
 
-    $query = "SELECT * FROM users WHERE email = :email";
-    $selectstmt = $unigram_conn->prepare($query);
-    $selectstmt->bindParam(":email", $email);
-    $selectstmt->execute();
+    // $query = "SELECT * FROM users WHERE email = :email";
+    // $selectstmt = $unigram_conn->prepare($query);
+    // $selectstmt->bindParam(":email", $email);
+    // $selectstmt->execute();
 
-    $result = $selectstmt->fetch(PDO::FETCH_ASSOC);
-    return $result;
+    // $result = $selectstmt->fetch(PDO::FETCH_ASSOC);
+    // return $result;
+    }catch (Exception $e){
+        error_log("Error is set_user():".$e->getMessage(), 0);
+    }
 }
 
 function update_user(object $unigram_conn, $email, $username, $bio, $profile_pic_id)

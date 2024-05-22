@@ -24,14 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     try {
 
         require_once "sessionconfig.inc.php";
-        require_once "dbconnection.inc.php";
+        // require_once "dbconnection.inc.php";
         require_once "signup_model.inc.php";
         require_once "signup_control.inc.php";
 
 
         // ERROR HANDLING
         $makosa = [];
-        // 
         if (is_username_taken($unigram_conn, $username)) {
             $makosa["username_taken"] = "The username you choose is already taken";
         } else if (!in_array($fileActualExt, $extAllowed)) {
@@ -45,21 +44,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $fileDestination = 'assets/UserPics/' . $newFileName;
             $_SESSION["fileDestination"] = $fileDestination;
             move_uploaded_file($fileTmpName, $fileDestination);
+            // echo $email;
+            echo $_SESSION["fileDestination"];
+            echo $_SESSION["useremail"];
 
-            if ($_SESSION["useremail"]) {
-
-                $email = $_SESSION["useremail"];
+            if ($email) {
+                // $email = $_SESSION["useremail"];
                 $profile_pic_id = $_SESSION["fileDestination"];
 
                 update_user($unigram_conn, $email, $username, $bio, $profile_pic_id);
 
-                $userresult = get_user($unigram_conn, $email);
-                $_SESSION["userbio"] = $userresult["bio"];
+                $_SESSION["userbio"] = $bio;
 
                 http_response_code(200);
                 echo json_encode($success = "You have succeed in registering now use your credentials to login");
             } else {
-                $makosa["uploadfailed"] = "Uploading your file failed try again";
+                $makosa["uploadfailed"] = "why are you passing around";
+                // echo "Hi shnayder";
             }
         }
 

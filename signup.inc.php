@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     try {
 
-        require_once "dbconnection.inc.php";
+        // require_once "dbconnection.inc.php";
         require_once "sessionconfig.inc.php";
         require_once "signup_model.inc.php";
         require_once "signup_control.inc.php";
@@ -36,9 +36,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 echo json_encode($errors);
             }
         } else if (!is_input_empty($firstname, $lastname, $email, $password, $university) && !is_email_invalid($email) && !is_email_registered($unigram_conn, $email)) {
-            $result = set_users($unigram_conn, $firstname, $lastname, $email, $password, $university);
-            // error_log("what are you doing\n", 3, "debug.log");
-            $_SESSION["useremail"] = $result["email"];
+            set_users($unigram_conn, $firstname, $lastname, $email, $password, $university);
+            
+            $_SESSION["useremail"] = $email;
+
+            echo $_SESSION["useremail"];
+            // error_log($email, 3, "debug.log");
+            // file_put_contents('signup.inc.php', '<?php $email = ' . var_export($email, true) . ';');
 
             http_response_code(200);
         }

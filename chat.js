@@ -121,22 +121,6 @@ function sendPhoto() {
     }
   });
 }
-//         .then(function (response) {
-//             if (response.status === 200) {
-//                 return response.json().then(function (data) {
-//                     // Process and display new messages if any
-//                     if (data.length > 0) {
-//                         data.forEach(function (message) {
-//                             messagespace.innerHTML += displayReceivedMessage(message);
-//                         });
-//                         messagespace.scrollTop = messagespace.scrollHeight;
-//                     }
-//                 });
-//             }
-//         });
-// }
-
-// setInterval(checkForNewMessages, 1000);
 
 tumapicha.addEventListener("submit", function (event) {
   event.preventDefault();

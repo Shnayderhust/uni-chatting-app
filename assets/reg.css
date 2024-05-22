@@ -1,4 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;700;800&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;700;800&display=swap"); */
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  src: url("./poppins/Poppins-Regular.ttf");
+}
 
 :root {
   /* #5141bd */
@@ -326,7 +332,7 @@ section {
   border-radius: 0.5rem;
   border: 1px solid rgba(0, 0, 0, 0.342);
   background-color: white;
-  font-weight: 500;
+  font-weight: 200;
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: 1rem;

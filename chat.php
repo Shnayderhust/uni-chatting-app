@@ -3,10 +3,10 @@ require_once "chat_view.inc.php";
 require_once "friends.inc.php";
 require_once "sessionconfig.inc.php";
 
-if (!isset($_SESSION["userid"])) {
-    header("location: login.php");
-}
-?>
+// if (!isset($_SESSION["userid"])) {
+//     header("location: login.php");
+// }
+// ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -434,9 +434,7 @@ if (!isset($_SESSION["userid"])) {
             </div>
         </div>
     </div>
-
-    <!-- This is log out form that is displayed only when a user try to log out of the system -->
-
+    
     <form action="login_view.inc.php" method="Post" id="logoutform">
 
         <div id="logoutdiv">
