@@ -1,5 +1,5 @@
 # Unigram
-Flagship team project on web development
+
 
 CHATT APP UI ELEMENT
 #Log in & Registration form
